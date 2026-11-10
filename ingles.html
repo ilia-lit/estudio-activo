@@ -82,6 +82,7 @@ details .in{padding:0 15px 14px}
   <button data-s="quiz">✅ Examen</button>
 </div></nav>
 <main>
+<div class="card small" style="background:var(--amber-s);border-color:var(--amber)">🔊 <b>¿No se escucha?</b> Quita el <b>modo silencio</b> del iPhone y sube el volumen con los botones laterales mientras suena.</div>
 
 <section id="plan" class="on">
   <h2>Cómo vas a estudiar (20 a 25 min al día)</h2>
@@ -320,7 +321,7 @@ details .in{padding:0 15px 14px}
 let VOICE=null;
 function pickVoice(){try{const vs=speechSynthesis.getVoices();VOICE=vs.find(v=>v.lang==='en-US'&&/Samantha|Google US|Aaron|Nicky/i.test(v.name))||vs.find(v=>v.lang==='en-US')||vs.find(v=>v.lang&&v.lang.startsWith('en'))||null}catch(e){}}
 try{pickVoice();speechSynthesis.onvoiceschanged=pickVoice}catch(e){}
-function speak(t,slow){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=slow?0.55:0.9;if(VOICE)u.voice=VOICE;speechSynthesis.speak(u)}catch(e){}}
+function speak(t,slow){try{const ss=window.speechSynthesis;if(!ss)return;if(ss.speaking||ss.pending)ss.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=slow?0.6:0.9;u.volume=1;if(!VOICE)pickVoice();if(VOICE)u.voice=VOICE;ss.speak(u);ss.resume()}catch(e){}}
 document.addEventListener('click',e=>{const w=e.target.closest('.w');if(w){speak(w.textContent)}});
 
 // ---------- tabs ----------
@@ -470,7 +471,7 @@ const PAIRS=[["ship","sheep","i corta vs ee larga"],["sit","seat","i corta vs ea
  ["think","sink","TH (lengua entre dientes) vs S"],["thin","tin","TH vs T"],["three","tree","TH vs T"],["very","berry","V (dientes en el labio) vs B"],["vote","boat","V vs B"],
  ["chip","ship","CH vs SH"],["cheap","sheep","CH vs SH"],["watch","wash","CH vs SH"],["sing","sink","NG vs NK"],["work","walk","er/or vs aw"],["bird","board","ir vs oar"]];
 let oi={ok:0,n:0},oiCur=null;
-function oiNew(){const p=PAIRS[Math.floor(Math.random()*PAIRS.length)];const k=Math.random()<.5?0:1;oiCur={p,ans:p[k],opts:Math.random()<.5?[p[0],p[1]]:[p[1],p[0]]};oiRender(null);setTimeout(()=>speak(oiCur.ans),250)}
+function oiNew(){const p=PAIRS[Math.floor(Math.random()*PAIRS.length)];const k=Math.random()<.5?0:1;oiCur={p,ans:p[k],opts:Math.random()<.5?[p[0],p[1]]:[p[1],p[0]]};oiRender(null);speak(oiCur.ans)}
 function oiRender(choice){
   const {p,ans,opts}=oiCur;
   let h=`<p class="small muted" style="margin-top:0">¿Qué palabra escuchaste?</p><div class="row" style="margin-bottom:10px"><button class="spk" id="oiPlay">🔊 Otra vez</button><button class="spk" id="oiSlow">🐢 Lento</button></div><div class="row">`+
