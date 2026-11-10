@@ -88,7 +88,7 @@ details .in{padding:0 15px 14px}
   <button data-s="quiz">✅ Examen</button>
 </div></nav>
 <main>
-<div class="card small" style="background:var(--amber-s);border-color:var(--amber)">🔊 <b>¿No se escucha?</b> Quita el <b>modo silencio</b> del iPhone y sube el volumen con los botones laterales mientras suena.</div>
+<div class="card small" style="background:var(--amber-s);border-color:var(--amber)">🔊 <b>¿No se escucha?</b> Quita el modo silencio y sube el volumen. <button class="spk" onclick="soundTest()">Probar sonido</button><div id="sndMsg" style="margin-top:6px"></div></div>
 
 <section id="ruta" class="on">
   <h2>Tu ruta de 2 años: A2 → C1</h2>
@@ -297,7 +297,8 @@ details .in{padding:0 15px 14px}
 let VOICE=null;
 function pickVoice(){try{const vs=speechSynthesis.getVoices();VOICE=vs.find(v=>v.lang==='en-US'&&/Samantha|Google US|Aaron|Nicky/i.test(v.name))||vs.find(v=>v.lang==='en-US')||vs.find(v=>v.lang&&v.lang.startsWith('en'))||null}catch(e){}}
 try{pickVoice();speechSynthesis.onvoiceschanged=pickVoice}catch(e){}
-function speak(t,slow){try{const ss=window.speechSynthesis;if(!ss)return;if(ss.speaking||ss.pending)ss.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=slow?0.6:0.9;u.volume=1;if(!VOICE)pickVoice();if(VOICE)u.voice=VOICE;ss.speak(u);ss.resume()}catch(e){}}
+function speak(t,slow){try{const ss=window.speechSynthesis;if(!ss)return;if(ss.speaking||ss.pending)ss.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=slow?0.6:0.9;u.volume=1;ss.speak(u);ss.resume()}catch(e){}}
+function soundTest(){const el=document.getElementById('sndMsg');let m='';try{if(!('speechSynthesis' in window)){m='❌ Este navegador no tiene voz. Usa los enlaces 📖 Cambridge.'}else{const vs=speechSynthesis.getVoices(),en=vs.filter(v=>v.lang&&v.lang.toLowerCase().startsWith('en'));speak('Hello! Can you hear me?');m=`Voces: ${vs.length} · en inglés: ${en.length}. Si no oíste “Hello! Can you hear me?”, revisa el modo silencio y el volumen. Si sigue sin sonar, mándale a Claude una captura de este mensaje y usa los enlaces 📖 Cambridge.`}}catch(e){m='Error: '+e.message}el.textContent=m}
 document.addEventListener('click',e=>{const w=e.target.closest('.w');if(w)speak(w.textContent)});
 const tabs=document.querySelectorAll('#tabs button');
 function show(id){tabs.forEach(b=>b.classList.toggle('on',b.dataset.s===id));document.querySelectorAll('main section').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo({top:0})}

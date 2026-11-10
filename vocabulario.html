@@ -86,7 +86,7 @@ details .in{padding:0 15px 14px}
   <button data-s="como">💡 Cómo funciona</button>
 </div></nav>
 <main>
-<div class="card small" style="background:var(--amber-s);border-color:var(--amber)">🔊 <b>¿No se escucha?</b> Quita el <b>modo silencio</b> del iPhone y sube el volumen.</div>
+<div class="card small" style="background:var(--amber-s);border-color:var(--amber)">🔊 <b>¿No se escucha?</b> Quita el modo silencio y sube el volumen. <button class="spk" onclick="soundTest()">Probar sonido</button><div id="sndMsg" style="margin-top:6px"></div></div>
 
 <section id="hoy" class="on">
   <div class="card">
@@ -142,7 +142,8 @@ details .in{padding:0 15px 14px}
 let VOICE=null;
 function pickVoice(){try{const vs=speechSynthesis.getVoices();VOICE=vs.find(v=>v.lang==='en-US'&&/Samantha|Google US|Aaron|Nicky/i.test(v.name))||vs.find(v=>v.lang==='en-US')||vs.find(v=>v.lang&&v.lang.startsWith('en'))||null}catch(e){}}
 try{pickVoice();speechSynthesis.onvoiceschanged=pickVoice}catch(e){}
-function speak(t,slow){try{const ss=window.speechSynthesis;if(!ss)return;if(ss.speaking||ss.pending)ss.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=slow?0.6:0.9;u.volume=1;if(!VOICE)pickVoice();if(VOICE)u.voice=VOICE;ss.speak(u);ss.resume()}catch(e){}}
+function speak(t,slow){try{const ss=window.speechSynthesis;if(!ss)return;if(ss.speaking||ss.pending)ss.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=slow?0.6:0.9;u.volume=1;ss.speak(u);ss.resume()}catch(e){}}
+function soundTest(){const el=document.getElementById('sndMsg');let m='';try{if(!('speechSynthesis' in window)){m='❌ Este navegador no tiene voz. Usa los enlaces 📖 Cambridge.'}else{const vs=speechSynthesis.getVoices(),en=vs.filter(v=>v.lang&&v.lang.toLowerCase().startsWith('en'));speak('Hello! Can you hear me?');m=`Voces: ${vs.length} · en inglés: ${en.length}. Si no oíste “Hello! Can you hear me?”, revisa el modo silencio y el volumen. Si sigue sin sonar, mándale a Claude una captura de este mensaje y usa los enlaces 📖 Cambridge.`}}catch(e){m='Error: '+e.message}el.textContent=m}
 const tabs=document.querySelectorAll('#tabs button');
 function show(id){tabs.forEach(b=>b.classList.toggle('on',b.dataset.s===id));document.querySelectorAll('main section').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo({top:0})}
 tabs.forEach(b=>b.onclick=()=>show(b.dataset.s));
@@ -170,6 +171,7 @@ const BLOCKS=[
 document.getElementById('blocks').innerHTML=BLOCKS.map(b=>`<div class="card" style="${b[3]?'':'opacity:.6'}"><span class="pill ${b[3]?'g':'b'}">Bloque ${b[0]} · ${b[1]}</span> ${b[3]?'<span class="pill g">✓ Disponible · '+BLOCK1.length+' palabras</span>':'<span class="pill a">🔒 Próximamente</span>'}<div style="margin-top:6px"><b>${b[2]}</b></div></div>`).join('');
 
 const IV=[0,1,3,7,14,30,60];
+const camb=w=>`<a class="spk" style="text-decoration:none;display:inline-block" href="https://dictionary.cambridge.org/dictionary/english/${encodeURIComponent(w.trim().toLowerCase().replace(/ +/g,'-'))}" target="_blank" rel="noopener">📖 Cambridge 🔊</a>`;
 const today=()=>Math.floor((Date.now()-new Date().getTimezoneOffset()*60000)/86400000);
 let S=store.get('voc_state',{});   // idx -> {b,d}
 let meta=store.get('voc_meta',{day:0,n:0,lim:15,dir:'en'});
@@ -194,16 +196,16 @@ function render(){
   stats();const el=document.getElementById('card');
   if(!queue.length){cur=null;el.innerHTML='<div class="big">🎉</div><div class="q">¡Terminaste por hoy!</div><div class="small muted" style="margin-top:8px">Vuelve mañana para tus repasos. Si quieres más, sube el número de palabras nuevas por día.</div>';document.getElementById('btns').style.display='none';return}
   cur=queue[0];const [en,es,ex]=BLOCK1[cur],isNew=!S[cur],enFront=meta.dir==='en';
-  const sp=`<div><button class="spk" id="sw">🔊 Palabra</button> <button class="spk" id="sx">🔊 Frase</button> <button class="spk" id="sl">🐢 Lento</button></div>`;
+  const sp=`<div><button class="spk" id="sw">🔊 Palabra</button> <button class="spk" id="sx">🔊 Frase</button> <button class="spk" id="sl">🐢 Lento</button> ${camb(en)}</div>`;
   el.innerHTML=`<div>${isNew?'<span class="pill v">Nueva</span>':'<span class="pill b">Repaso</span>'}</div>
    <div class="q" style="margin-top:12px;font-size:${enFront?'1.6rem':'1.2rem'}">${enFront?en:es}</div>
-   ${enFront?'<div><button class="spk" id="sw0">🔊</button></div>':''}
+   ${enFront?'<div><button class="spk" id="sw0">🔊</button> '+camb(en)+'</div>':''}
    ${flip?`<div class="ans"><div style="font-size:1.2rem"><b>${enFront?es:en}</b></div><div style="margin-top:8px"><i>${ex}</i></div>${sp}</div>`:'<div class="tap">Dilo en voz alta y luego toca la tarjeta</div>'}`;
   const b=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=e=>{e.stopPropagation();f()}};
   b('sw0',()=>speak(en));b('sw',()=>speak(en));b('sx',()=>speak(ex));b('sl',()=>speak(ex,true));
   document.getElementById('btns').style.display=flip?'flex':'none';
 }
-document.getElementById('card').onclick=()=>{if(cur!==null&&!flip){flip=true;render();speak(BLOCK1[cur][0])}};
+document.getElementById('card').onclick=(e)=>{if(e.target.closest('a'))return;if(cur!==null&&!flip){flip=true;render();speak(BLOCK1[cur][0])}};
 document.querySelectorAll('#btns [data-r]').forEach(bt=>bt.onclick=()=>{
   const r=+bt.dataset.r,t=today(),i=queue.shift(),wasNew=!S[i];let s=S[i]||{b:0,d:t};
   if(wasNew){meta.n++;store.set('voc_meta',meta)}
@@ -217,7 +219,7 @@ const lc=document.getElementById('limChips');
 [0,5,10,15,20,30].forEach(n=>{const b=document.createElement('button');b.className='chip'+(meta.lim===n?' on':'');b.textContent=n;b.onclick=()=>{meta.lim=n;store.set('voc_meta',meta);lc.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));build();flip=false;render()};lc.appendChild(b)});
 build();render();
 
-function list(f){f=(f||'').toLowerCase();document.getElementById('listBox').innerHTML=BLOCK1.map((r,i)=>[r,i]).filter(([r])=>!f||r[0].toLowerCase().includes(f)||r[1].toLowerCase().includes(f)).map(([r,i])=>{const s=S[i];const tag=!s?'<span class="pill b">Nueva</span>':s.b>=3?'<span class="pill g">Aprendida</span>':'<span class="pill a">En repaso</span>';return `<div class="card" style="padding:10px 12px"><span class="w">${r[0]}</span> — ${r[1]} ${tag}<div class="small muted" style="margin-top:4px"><i>${r[2]}</i></div></div>`}).join('')}
+function list(f){f=(f||'').toLowerCase();document.getElementById('listBox').innerHTML=BLOCK1.map((r,i)=>[r,i]).filter(([r])=>!f||r[0].toLowerCase().includes(f)||r[1].toLowerCase().includes(f)).map(([r,i])=>{const s=S[i];const tag=!s?'<span class="pill b">Nueva</span>':s.b>=3?'<span class="pill g">Aprendida</span>':'<span class="pill a">En repaso</span>';return `<div class="card" style="padding:10px 12px"><span class="w">${r[0]}</span> — ${r[1]} ${tag} ${camb(r[0])}<div class="small muted" style="margin-top:4px"><i>${r[2]}</i></div></div>`}).join('')}
 document.getElementById('q').oninput=e=>list(e.target.value);
 document.addEventListener('click',e=>{const w=e.target.closest('.w');if(w)speak(w.textContent)});
 tabs.forEach(b=>b.addEventListener('click',()=>{if(b.dataset.s==='lista'){S=store.get('voc_state',{});list(document.getElementById('q').value)}}));
