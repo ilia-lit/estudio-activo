@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inglés · Pronunciación y lectura</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f2d5a">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--ink:#1d1d1f;--muted:#6b6b70;--line:#e6e3dc;--blue:#2f5bd3;--blue-s:#e8eefc;--green:#1f8a5b;--green-s:#e3f4ec;--amber:#b7791f;--amber-s:#fbf1df;--red:#c2412d;--red-s:#fbe7e3;--violet:#6b46c1;--violet-s:#efe9fb;--teal:#0f7c86;--teal-s:#e0f2f3}
+@media (prefers-color-scheme:dark){:root{--bg:#141416;--card:#1e1e21;--ink:#f2f2f3;--muted:#a0a0a8;--line:#2e2e33;--blue:#7c9cf5;--blue-s:#232b45;--green:#5fcf9b;--green-s:#1d3329;--amber:#e8b45a;--amber-s:#3a2f1c;--red:#f08a76;--red-s:#3d2420;--violet:#b39af0;--violet-s:#2e2742;--teal:#5cc5cf;--teal-s:#1b3335}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5}
+header{padding:20px 16px 8px;max-width:760px;margin:0 auto}
+header .back{display:inline-block;margin-bottom:8px;color:var(--blue);font-weight:600;font-size:.9rem;text-decoration:none}
+header h1{font-size:1.35rem;margin:0 0 4px}
+header p{margin:0;color:var(--muted);font-size:.92rem}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;max-width:760px;margin:0 auto;scrollbar-width:none}
+nav .tabs::-webkit-scrollbar{display:none}
+nav button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 13px;border-radius:999px;font:600 .85rem Inter,sans-serif;cursor:pointer}
+nav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{max-width:760px;margin:0 auto;padding:14px 14px 80px}
+section{display:none} section.on{display:block}
+h2{font-size:1.2rem;margin:18px 0 8px} h3{font-size:1.02rem;margin:16px 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px;margin:10px 0}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.75rem;font-weight:700}
+.b{background:var(--blue-s);color:var(--blue)} .g{background:var(--green-s);color:var(--green)} .a{background:var(--amber-s);color:var(--amber)} .r{background:var(--red-s);color:var(--red)} .v{background:var(--violet-s);color:var(--violet)} .t{background:var(--teal-s);color:var(--teal)}
+.hook{border-left:4px solid var(--violet);background:var(--violet-s);padding:10px 12px;border-radius:0 10px 10px 0;margin:10px 0}
+.hook b{color:var(--violet)}
+.big{font-size:1.9rem;font-weight:800;letter-spacing:-.01em}
+ul,ol{padding-left:20px;margin:6px 0} li{margin:3px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin:6px 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 5px;text-align:left;vertical-align:top}
+th{font-weight:700;color:var(--muted);font-size:.74rem;text-transform:uppercase}
+.day{display:flex;gap:12px}
+.day .n{flex:0 0 42px;height:42px;border-radius:12px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;text-align:center;line-height:1.1}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden}
+summary{padding:13px 15px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.2rem;color:var(--muted)} details[open] summary::after{content:"–"}
+details .in{padding:0 15px 14px}
+.btn{border:none;border-radius:12px;padding:12px 14px;font:700 .95rem Inter,sans-serif;cursor:pointer;background:var(--ink);color:var(--bg)}
+.btn.ok{background:var(--green);color:#fff} .btn.no{background:var(--red);color:#fff} .btn.sec{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.row{display:flex;gap:8px;flex-wrap:wrap} .row .btn{flex:1}
+.fc{min-height:230px;display:flex;flex-direction:column;justify-content:center;text-align:center;cursor:pointer;padding:22px 18px;user-select:none}
+.fc .q{font-size:1.15rem;font-weight:700}
+.fc .ans{font-size:1.05rem;margin-top:14px;border-top:1px dashed var(--line);padding-top:14px}
+.fc .tap{color:var(--muted);font-size:.8rem;margin-top:14px}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.bar>i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.opt{display:block;width:100%;text-align:left;margin:7px 0;padding:12px 13px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 .95rem Inter,sans-serif;cursor:pointer}
+.opt.right{background:var(--green-s);border-color:var(--green)} .opt.wrong{background:var(--red-s);border-color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 12px;font:600 .82rem Inter,sans-serif;cursor:pointer}
+.chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.spk{border:none;background:var(--blue-s);color:var(--blue);border-radius:999px;padding:6px 12px;font:700 .85rem Inter,sans-serif;cursor:pointer;margin:4px 2px}
+.w{display:inline-block;background:var(--blue-s);color:var(--blue);border-radius:8px;padding:1px 7px;margin:2px 1px;font-weight:600;cursor:pointer}
+.choice{flex:1;padding:18px 10px;font-size:1.3rem;font-weight:800;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.choice.right{border-color:var(--green);background:var(--green-s)} .choice.wrong{border-color:var(--red);background:var(--red-s)}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="back">← Mis materias</a>
+  <h1>🇺🇸 Inglés · Pronunciación y lectura</h1>
+  <p>Sigue tus libros Reading Horizons: Student Workbook + English Language Enhancement · toca cualquier palabra azul para escucharla 🔊</p>
+</header>
+<nav><div class="tabs" id="tabs">
+  <button data-s="plan" class="on">📅 Plan</button>
+  <button data-s="reglas">📏 Reglas</button>
+  <button data-s="sonidos">🔤 Sonidos</button>
+  <button data-s="fichas">🃏 Tarjetas</button>
+  <button data-s="oido">👂 Oído</button>
+  <button data-s="lector">📖 Lector</button>
+  <button data-s="quiz">✅ Examen</button>
+</div></nav>
+<main>
+
+<section id="plan" class="on">
+  <h2>Cómo vas a estudiar (20 a 25 min al día)</h2>
+  <div class="card">
+    <ol>
+      <li><b>5 min · Tarjetas:</b> primero las de la caja 1 (las que fallaste).</li>
+      <li><b>10 a 15 min · Tu libro:</b> 1 o 2 lecciones del <b>Student Workbook</b>. Antes de hacerlas, lee aquí la regla con su truco.</li>
+      <li><b>5 min · Oído y voz:</b> 👂 Oído o 📖 Lector, más <b>shadowing</b>: toca 🔊, escucha y repite igualito.</li>
+    </ol>
+    <p class="small muted" style="margin-bottom:0">Al terminar cada capítulo, haz en el <b>English Language Enhancement</b> la práctica de ese capítulo (el libro ya está organizado así) y el “Reading in Context” del Workbook.</p>
+  </div>
+
+  <h2>Tu ruta: 1 capítulo por semana</h2>
+  <div class="card day"><div class="n">C1</div><div><b>Sonidos base · Lecciones 1–14</b>
+    <div class="small">Sonidos sonoros y sordos, grupos de letras 1–5, entonación, C y K, artículos.<br><b>ELE:</b> Vocabulary Strategies 1–2 (tarjetas y cuaderno) · Pronunciation Practice 1–2.<br><b>App:</b> 🔤 Sonidos → “Sonoro o sordo” · 👂 Oído.</div></div></div>
+  <div class="card day"><div class="n">C2</div><div><b>Blends y plurales · Lecciones 15–22</b>
+    <div class="small">Blends con L, R y S; ss, ff, zz; -ll, -ng, -nk; plurales y posesivos.<br><b>ELE:</b> Strategies 3–4 · Practice 3–4 (plurales y entonación).<br><b>App:</b> 🔤 Sonidos → Blends y -s/-es.</div></div></div>
+  <div class="card day"><div class="n">C3</div><div><b>Vocales y Phonetic Skills 1–5 · Lecciones 23–36</b>
+    <div class="small">Vocales cortas y largas, las 5 Phonetic Skills, familias O e I, C y G suaves, GH/IGH, sufijos y los 3 sonidos de -ED. <b>Es el capítulo más importante.</b><br><b>ELE:</b> Strategies 5–6 · Practice 5–6.<br><b>App:</b> 📏 Reglas · 📖 Lector todos los días.</div></div></div>
+  <div class="card day"><div class="n">C4</div><div><b>Sílabas y acento · Lecciones 37–46</b>
+    <div class="small">Contracciones, los trabajos de la Y, Decoding Skills 1 y 2, acento y schwa, prefijos, -LE, palabras compuestas.<br><b>ELE:</b> Strategies 7–8 · Practice 7–8.<br><b>App:</b> 📏 Reglas → Partir palabras.</div></div></div>
+  <div class="card day"><div class="n">C5</div><div><b>R, dígrafos y vocales especiales · Lecciones 47–60</b>
+    <div class="small">AR, OR, ER/UR/IR; CH, SH, WH, TH; PH, GN, KN, CK, WR; AU/AW, OU/OW, OI/OY, OO.<br><b>ELE:</b> Strategies 9–10 · Practice 9–10 (42 sonidos y pares mínimos).<br><b>App:</b> 👂 Oído a diario.</div></div></div>
+  <div class="card day"><div class="n">C6</div><div><b>Excepciones · Lecciones 61–68</b>
+    <div class="small">Consonantes dobles; -ke/-ck/-k/-c; -ss/-ce/-se; EU/EW; otros sonidos de EA e IE; sinónimos y antónimos.<br><b>ELE:</b> Strategies 11–12 · Practice 11–12.<br><b>App:</b> ✅ Examen completo.</div></div></div>
+
+  <h2>Cultura (sección del ELE)</h2>
+  <div class="card"><p style="margin:0" class="small">Repártela a lo largo de las semanas: saludos y despedidas, pedir aclaraciones, contestar el teléfono en el trabajo, gráficas, números, la moneda de EE. UU., el calendario y los presupuestos. Están en 🃏 Tarjetas → <b>Cultura</b>.</p></div>
+
+  <h2>Hábitos que multiplican el avance</h2>
+  <div class="card">
+    <ul>
+      <li>📱 Pon tu <b>celular en inglés</b>.</li>
+      <li>🎬 Ve series con <b>subtítulos en inglés</b>.</li>
+      <li>🗣️ <b>Narra en inglés</b> lo que haces: <i>“I’m making coffee…”</i></li>
+      <li>📒 Lleva el <b>vocabulary notebook</b> que pide tu libro (Strategy 2): anota las palabras nuevas y pásaselas a Claude para meterlas a tus tarjetas.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="reglas">
+  <h2>Las marcas y los sonidos base</h2>
+  <div class="card">
+    <p style="margin-top:0"><b>˘ (breve) = vocal CORTA</b> · <b>¯ (macron) = vocal LARGA</b></p>
+    <div class="hook"><b>💜 Truco:</b> la vocal <b>larga dice su nombre</b> en inglés: A = “ei”, E = “ii”, I = “ai”, O = “ou”, U = “iu”. La corta es un sonido rápido y relajado.</div>
+    <table>
+      <tr><th>Vocal</th><th>Corta ˘</th><th>Larga ¯</th><th>Ojo, hispanohablante</th></tr>
+      <tr><td><b>a</b></td><td><span class="w">cat</span> <span class="w">apple</span></td><td><span class="w">cake</span> <span class="w">rain</span></td><td>La corta es entre “a” y “e”: sonríe y abre la boca.</td></tr>
+      <tr><td><b>e</b></td><td><span class="w">bed</span> <span class="w">egg</span></td><td><span class="w">me</span> <span class="w">team</span></td><td>La corta es casi como nuestra “e”.</td></tr>
+      <tr><td><b>i</b></td><td><span class="w">sit</span> <span class="w">itch</span></td><td><span class="w">kite</span> <span class="w">my</span></td><td>La corta NO es “i” española: está entre “i” y “e”.</td></tr>
+      <tr><td><b>o</b></td><td><span class="w">hot</span> <span class="w">octopus</span></td><td><span class="w">go</span> <span class="w">note</span></td><td>La corta suena casi como “a” abierta.</td></tr>
+      <tr><td><b>u</b></td><td><span class="w">cup</span> <span class="w">umbrella</span></td><td><span class="w">cute</span> <span class="w">use</span></td><td>La corta es una “a” floja, sin mover los labios.</td></tr>
+    </table>
+  </div>
+
+  <h2>Las Phonetic Skills (Capítulo 3)</h2>
+  <p class="small muted">En tu libro: Skill 1 = lección 24 · Skill 2 = lección 25 · Skill 3 = lección 30 · Skill 4 = lección 31 · Skill 5 = lección 35. Si alguna explicación de tu libro difiere de esta, sigue la de tu libro.</p>
+  <details open><summary><span><span class="pill b">Skill 1</span> Vocal + consonante → CORTA</span></summary><div class="in">
+    <p>Si una vocal va seguida de consonante, suena corta (patrón CVC).</p>
+    <p><span class="w">cat</span> <span class="w">sit</span> <span class="w">hot</span> <span class="w">bed</span> <span class="w">jump</span> <span class="w">desk</span> <span class="w">black</span></p>
+    <div class="hook"><b>💜 “La consonante la encierra”:</b> la vocal queda atrapada y solo le alcanza para un sonido corto.</div>
+  </div></details>
+  <details><summary><span><span class="pill b">Skill 2</span> Vocal al final → LARGA</span></summary><div class="in">
+    <p>Si la vocal es la última letra de la palabra o de la sílaba, suena larga.</p>
+    <p><span class="w">me</span> <span class="w">go</span> <span class="w">hi</span> <span class="w">she</span> <span class="w">no</span> <span class="w">be</span></p>
+    <div class="hook"><b>💜 “Puerta abierta”:</b> nada la encierra, así que sale libre y dice su nombre.</div>
+  </div></details>
+  <details><summary><span><span class="pill b">Skill 3</span> La E mágica (e muda al final)</span></summary><div class="in">
+    <p>Con vocal + consonante + <b>e</b> al final: la e <b>no suena</b>, pero vuelve LARGA la vocal anterior.</p>
+    <p><span class="w">cap</span> → <span class="w">cape</span> · <span class="w">kit</span> → <span class="w">kite</span> · <span class="w">hop</span> → <span class="w">hope</span> · <span class="w">cut</span> → <span class="w">cute</span> · <span class="w">not</span> → <span class="w">note</span></p>
+    <div class="hook"><b>💜 “La e es una varita mágica”:</b> no habla, pero salta por encima de la consonante y hace que la vocal diga su nombre.</div>
+    <p class="small"><b>Rebeldes que no cumplen:</b> <span class="w">have</span> <span class="w">give</span> <span class="w">live</span> <span class="w">come</span> <span class="w">some</span> <span class="w">done</span>. Apréndelas de memoria.</p>
+  </div></details>
+  <details><summary><span><span class="pill b">Skills 4 y 5</span> Vocales juntas (adyacentes)</span></summary><div class="in">
+    <p>Cuando hay dos vocales juntas, la primera suena <b>larga</b> y la segunda queda <b>muda</b>.</p>
+    <p><span class="w">rain</span> <span class="w">boat</span> <span class="w">team</span> <span class="w">seed</span> <span class="w">pie</span> <span class="w">road</span></p>
+    <div class="hook"><b>💜 “Cuando dos vocales salen a caminar, la primera es la que habla.”</b></div>
+    <p class="small">Excepciones: los sonidos especiales (oo, ou, oi, au) tienen su propio sonido. Los verás en 🔤 Sonidos.</p>
+  </div></details>
+  <details><summary><span><span class="pill t">L38 y L41</span> Los trabajos de la Y</span></summary><div class="in">
+    <p>Al <b>inicio</b> de palabra, la Y es consonante: <span class="w">yes</span> <span class="w">yellow</span>.</p>
+    <p>Al <b>final de una palabra de 1 sílaba</b> suena “ai”: <span class="w">my</span> <span class="w">fly</span> <span class="w">cry</span>.</p>
+    <p>Al <b>final de una palabra de 2 o más sílabas</b> suena “i”: <span class="w">happy</span> <span class="w">baby</span> <span class="w">money</span>.</p>
+    <div class="hook"><b>💜 “Corta grita AI, larga sonríe I”:</b> <i>my</i> (corta) frente a <i>happy</i> (larga).</div>
+  </div></details>
+
+  <details><summary><span><span class="pill t">L26</span> Familias O e I: largas aunque las encierre una consonante</span></summary><div class="in">
+    <p>Antes de <b>ld, lt, st, nd</b>, la O y la I suelen sonar <b>largas</b>, aunque haya dos consonantes después:</p>
+    <p><span class="w">old</span> <span class="w">cold</span> <span class="w">bolt</span> <span class="w">most</span> <span class="w">post</span> · <span class="w">kind</span> <span class="w">find</span> <span class="w">mind</span> <span class="w">mild</span> <span class="w">child</span></p>
+    <div class="hook"><b>💜 “El viejo (old) amable (kind) es la excepción”:</b> old y kind abren cada familia.</div>
+  </div></details>
+  <details><summary><span><span class="pill t">L28 · L33 · L36 · L59</span> Agregar sufijos sin romper la regla</span></summary><div class="in">
+    <p><b>Vocal corta + 1 consonante:</b> se <b>duplica</b> la consonante para que la vocal siga corta: <span class="w">hop</span> → <span class="w">hopping</span> · <span class="w">stop</span> → <span class="w">stopped</span></p>
+    <p><b>E mágica:</b> se <b>quita la e</b> y la vocal sigue larga: <span class="w">hope</span> → <span class="w">hoping</span> · <span class="w">make</span> → <span class="w">making</span></p>
+    <p><b>Consonante + Y:</b> la Y cambia a <b>i</b>: <span class="w">cry</span> → <span class="w">cried</span> · <span class="w">happy</span> → <span class="w">happiness</span> (pero <span class="w">crying</span> la conserva)</p>
+    <div class="hook"><b>💜 hopping vs hoping:</b> la doble consonante es un muro que mantiene corta la vocal (hop). Una sola consonante deja pasar la magia (hope).</div>
+  </div></details>
+
+  <h2>Partir palabras largas (sílabas)</h2>
+  <div class="card">
+    <p class="small muted" style="margin-top:0">En tu libro: Decoding Skill 1 (L39), Decoding Skill 2 (L42), -LE (L44), cualquier largo (L45), compuestas (L46), acento y schwa (L40).</p>
+    <p><b>VC | CV</b>: si entre dos vocales hay <b>dos consonantes</b>, se parte entre ellas. La primera sílaba queda cerrada y su vocal es corta.<br><span class="w">rabbit</span> rab|bit · <span class="w">napkin</span> nap|kin · <span class="w">basket</span> bas|ket</p>
+    <p><b>V | CV</b>: si hay <b>una sola consonante</b>, prueba partir antes de ella. La primera sílaba queda abierta y su vocal es larga.<br><span class="w">robot</span> ro|bot · <span class="w">paper</span> pa|per · <span class="w">music</span> mu|sic</p>
+    <p>Si no suena a una palabra que conozcas, prueba <b>VC | V</b>: <span class="w">cabin</span> cab|in · <span class="w">river</span> riv|er</p>
+    <p><b>-LE al final (L44):</b> la consonante antes de -le se va con ella: <span class="w">table</span> ta|ble · <span class="w">little</span> lit|tle · <span class="w">simple</span> sim|ple</p>
+    <p><b>Palabras compuestas:</b> se parten entre las dos palabras: <span class="w">baseball</span> <span class="w">notebook</span> <span class="w">sunlight</span>.</p>
+    <div class="hook" style="margin-bottom:0"><b>💜 La SCHWA “ə”:</b> es el sonido más común del inglés. Las vocales <b>sin acento</b> se relajan a un “a” flojo: <span class="w">about</span> <span class="w">banana</span> <span class="w">problem</span>. Si pronuncias todas las vocales clarito, como en español, suenas “robótico”.</div>
+  </div>
+</section>
+
+<section id="sonidos">
+  <h2>Sonoro o sordo (Lección 1)</h2>
+  <div class="card">
+    <p style="margin-top:0">Pon los dedos en tu garganta. Si <b>vibra</b>, el sonido es sonoro (<i>voiced</i>); si no vibra, es sordo (<i>voiceless</i>).</p>
+    <table><tr><th>Sordo (no vibra)</th><th>Sonoro (vibra)</th></tr>
+    <tr><td>/p/ <span class="w">pen</span></td><td>/b/ <span class="w">ben</span></td></tr>
+    <tr><td>/f/ <span class="w">fan</span></td><td>/v/ <span class="w">van</span></td></tr>
+    <tr><td>/t/ <span class="w">ten</span></td><td>/d/ <span class="w">den</span></td></tr>
+    <tr><td>/k/ <span class="w">cat</span></td><td>/g/ <span class="w">girl</span></td></tr>
+    <tr><td>/s/ <span class="w">sue</span></td><td>/z/ <span class="w">zoo</span></td></tr>
+    <tr><td>/th/ <span class="w">think</span></td><td>/th/ <span class="w">this</span></td></tr></table>
+    <div class="hook" style="margin-bottom:0"><b>💜 Por qué importa:</b> esto decide cómo suenan las terminaciones -s y -ed. Y la <b>V</b> no es B: dientes de arriba sobre el labio de abajo, y vibra.</div>
+  </div>
+
+  <h2>Ortografía que cambia el sonido</h2>
+  <div class="card">
+    <p style="margin-top:0"><b>C y K (L11):</b> antes de a, o, u se usa <b>c</b> (<span class="w">cat</span> <span class="w">cot</span> <span class="w">cup</span>); antes de e, i se usa <b>k</b> (<span class="w">kid</span> <span class="w">keep</span>).</p>
+    <p><b>C y G suaves (L32):</b> antes de <b>e, i, y</b>, la C suena /s/ y la G suena /j/: <span class="w">city</span> <span class="w">cent</span> <span class="w">gem</span> <span class="w">giant</span>. 💜 “E, I, Y ablandan”.</p>
+    <p><b>ss, ff, zz (L16):</b> se duplican al final, después de una vocal corta: <span class="w">miss</span> <span class="w">off</span> <span class="w">buzz</span>.</p>
+    <p><b>GH, IGH, IGHT (L34):</b> la gh no suena y la i es larga: <span class="w">high</span> <span class="w">night</span> <span class="w">light</span> <span class="w">right</span>.</p>
+    <p><b>Letras mudas (L52):</b> <b>kn</b> = n (<span class="w">knee</span> <span class="w">know</span>) · <b>wr</b> = r (<span class="w">write</span> <span class="w">wrong</span>) · <b>gn</b> = n (<span class="w">sign</span> <span class="w">gnome</span>).</p>
+    <p><b>-ke, -ck, -k, -c (L62):</b> <span class="w">bake</span> (vocal larga) · <span class="w">back</span> (vocal corta) · <span class="w">bank</span> (tras consonante) · <span class="w">picnic</span> (final en palabras de 2+ sílabas).</p>
+    <p style="margin-bottom:0"><b>Contracciones (L37):</b> el apóstrofo reemplaza letras: <span class="w">I'm</span> <span class="w">don't</span> <span class="w">can't</span> <span class="w">it's</span> <span class="w">they're</span> <span class="w">won't</span> (= will not).</p>
+  </div>
+
+  <h2>Blends: las dos consonantes suenan (L15, L18, L21, L22)</h2>
+  <div class="card">
+    <p style="margin-top:0"><span class="w">black</span> <span class="w">clock</span> <span class="w">flag</span> <span class="w">plan</span> <span class="w">bring</span> <span class="w">dress</span> <span class="w">green</span> <span class="w">tree</span> <span class="w">stop</span> <span class="w">snow</span> <span class="w">swim</span> <span class="w">scream</span> <span class="w">street</span> <span class="w">splash</span></p>
+    <div class="hook" style="margin-bottom:0"><b>💜 “La S no lleva escolta”:</b> los hispanohablantes le ponemos una “e” delante: “eschool”, “estudent”. ❌ En inglés empieza directo con S: <span class="w">school</span> <span class="w">student</span> <span class="w">Spain</span> <span class="w">study</span>. Haz un “sss” de serpiente y luego la palabra.</div>
+  </div>
+
+  <h2>Dígrafos: dos letras, UN sonido (L51–L54)</h2>
+  <div class="card">
+    <table>
+      <tr><th>Letras</th><th>Ejemplos</th><th>Truco</th></tr>
+      <tr><td><b>sh</b></td><td><span class="w">ship</span> <span class="w">wash</span></td><td>El “shhh” de pedir silencio.</td></tr>
+      <tr><td><b>ch</b></td><td><span class="w">chair</span> <span class="w">watch</span></td><td>Como nuestra “ch”.</td></tr>
+      <tr><td><b>th</b> sorda</td><td><span class="w">think</span> <span class="w">three</span></td><td>Lengua <b>entre los dientes</b> y soplas. No es “t” ni “s”.</td></tr>
+      <tr><td><b>th</b> sonora</td><td><span class="w">this</span> <span class="w">mother</span></td><td>Lengua entre los dientes y la garganta vibra, como una “d” suave.</td></tr>
+      <tr><td><b>wh</b></td><td><span class="w">what</span> <span class="w">white</span></td><td>Suena como “u” rápida.</td></tr>
+      <tr><td><b>ph</b></td><td><span class="w">phone</span> <span class="w">photo</span></td><td>Igual que la F.</td></tr>
+      <tr><td><b>ck</b></td><td><span class="w">back</span> <span class="w">duck</span></td><td>Suena K. Va al final, después de vocal corta.</td></tr>
+      <tr><td><b>ng</b></td><td><span class="w">sing</span> <span class="w">long</span></td><td>Nasal: la “g” casi no se oye.</td></tr>
+      <tr><td><b>nk</b></td><td><span class="w">bank</span> <span class="w">think</span></td><td>Nasal + K clara.</td></tr>
+      <tr><td><b>-ll</b></td><td><span class="w">ball</span> <span class="w">bell</span></td><td>Una L “oscura”, con la lengua atrás.</td></tr>
+    </table>
+  </div>
+
+  <h2>Murmur diphthongs y vocales especiales (L47–L57, L65, L67)</h2>
+  <div class="card">
+    <table>
+      <tr><th>Letras</th><th>Ejemplos</th><th>Suena como</th></tr>
+      <tr><td><b>oo</b> larga</td><td><span class="w">food</span> <span class="w">moon</span></td><td>“uu” larga</td></tr>
+      <tr><td><b>oo</b> corta</td><td><span class="w">book</span> <span class="w">good</span></td><td>“u” corta y floja</td></tr>
+      <tr><td><b>ou / ow</b></td><td><span class="w">out</span> <span class="w">cow</span></td><td>“au”, como cuando algo te duele</td></tr>
+      <tr><td><b>oi / oy</b></td><td><span class="w">coin</span> <span class="w">boy</span></td><td>“oi”</td></tr>
+      <tr><td><b>au / aw</b></td><td><span class="w">August</span> <span class="w">saw</span></td><td>“o” abierta y larga</td></tr>
+      <tr><td><b>ar</b></td><td><span class="w">car</span> <span class="w">start</span></td><td>“ar” con R suave</td></tr>
+      <tr><td><b>or</b></td><td><span class="w">for</span> <span class="w">corn</span></td><td>“or”</td></tr>
+      <tr><td><b>er / ir / ur</b></td><td><span class="w">her</span> <span class="w">bird</span> <span class="w">turn</span></td><td>¡Las tres suenan igual! “er” con la lengua hacia atrás</td></tr>
+      <tr><td><b>w + ar / w + or</b> (L50)</td><td><span class="w">war</span> <span class="w">work</span> <span class="w">word</span></td><td>La W cambia el sonido: war suena “wor” y work suena “werk”</td></tr>
+      <tr><td><b>ew / eu</b> (L65)</td><td><span class="w">new</span> <span class="w">few</span> <span class="w">grew</span></td><td>“uu” o “iuu”</td></tr>
+      <tr><td><b>ea</b>, otros sonidos (L67)</td><td><span class="w">bread</span> <span class="w">head</span> <span class="w">great</span></td><td>A veces “e” corta y a veces “ei”</td></tr>
+      <tr><td><b>ie</b>, otros sonidos (L67)</td><td><span class="w">field</span> <span class="w">piece</span> <span class="w">friend</span></td><td>Normalmente “ii”; <i>friend</i> es rebelde</td></tr>
+    </table>
+  </div>
+
+  <h2>Terminaciones -s / -es (L19–20) y -ed (L29)</h2>
+  <div class="card">
+    <p style="margin-top:0"><b>-s / -es</b> (plurales y verbos con he/she/it) tienen 3 sonidos:</p>
+    <ul>
+      <li><b>/s/</b> después de un sonido sordo (p, t, k, f): <span class="w">cats</span> <span class="w">books</span></li>
+      <li><b>/z/</b> después de un sonido sonoro: <span class="w">dogs</span> <span class="w">plays</span></li>
+      <li><b>/iz/</b> después de s, x, z, sh, ch: <span class="w">boxes</span> <span class="w">watches</span> <span class="w">buses</span></li>
+    </ul>
+    <p><b>-ed</b> (pasado) también tiene 3 sonidos:</p>
+    <ul>
+      <li><b>/t/</b>: <span class="w">worked</span> <span class="w">stopped</span> <span class="w">watched</span></li>
+      <li><b>/d/</b>: <span class="w">played</span> <span class="w">called</span> <span class="w">opened</span></li>
+      <li><b>/id/</b> SOLO después de T o D: <span class="w">wanted</span> <span class="w">needed</span> <span class="w">started</span></li>
+    </ul>
+    <div class="hook" style="margin-bottom:0"><b>💜 Error típico:</b> decir “work-ED” o “play-ED”. La regla es <b>“solo T y D se ganan la sílaba extra”</b>. En los demás verbos la -ed se pega a la palabra, sin sílaba nueva.</div>
+  </div>
+
+  <h2>Prefijos (L43)</h2>
+  <div class="card">
+    <p style="margin:0"><b>un-</b> = no: <span class="w">unhappy</span> <span class="w">unlock</span> · <b>re-</b> = otra vez: <span class="w">redo</span> <span class="w">rewrite</span> · <b>dis-</b> = lo contrario: <span class="w">disagree</span> · <b>pre-</b> = antes: <span class="w">preview</span> · <b>mis-</b> = mal: <span class="w">misunderstand</span></p>
+  </div>
+</section>
+
+<section id="fichas">
+  <h2>Tarjetas con repetición espaciada</h2>
+  <p class="small muted">Responde en voz alta <b>antes</b> de voltear la tarjeta. Usa 🔊 para escuchar y repetir.</p>
+  <div class="chips" id="fcFilter"></div>
+  <div class="chips" id="fcDir"></div>
+  <div class="small muted" id="fcStats"></div>
+  <div class="bar"><i id="fcBar"></i></div>
+  <div class="card fc" id="fcCard"></div>
+  <div class="row" id="fcBtns" style="display:none"><button class="btn no" id="fcNo">✗ No lo sabía</button><button class="btn ok" id="fcYes">✓ Lo sabía</button></div>
+  <p class="small muted" style="margin-top:14px">Caja 1 = repasar hoy · Caja 2 = mañana · Caja 3 = dominada. <button class="chip" id="fcReset">Reiniciar progreso</button></p>
+</section>
+
+<section id="oido">
+  <h2>👂 Entrenador de oído</h2>
+  <p class="small muted">Escucha la palabra y elige cuál fue. Son pares que los hispanohablantes confundimos. Sube el volumen 🔊.</p>
+  <div class="card" id="oiCard" style="text-align:center"></div>
+  <div class="small muted" id="oiScore"></div>
+</section>
+
+<section id="lector">
+  <h2>📖 Lector: ¿vocal corta o larga?</h2>
+  <p class="small muted">Mira la palabra, decide si su vocal es corta o larga y qué regla aplica. Después escúchala.</p>
+  <div class="card" id="leCard" style="text-align:center"></div>
+  <div class="small muted" id="leScore"></div>
+</section>
+
+<section id="quiz">
+  <h2>✅ Examen de práctica</h2>
+  <p class="small muted">Las preguntas mezclan todos los temas y salen en otro orden cada vez.</p>
+  <div id="qzBox"></div>
+</section>
+</main>
+
+<script>
+// ---------- voz ----------
+let VOICE=null;
+function pickVoice(){try{const vs=speechSynthesis.getVoices();VOICE=vs.find(v=>v.lang==='en-US'&&/Samantha|Google US|Aaron|Nicky/i.test(v.name))||vs.find(v=>v.lang==='en-US')||vs.find(v=>v.lang&&v.lang.startsWith('en'))||null}catch(e){}}
+try{pickVoice();speechSynthesis.onvoiceschanged=pickVoice}catch(e){}
+function speak(t,slow){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=slow?0.55:0.9;if(VOICE)u.voice=VOICE;speechSynthesis.speak(u)}catch(e){}}
+document.addEventListener('click',e=>{const w=e.target.closest('.w');if(w){speak(w.textContent)}});
+
+// ---------- tabs ----------
+const tabs=document.querySelectorAll('#tabs button');
+function show(id){tabs.forEach(b=>b.classList.toggle('on',b.dataset.s===id));document.querySelectorAll('main section').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo({top:0})}
+tabs.forEach(b=>b.onclick=()=>show(b.dataset.s));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+// ---------- tarjetas: [categoria, español, inglés, nota] ----------
+const CARDS=[
+ ["Fonética","¿Qué indica la marca ˘ (breve)?","short vowel","Vocal corta, como en cat."],
+ ["Fonética","¿Qué indica la marca ¯ (macron)?","long vowel","Vocal larga: dice su nombre, como en cake."],
+ ["Fonética","Phonetic Skill 1: vocal seguida de consonante →","short: cat, sit, hot","La consonante la encierra."],
+ ["Fonética","Phonetic Skill 2: vocal al final de la palabra o sílaba →","long: me, go, hi","Puerta abierta."],
+ ["Fonética","Phonetic Skill 3: ¿qué hace la e muda al final?","cap → cape, kit → kite","Vuelve larga la vocal anterior y ella no suena."],
+ ["Fonética","Vocales juntas (Skills 4 y 5): ¿qué pasa?","rain, boat, team","La primera habla (larga) y la segunda queda muda."],
+ ["Fonética","Y al final de una palabra de 1 sílaba suena…","“ai”: my, fly, cry",""],
+ ["Fonética","Y al final de palabra de 2 o más sílabas suena…","“i”: happy, baby, money",""],
+ ["Fonética","Palabras rebeldes con e muda que suenan corta","have, give, live, come, some, done",""],
+ ["Fonética","¿Cómo se parte rabbit y por qué?","rab | bit","Dos consonantes en medio → se parte entre ellas (VC|CV)."],
+ ["Fonética","¿Cómo se parte paper?","pa | per","Una consonante → se parte antes de ella (V|CV) y la primera vocal es larga."],
+ ["Fonética","¿Qué es la schwa?","ə: about, banana","La vocal relajada de las sílabas sin acento. Es el sonido más común del inglés."],
+ ["Fonética","¿Cuándo suena -ed como sílaba extra /id/?","wanted, needed","Solo después de T o D."],
+ ["Fonética","-ed suena /t/ en…","worked, stopped, watched","Después de sonidos sordos (k, p, s, sh, ch, f)."],
+ ["Fonética","¿Cuándo suena -es como /iz/?","boxes, watches, buses","Después de s, x, z, sh, ch."],
+ ["Fonética","¿Cómo se pone la boca para la TH?","think / this","Lengua entre los dientes: soplas en think y vibras en this."],
+ ["Fonética","er, ir, ur suenan…","igual: her, bird, turn",""],
+ ["Fonética","ph suena como…","f: phone, photo",""],
+ ["Fonética","¿Dónde va ck?","back, duck","Al final, después de una vocal corta."],
+ ["Fonética","Error típico de hispanohablantes con school","school (no “eschool”)","La S no lleva escolta."],
+ ["Fonética","¿Cómo sabes si un sonido es sonoro?","voiced: your throat vibrates","Dedos en la garganta: si vibra es sonoro (b, d, g, v, z). Si no, es sordo (p, t, k, f, s)."],
+ ["Fonética","¿Cuándo la C suena /s/ y la G suena /j/?","before e, i, y: city, gem","E, I, Y ablandan."],
+ ["Fonética","¿Cómo se lee kn y wr?","knee = n, write = r","La k y la w son mudas."],
+ ["Fonética","hop + ing →","hopping","Vocal corta: duplica la consonante."],
+ ["Fonética","hope + ing →","hoping","E mágica: quita la e."],
+ ["Fonética","cry + ed →","cried","Consonante + Y: la Y cambia a i."],
+ ["Fonética","¿Cómo suena igh en night, light, high?","“ai” long i","La gh es muda."],
+ ["Fonética","¿Cómo se parte table?","ta | ble","-LE se lleva la consonante de antes."],
+ ["Fonética","¿Qué cambia la W en war y work?","war = “wor”, work = “werk”","Excepciones de murmur diphthongs (L50)."],
+ ["Fonética","won't significa…","will not","Contracción irregular."],
+ ["Cultura","Forma educada de pedir que repitan","Sorry, could you say that again?",""],
+ ["Cultura","¿Qué quisiste decir con…?","What do you mean by…?",""],
+ ["Cultura","Contestar el teléfono en el trabajo","Good morning, ABC Bank, this is Ilia speaking. How may I help you?",""],
+ ["Cultura","¿Puedo tomar su mensaje?","May I take a message?",""],
+ ["Cultura","Un momento, por favor (teléfono)","Please hold on a moment.",""],
+ ["Cultura","Fue un gusto conocerte (despedida)","It was nice meeting you.",""],
+ ["Cultura","¿Cómo se llama a un hombre o una mujer formalmente?","Mr. / Ms. + last name","Ms. sirve para cualquier mujer, sin importar su estado civil."],
+ ["Cultura","Gráfica de pastel / de barras / de líneas","pie chart / bar graph / line graph",""],
+ ["Cultura","Números ordinales 1º, 2º, 3º","first, second, third",""],
+ ["Cultura","Monedas de EE. UU.: 1¢, 5¢, 10¢, 25¢","penny, nickel, dime, quarter",""],
+ ["Cultura","Presupuesto mensual","monthly budget",""],
+ ["Cultura","Días de la semana (lunes a viernes)","Monday, Tuesday, Wednesday, Thursday, Friday","Van con mayúscula en inglés."],
+ ["Phrasal verbs","Rendirse","give up",""],
+ ["Phrasal verbs","Averiguar / descubrir","find out",""],
+ ["Phrasal verbs","Buscar","look for",""],
+ ["Phrasal verbs","Esperar con ansias","look forward to","I look forward to hearing from you."],
+ ["Phrasal verbs","Quedarse sin (algo)","run out of","We ran out of time."],
+ ["Phrasal verbs","Resolver / entender (algo difícil)","figure out",""],
+ ["Phrasal verbs","Llevar a cabo (una auditoría, un plan)","carry out","to carry out an audit"],
+ ["Phrasal verbs","Establecer / montar","set up","to set up a company"],
+ ["Phrasal verbs","Rechazar","turn down","She turned down the offer."],
+ ["Phrasal verbs","Posponer","put off",""],
+ ["Phrasal verbs","Llevarse bien con","get along with",""],
+ ["Phrasal verbs","Ocurrírsele (una idea)","come up with",""],
+ ["Phrasal verbs","Encargarse de / lidiar con","deal with",""],
+ ["Phrasal verbs","Señalar","point out",""],
+ ["Phrasal verbs","Aparecer / llegar","show up",""],
+ ["Phrasal verbs","Terminar (haciendo algo)","end up",""],
+ ["Phrasal verbs","Repasar / revisar","go over","Let's go over the report."],
+ ["Falsos amigos","Avergonzado/a","embarrassed","❌ No es “embarazada”: embarazada = pregnant."],
+ ["Falsos amigos","En realidad","actually","❌ No es “actualmente”: actualmente = currently."],
+ ["Falsos amigos","Asistir (a clase)","attend","❌ assist = ayudar."],
+ ["Falsos amigos","Biblioteca","library","❌ librería = bookstore."],
+ ["Falsos amigos","Darse cuenta","realize","❌ realizar = carry out."],
+ ["Falsos amigos","Sensato","sensible","❌ sensible = sensitive."],
+ ["Falsos amigos","Éxito","success","❌ suceso = event."],
+ ["Falsos amigos","Padres","parents","❌ parientes = relatives."],
+ ["Falsos amigos","Carpeta","folder","❌ carpet = alfombra."],
+ ["Falsos amigos","Conferencia / clase magistral","lecture","❌ lectura = reading."],
+ ["Falsos amigos","Tela","fabric","❌ fábrica = factory."],
+ ["Falsos amigos","Grabar","record","❌ recordar = remember."],
+ ["Finanzas","Estados financieros","financial statements",""],
+ ["Finanzas","Balance general","balance sheet",""],
+ ["Finanzas","Estado de resultados","income statement",""],
+ ["Finanzas","Flujo de efectivo","cash flow",""],
+ ["Finanzas","Activo / Pasivo / Patrimonio","assets / liabilities / equity",""],
+ ["Finanzas","Ingresos","revenue",""],
+ ["Finanzas","Utilidad neta","net income",""],
+ ["Finanzas","Cuentas por cobrar","accounts receivable",""],
+ ["Finanzas","Cuentas por pagar","accounts payable",""],
+ ["Finanzas","Asiento contable","journal entry",""],
+ ["Finanzas","Libro mayor","general ledger",""],
+ ["Finanzas","Presupuesto","budget",""],
+ ["Finanzas","Factura","invoice",""],
+ ["Finanzas","Auditoría interna","internal audit",""],
+ ["Finanzas","Cartera de créditos","loan portfolio",""],
+ ["Finanzas","Estimaciones por deterioro (provisiones)","loan loss provisions",""],
+ ["Finanzas","Garantía (de un préstamo)","collateral",""],
+ ["Finanzas","Crédito en mora","past-due loan",""],
+ ["Finanzas","Castigo de un crédito","write-off",""],
+ ["Finanzas","Liquidez / Solvencia / Rentabilidad","liquidity / solvency / profitability",""],
+ ["Finanzas","Junta directiva","board of directors",""],
+ ["Finanzas","Cumplimiento regulatorio","compliance",""],
+ ["Finanzas","Prueba de estrés","stress test",""],
+ ["Frases","¿Podrías repetir eso, por favor?","Could you repeat that, please?",""],
+ ["Frases","¿Cómo se dice ___ en inglés?","How do you say ___ in English?",""],
+ ["Frases","Tengo 25 años","I'm 25 years old.","❌ No “I have 25 years”."],
+ ["Frases","Estoy de acuerdo","I agree.","❌ No “I am agree”."],
+ ["Frases","Depende de…","It depends on…","❌ No “depend of”."],
+ ["Frases","Explícame","Explain it to me.","❌ No “explain me”."],
+ ["Frases","Estudio contaduría y finanzas","I study accounting and finance.",""],
+ ["Frases","Me gustaría trabajar en un banco","I would like to work at a bank.",""]
+];
+const SETS=["Todas","Fonética","Cultura","Phrasal verbs","Falsos amigos","Finanzas","Frases"];
+let fcSet="Todas",fcDirEs=true,fcIdx=null,fcFlip=false;
+let boxes=store.get('en_boxes',{});
+const boxOf=i=>boxes[i]||1;
+const pool=()=>CARDS.map((c,i)=>i).filter(i=>fcSet==="Todas"||CARDS[i][0]===fcSet);
+function pick(){const p=pool(),min=Math.min(...p.map(boxOf));let c=p.filter(i=>boxOf(i)===min);if(c.length>1)c=c.filter(i=>i!==fcIdx);fcIdx=c[Math.floor(Math.random()*c.length)];fcFlip=false;renderFc()}
+function renderFc(){
+  const [cat,es,en,nota]=CARDS[fcIdx],front=fcDirEs?es:en,back=fcDirEs?en:es,b=boxOf(fcIdx);
+  const enBtn='<button class="spk" id="say">🔊 Escuchar</button> <button class="spk" id="slow">🐢 Lento</button>';
+  document.getElementById('fcCard').innerHTML=`<div><span class="pill v">${cat}</span> <span class="pill ${b===3?'g':b===2?'a':'r'}">Caja ${b}</span></div>
+   <div class="q" style="margin-top:12px">${front}</div>${!fcDirEs?'<div>'+enBtn+'</div>':''}
+   ${fcFlip?`<div class="ans"><b>${back}</b>${fcDirEs?'<div>'+enBtn+'</div>':''}${nota?`<div class="small muted" style="margin-top:6px">${nota}</div>`:''}</div>`:'<div class="tap">Toca para ver la respuesta</div>'}`;
+  const s=document.getElementById('say'),sl=document.getElementById('slow');
+  if(s){s.onclick=e=>{e.stopPropagation();speak(en.replace('___','something'))};sl.onclick=e=>{e.stopPropagation();speak(en.replace('___','something'),true)}}
+  document.getElementById('fcBtns').style.display=fcFlip?'flex':'none';
+  const p=pool(),done=p.filter(i=>boxOf(i)===3).length;
+  document.getElementById('fcStats').textContent=`${p.length} tarjetas · dominadas ${done} · caja 1: ${p.filter(i=>boxOf(i)===1).length}`;
+  document.getElementById('fcBar').style.width=(100*done/p.length)+'%';
+}
+document.getElementById('fcCard').onclick=()=>{if(!fcFlip){fcFlip=true;renderFc();if(fcDirEs)speak(CARDS[fcIdx][2].replace('___','something'))}};
+document.getElementById('fcYes').onclick=()=>{boxes[fcIdx]=Math.min(3,boxOf(fcIdx)+1);store.set('en_boxes',boxes);pick()};
+document.getElementById('fcNo').onclick=()=>{boxes[fcIdx]=1;store.set('en_boxes',boxes);pick()};
+document.getElementById('fcReset').onclick=()=>{boxes={};store.set('en_boxes',boxes);pick()};
+const ff=document.getElementById('fcFilter');
+SETS.forEach(s=>{const b=document.createElement('button');b.className='chip'+(s===fcSet?' on':'');b.textContent=s;b.onclick=()=>{fcSet=s;ff.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));pick()};ff.appendChild(b)});
+const fd=document.getElementById('fcDir');
+[["Español → Inglés",true],["Inglés → Español",false]].forEach(([t,v])=>{const b=document.createElement('button');b.className='chip'+(v===fcDirEs?' on':'');b.textContent=t;b.onclick=()=>{fcDirEs=v;fd.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));renderFc()};fd.appendChild(b)});
+pick();
+
+// ---------- oído: pares mínimos ----------
+const PAIRS=[["ship","sheep","i corta vs ee larga"],["sit","seat","i corta vs ea larga"],["live","leave","i corta vs ea larga"],["full","fool","oo corta vs oo larga"],["pull","pool","oo corta vs oo larga"],
+ ["cap","cape","la e mágica alarga la a"],["hat","hate","la e mágica alarga la a"],["kit","kite","la e mágica alarga la i"],["hop","hope","la e mágica alarga la o"],["not","note","la e mágica alarga la o"],["cut","cute","la e mágica alarga la u"],
+ ["man","men","a corta (boca abierta) vs e"],["bad","bed","a corta vs e corta"],["cat","cut","a corta vs u corta (floja)"],["hot","hat","o corta vs a corta"],
+ ["think","sink","TH (lengua entre dientes) vs S"],["thin","tin","TH vs T"],["three","tree","TH vs T"],["very","berry","V (dientes en el labio) vs B"],["vote","boat","V vs B"],
+ ["chip","ship","CH vs SH"],["cheap","sheep","CH vs SH"],["watch","wash","CH vs SH"],["sing","sink","NG vs NK"],["work","walk","er/or vs aw"],["bird","board","ir vs oar"]];
+let oi={ok:0,n:0},oiCur=null;
+function oiNew(){const p=PAIRS[Math.floor(Math.random()*PAIRS.length)];const k=Math.random()<.5?0:1;oiCur={p,ans:p[k],opts:Math.random()<.5?[p[0],p[1]]:[p[1],p[0]]};oiRender(null);setTimeout(()=>speak(oiCur.ans),250)}
+function oiRender(choice){
+  const {p,ans,opts}=oiCur;
+  let h=`<p class="small muted" style="margin-top:0">¿Qué palabra escuchaste?</p><div class="row" style="margin-bottom:10px"><button class="spk" id="oiPlay">🔊 Otra vez</button><button class="spk" id="oiSlow">🐢 Lento</button></div><div class="row">`+
+   opts.map(o=>`<button class="choice ${choice?(o===ans?'right':(o===choice?'wrong':'')):''}" data-o="${o}" ${choice?'disabled':''}>${o}</button>`).join('')+`</div>`;
+  if(choice){h+=`<p><b>${choice===ans?'✓ ¡Bien!':'✗ Era “'+ans+'”'}</b> · <span class="muted">${p[2]}</span></p><div class="row"><button class="spk" data-say="${p[0]}">🔊 ${p[0]}</button><button class="spk" data-say="${p[1]}">🔊 ${p[1]}</button></div><button class="btn" style="width:100%;margin-top:10px" id="oiNext">Siguiente →</button>`}
+  const el=document.getElementById('oiCard');el.innerHTML=h;
+  document.getElementById('oiPlay').onclick=()=>speak(ans);document.getElementById('oiSlow').onclick=()=>speak(ans,true);
+  el.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>speak(b.dataset.say));
+  if(!choice)el.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>{oi.n++;if(b.dataset.o===ans)oi.ok++;document.getElementById('oiScore').textContent=`Aciertos: ${oi.ok}/${oi.n}`;oiRender(b.dataset.o)});
+  else document.getElementById('oiNext').onclick=oiNew;
+}
+oiCur={p:PAIRS[0],ans:"ship",opts:["ship","sheep"]};
+document.getElementById('oiCard').innerHTML='<p>Toca para empezar. Necesitas sonido 🔊</p><button class="btn" id="oiStart" style="width:100%">Empezar</button>';
+document.getElementById('oiStart').onclick=oiNew;
+
+// ---------- lector ----------
+const WORDS=[["cat","C","Skill 1: vocal + consonante"],["sit","C","Skill 1"],["jump","C","Skill 1"],["black","C","Skill 1 (blend bl)"],["desk","C","Skill 1"],["ship","C","Skill 1 (dígrafo sh)"],["sun","C","Skill 1"],["bed","C","Skill 1"],
+ ["me","L","Skill 2: vocal al final"],["go","L","Skill 2"],["she","L","Skill 2"],["hi","L","Skill 2"],
+ ["cake","L","Skill 3: e mágica"],["kite","L","Skill 3"],["hope","L","Skill 3"],["cute","L","Skill 3"],["home","L","Skill 3"],["note","L","Skill 3"],
+ ["rain","L","Vocales juntas: habla la primera"],["boat","L","Vocales juntas"],["team","L","Vocales juntas"],["seed","L","Vocales juntas"],["pie","L","Vocales juntas"],
+ ["my","L","Y final en 1 sílaba = “ai” (L38)"],["fly","L","Y final = “ai”"],["cry","L","Y final = “ai”"],
+ ["have","C","Rebelde: tiene e muda pero suena corta"],["give","C","Rebelde"],["come","C","Rebelde (suena como u corta)"]];
+let le={ok:0,n:0},leCur=null;
+function leNew(){leCur=WORDS[Math.floor(Math.random()*WORDS.length)];leRender(null)}
+function leRender(choice){
+  const [w,a,r]=leCur;let h=`<div class="big" style="margin:6px 0 14px">${w}</div><div class="row">`+
+   [["C","˘ Corta"],["L","¯ Larga"]].map(([k,t])=>`<button class="choice ${choice?(k===a?'right':(k===choice?'wrong':'')):''}" data-k="${k}" ${choice?'disabled':''}>${t}</button>`).join('')+'</div>';
+  if(choice)h+=`<p><b>${choice===a?'✓ ¡Correcto!':'✗ Era '+(a==='C'?'corta':'larga')}</b> · ${r}</p><button class="spk" id="leSay">🔊 Escuchar “${w}”</button><button class="btn" style="width:100%;margin-top:10px" id="leNext">Siguiente →</button>`;
+  const el=document.getElementById('leCard');el.innerHTML=h;
+  if(!choice)el.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{le.n++;if(b.dataset.k===a)le.ok++;document.getElementById('leScore').textContent=`Aciertos: ${le.ok}/${le.n}`;leRender(b.dataset.k);speak(w)});
+  else{document.getElementById('leSay').onclick=()=>speak(w);document.getElementById('leNext').onclick=leNew}
+}
+leNew();
+
+// ---------- examen ----------
+const Q=[
+ ["¿Qué vocal tiene la palabra “hop”?",["Corta","Larga","Muda","Schwa"],0,"Skill 1: la consonante la encierra."],
+ ["¿Por qué “hope” tiene la o larga?",["Por la Skill 2","Por la e mágica (Skill 3)","Porque es irregular","Por la Y"],1,"La e final no suena, pero alarga la vocal anterior."],
+ ["En “boat”, ¿qué letra suena?",["La a","La o, larga","Las dos","Ninguna"],1,"Dos vocales juntas: habla la primera."],
+ ["La Y de “happy” suena como…",["ai","i","y consonante","No suena"],1,"Al final de una palabra de 2 o más sílabas, la Y suena “i”."],
+ ["La Y de “fly” suena como…",["i","ai","e","ui"],1,"En palabras de 1 sílaba, la Y final suena “ai”."],
+ ["¿Cuál palabra es “rebelde” (e muda pero vocal corta)?",["make","give","note","cute"],1,"have, give, live, come, some y done son rebeldes."],
+ ["¿Cómo se parte “basket”?",["ba-sket","bas-ket","bask-et","b-asket"],1,"Dos consonantes en medio: se parte entre ellas (VC|CV)."],
+ ["¿Cómo se parte “paper”?",["pap-er","pa-per","p-aper","pape-r"],1,"V|CV: la primera sílaba queda abierta y la a es larga."],
+ ["¿En cuál verbo -ed suena como sílaba extra?",["worked","played","wanted","watched"],2,"Solo después de T o D: want-ed."],
+ ["“Stopped” se pronuncia…",["stop-ed","stopt","stop-id","stopd"],1,"-ed suena /t/ después de sonidos sordos como la p."],
+ ["¿En cuál plural -es suena /iz/?",["cats","dogs","boxes","books"],2,"Después de s, x, z, sh, ch."],
+ ["Para la TH de “think” la lengua va…",["Detrás de los dientes","Entre los dientes","Tocando el paladar","Abajo"],1,"Lengua entre los dientes y soplas."],
+ ["“ph” en “phone” suena como…",["p","f","h","ph separadas"],1,"ph = f."],
+ ["¿Qué tienen en común her, bird y turn?",["Nada","Se escriben igual","Su vocal + r suena igual","Son irregulares"],2,"er, ir y ur suenan igual."],
+ ["El error “eschool” viene de…",["Pronunciar la h","Poner una e antes de la s","Alargar la o","Omitir la l"],1,"La S no lleva escolta: school."],
+ ["La vocal relajada de las sílabas sin acento se llama…",["Macron","Breve","Schwa","Blend"],2,"Schwa (ə): about, banana."],
+ ["Un “blend” es…",["Dos letras con un solo sonido","Dos consonantes que suenan las dos","Una vocal larga","Un prefijo"],1,"Como bl, st, str. Dos letras con un solo sonido es un dígrafo."],
+ ["Si pones los dedos en la garganta y vibra, el sonido es…",["Sordo","Sonoro","Mudo","Nasal"],1,"Voiced = vibra (Lección 1)."],
+ ["En “city”, la C suena como…",["k","s","ch","no suena"],1,"Antes de e, i, y la C es suave (L32)."],
+ ["“hop” + ing se escribe…",["hoping","hopping","hopeing","hopping y hoping"],1,"Vocal corta + 1 consonante: se duplica (L28)."],
+ ["En “knee” y “write” no suenan…",["n y r","k y w","e y t","Todas suenan"],1,"kn = n, wr = r (L52)."],
+ ["¿Cómo se parte “simple”?",["simp-le","sim-ple","si-mple","simpl-e"],1,"-LE se lleva la consonante de antes (L44)."],
+ ["Monedas: un “dime” vale…",["1¢","5¢","10¢","25¢"],2,"penny 1¢, nickel 5¢, dime 10¢, quarter 25¢."],
+ ["“Actually” significa…",["Actualmente","En realidad","Activamente","Al final"],1,"Falso amigo: actualmente = currently."],
+ ["“Embarrassed” significa…",["Embarazada","Avergonzado/a","Emocionado/a","Enojado/a"],1,"Embarazada = pregnant."],
+ ["¿Cuál es correcta?",["I have 25 years","I am 25 years old","I have 25 years old","I'm 25 age"],1,"La edad se dice con to be."],
+ ["“To carry out an audit” significa…",["Cancelar una auditoría","Llevar a cabo una auditoría","Sacar a un auditor","Posponer una auditoría"],1,"carry out = llevar a cabo."],
+ ["“Accounts receivable” son…",["Cuentas por pagar","Cuentas por cobrar","Cuentas de ahorro","Cuentas de capital"],1,"receive = recibir → por cobrar."],
+ ["“Collateral” en un préstamo es…",["El interés","La garantía","La cuota","El plazo"],1,"collateral = garantía."],
+ ["“I look forward to ___ from you.”",["hear","hearing","heard","to hear"],1,"Después de “look forward to” el verbo va con -ing."]
+];
+let qO=[],qi=0,qs=0;
+function qStart(){qO=Q.map((_,i)=>i).sort(()=>Math.random()-.5);qi=0;qs=0;qR()}
+function qR(){const box=document.getElementById('qzBox');
+ if(qi>=qO.length){const p=Math.round(100*qs/Q.length);box.innerHTML=`<div class="card" style="text-align:center"><div class="big">${qs}/${Q.length}</div><p>${p>=85?'🔥 Excelente. Repite el examen en 2 días.':p>=65?'👍 Vas bien. Repasa en 🃏 Tarjetas lo que fallaste.':'📚 Vuelve a 📏 Reglas y 🔤 Sonidos y repite el examen mañana.'}</p><button class="btn" id="qA">Repetir examen</button></div>`;document.getElementById('qA').onclick=qStart;return}
+ const q=Q[qO[qi]];box.innerHTML=`<div class="small muted">Pregunta ${qi+1} de ${Q.length} · Aciertos ${qs}</div><div class="bar"><i style="width:${100*qi/Q.length}%"></i></div><div class="card"><b>${q[0]}</b>${q[1].map((o,j)=>`<button class="opt" data-j="${j}">${o}</button>`).join('')}<div id="qE"></div></div>`;
+ box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const j=+b.dataset.j;box.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(+x.dataset.j===q[2])x.classList.add('right')});if(j===q[2])qs++;else b.classList.add('wrong');
+  document.getElementById('qE').innerHTML=`<p class="small" style="margin-bottom:8px">${j===q[2]?'✓ ':'✗ '}${q[3]}</p><button class="btn" style="width:100%" id="qN">Siguiente →</button>`;document.getElementById('qN').onclick=()=>{qi++;qR()}})}
+qStart();
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}</script>
+</body>
+</html>

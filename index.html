@@ -51,7 +51,10 @@ main{max-width:640px;margin:-18px auto 0;padding:0 14px 60px}
 const MATERIAS=[
   {file:"unidad2.html", tag:"CPE2811 · Unidad 2", title:"Recursos Financieros (LM8–LM13) + Cartera Crediticia",
    desc:"MISBR · CNBS · Capital, rentabilidad, liquidez, solvencia, desempeño continuo, financiamiento y Circular 001/2025.",
-   key:"u2_boxes", total:66}
+   key:"u2_boxes", total:66},
+  {file:"ingles.html", tag:"Inglés · Reading Horizons", title:"Pronunciación y lectura en inglés",
+   desc:"Phonetic Skills, sonidos, dígrafos, sílabas y cultura. Sigue tu Student Workbook y el English Language Enhancement. Con audio 🔊.",
+   key:"en_boxes", total:102}
 ];
 function get(k){try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return {}}}
 document.getElementById('list').innerHTML=MATERIAS.map(m=>{
