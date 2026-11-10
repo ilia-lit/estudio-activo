@@ -54,7 +54,10 @@ const MATERIAS=[
    key:"u2_boxes", total:66},
   {file:"ingles.html", tag:"Inglés · Reading Horizons", title:"Pronunciación y lectura en inglés",
    desc:"Phonetic Skills, sonidos, dígrafos, sílabas y cultura. Sigue tu Student Workbook y el English Language Enhancement. Con audio 🔊.",
-   key:"en_boxes", total:102}
+   key:"en_boxes", total:102},
+  {file:"ingles-b1.html", tag:"Inglés · Ruta a C1 · Etapa 1", title:"Inglés A2 → B1: gramática y vocabulario",
+   desc:"Tu ruta de 2 años hacia C1, 14 unidades de gramática, práctica, ejercicios para hacer con Claude y examen semanal. Con audio 🔊.",
+   key:"b1_boxes", total:85}
 ];
 function get(k){try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return {}}}
 document.getElementById('list').innerHTML=MATERIAS.map(m=>{

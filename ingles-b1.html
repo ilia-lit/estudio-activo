@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inglés A2 → B1 · Ruta a C1</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f2d5a">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--ink:#1d1d1f;--muted:#6b6b70;--line:#e6e3dc;--blue:#2f5bd3;--blue-s:#e8eefc;--green:#1f8a5b;--green-s:#e3f4ec;--amber:#b7791f;--amber-s:#fbf1df;--red:#c2412d;--red-s:#fbe7e3;--violet:#6b46c1;--violet-s:#efe9fb;--teal:#0f7c86;--teal-s:#e0f2f3}
+@media (prefers-color-scheme:dark){:root{--bg:#141416;--card:#1e1e21;--ink:#f2f2f3;--muted:#a0a0a8;--line:#2e2e33;--blue:#7c9cf5;--blue-s:#232b45;--green:#5fcf9b;--green-s:#1d3329;--amber:#e8b45a;--amber-s:#3a2f1c;--red:#f08a76;--red-s:#3d2420;--violet:#b39af0;--violet-s:#2e2742;--teal:#5cc5cf;--teal-s:#1b3335}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5}
+header{padding:20px 16px 8px;max-width:760px;margin:0 auto}
+header .back{display:inline-block;margin-bottom:8px;color:var(--blue);font-weight:600;font-size:.9rem;text-decoration:none}
+header h1{font-size:1.35rem;margin:0 0 4px}
+header p{margin:0;color:var(--muted);font-size:.92rem}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;max-width:760px;margin:0 auto;scrollbar-width:none}
+nav .tabs::-webkit-scrollbar{display:none}
+nav button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 13px;border-radius:999px;font:600 .85rem Inter,sans-serif;cursor:pointer}
+nav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{max-width:760px;margin:0 auto;padding:14px 14px 80px}
+section{display:none} section.on{display:block}
+h2{font-size:1.2rem;margin:18px 0 8px} h3{font-size:1.02rem;margin:16px 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px;margin:10px 0}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.75rem;font-weight:700}
+.b{background:var(--blue-s);color:var(--blue)} .g{background:var(--green-s);color:var(--green)} .a{background:var(--amber-s);color:var(--amber)} .r{background:var(--red-s);color:var(--red)} .v{background:var(--violet-s);color:var(--violet)} .t{background:var(--teal-s);color:var(--teal)}
+.hook{border-left:4px solid var(--violet);background:var(--violet-s);padding:10px 12px;border-radius:0 10px 10px 0;margin:10px 0}
+.hook b{color:var(--violet)}
+.big{font-size:1.9rem;font-weight:800;letter-spacing:-.01em}
+ul,ol{padding-left:20px;margin:6px 0} li{margin:3px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin:6px 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 5px;text-align:left;vertical-align:top}
+th{font-weight:700;color:var(--muted);font-size:.74rem;text-transform:uppercase}
+.day{display:flex;gap:12px}
+.day .n{flex:0 0 42px;height:42px;border-radius:12px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;text-align:center;line-height:1.1}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden}
+summary{padding:13px 15px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.2rem;color:var(--muted)} details[open] summary::after{content:"–"}
+details .in{padding:0 15px 14px}
+.btn{border:none;border-radius:12px;padding:12px 14px;font:700 .95rem Inter,sans-serif;cursor:pointer;background:var(--ink);color:var(--bg)}
+.btn.ok{background:var(--green);color:#fff} .btn.no{background:var(--red);color:#fff} .btn.sec{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.row{display:flex;gap:8px;flex-wrap:wrap} .row .btn{flex:1}
+.fc{min-height:230px;display:flex;flex-direction:column;justify-content:center;text-align:center;cursor:pointer;padding:22px 18px;user-select:none}
+.fc .q{font-size:1.15rem;font-weight:700}
+.fc .ans{font-size:1.05rem;margin-top:14px;border-top:1px dashed var(--line);padding-top:14px}
+.fc .tap{color:var(--muted);font-size:.8rem;margin-top:14px}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.bar>i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.opt{display:block;width:100%;text-align:left;margin:7px 0;padding:12px 13px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 .95rem Inter,sans-serif;cursor:pointer}
+.opt.right{background:var(--green-s);border-color:var(--green)} .opt.wrong{background:var(--red-s);border-color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 12px;font:600 .82rem Inter,sans-serif;cursor:pointer}
+.chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.spk{border:none;background:var(--blue-s);color:var(--blue);border-radius:999px;padding:6px 12px;font:700 .85rem Inter,sans-serif;cursor:pointer;margin:4px 2px}
+.w{display:inline-block;background:var(--blue-s);color:var(--blue);border-radius:8px;padding:1px 7px;margin:2px 1px;font-weight:600;cursor:pointer}
+.choice{flex:1;padding:18px 10px;font-size:1.3rem;font-weight:800;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.choice.right{border-color:var(--green);background:var(--green-s)} .choice.wrong{border-color:var(--red);background:var(--red-s)}
+</style>
+<style>
+.stage{border-left:4px solid var(--blue);padding-left:12px;margin:12px 0}
+.stage.s2{border-color:var(--amber)} .stage.s3{border-color:var(--green)}
+.copy{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:6px 10px;font:600 .8rem Inter,sans-serif;cursor:pointer;float:right}
+.prompt{background:var(--bg);border:1px dashed var(--line);border-radius:10px;padding:10px;font-size:.88rem;margin-top:6px}
+.f{font-family:ui-monospace,Menlo,monospace;background:var(--teal-s);color:var(--teal);padding:2px 6px;border-radius:6px;font-size:.88rem}
+</style>
+</head><body>
+<header>
+  <a href="index.html" class="back">← Mis materias</a>
+  <h1>🚀 Inglés A2 → B1 · Ruta a C1</h1>
+  <p>Punto de partida: EF SET 40 (A2) · Meta: C1 en 2 años · toca las palabras azules para escucharlas 🔊</p>
+</header>
+<nav><div class="tabs" id="tabs">
+  <button data-s="ruta" class="on">🗺️ Ruta C1</button>
+  <button data-s="semana">📅 Mi semana</button>
+  <button data-s="gram">📐 Gramática</button>
+  <button data-s="fichas">🃏 Tarjetas</button>
+  <button data-s="drill">🎯 Práctica</button>
+  <button data-s="claude">💬 Con Claude</button>
+  <button data-s="quiz">✅ Examen</button>
+</div></nav>
+<main>
+
+<section id="ruta" class="on">
+  <h2>Tu ruta de 2 años: A2 → C1</h2>
+  <div class="card">
+    <p style="margin-top:0"><b>Regla de oro:</b> 1 hora al día, casi todos los días. Lo que te lleva a C1 es la constancia, no los maratones. Si un día solo puedes 15 minutos, haz las tarjetas y no rompas la racha.</p>
+    <p class="small muted" style="margin-bottom:0">Las fechas son una guía. Si un examen EF SET muestra que vas más rápido, adelantamos; si vas más lento, ajustamos sin culpa.</p>
+  </div>
+
+  <div class="card stage">
+    <span class="pill b">ETAPA 1 · Meses 1–6 · nov 2026 → abr 2027</span>
+    <h3>A2 → B1 · “Me defiendo”</h3>
+    <ul class="small">
+      <li><b>Pronunciación:</b> termina tus libros Reading Horizons (materia “Pronunciación y lectura”) en los primeros 2 meses.</li>
+      <li><b>Gramática:</b> las 14 unidades de la pestaña 📐 de esta materia.</li>
+      <li><b>Vocabulario:</b> las 1000 palabras más comunes, más vocabulario de trabajo y dinero.</li>
+      <li><b>Escuchar:</b> podcasts para aprendices (por ejemplo, <i>6 Minute English</i> de la BBC) y series que ya conozcas, con subtítulos en inglés.</li>
+      <li><b>Hablar y escribir:</b> 10 minutos diarios conmigo (pestaña 💬).</li>
+    </ul>
+    <p class="small" style="margin-bottom:0">🎯 <b>Meta:</b> EF SET de 45 o más en febrero y de 50 o más en abril.</p>
+  </div>
+  <div class="card stage s2">
+    <span class="pill a">ETAPA 2 · Meses 7–15 · may 2027 → ene 2028</span>
+    <h3>B1 → B2 · “Trabajo y estudio en inglés”</h3>
+    <ul class="small">
+      <li><b>Gramática:</b> present perfect continuous, past perfect, condicionales 2 y 3, voz pasiva, estilo indirecto, cláusulas relativas, modales de deducción, used to y would.</li>
+      <li><b>Vocabulario:</b> 100 phrasal verbs, colocaciones e inglés de finanzas (estados financieros, banca, auditoría).</li>
+      <li><b>Escuchar:</b> podcasts para nativos, noticias, charlas TED.</li>
+      <li><b>Escribir:</b> correos formales y resúmenes de artículos, corregidos por mí.</li>
+    </ul>
+    <p class="small" style="margin-bottom:0">🎯 <b>Meta:</b> EF SET de 55 o más. Este módulo se agrega a la app cuando llegues a B1.</p>
+  </div>
+  <div class="card stage s3">
+    <span class="pill g">ETAPA 3 · Meses 16–24 · feb 2028 → nov 2028</span>
+    <h3>B2 → C1 · “Fluido y preciso”</h3>
+    <ul class="small">
+      <li><b>Gramática:</b> condicionales mixtos, inversión (<i>Not only…</i>), wish e if only, oraciones de participio y estructuras enfáticas.</li>
+      <li><b>Vocabulario:</b> académico y de negocios, conectores avanzados y matices de registro (formal o informal).</li>
+      <li><b>Hablar:</b> debates y presentaciones sobre temas complejos, como economía o regulación bancaria.</li>
+      <li><b>Escribir:</b> ensayos e informes con estructura profesional.</li>
+      <li><b>Opcional:</b> certificarte con Cambridge C1 Advanced o IELTS (7.0 o más). Te ayuda mucho en el trabajo.</li>
+    </ul>
+    <p class="small" style="margin-bottom:0">🎯 <b>Meta:</b> EF SET de 61 o más. ¡C1!</p>
+  </div>
+  <div class="hook"><b>💜 Mide tu avance:</b> haz el EF SET cada 3 meses (feb, may, ago y nov) y mándame el resultado. Con él ajustamos la ruta y agrego los módulos de la siguiente etapa.</div>
+</section>
+
+<section id="semana">
+  <h2>Tu hora diaria (Etapa 1)</h2>
+  <div class="card">
+    <table>
+      <tr><td><b>15 min</b></td><td>🃏 <b>Tarjetas</b> de esta materia y de “Pronunciación y lectura”</td></tr>
+      <tr><td><b>20 min</b></td><td>📐 <b>Gramática</b> (1 unidad cada 3 o 4 días) + 🎯 Práctica. Los meses 1 y 2, alterna con tu libro Reading Horizons.</td></tr>
+      <tr><td><b>15 min</b></td><td>🎧 <b>Escuchar:</b> un podcast o un capítulo de serie con subtítulos en inglés</td></tr>
+      <tr><td><b>10 min</b></td><td>💬 <b>Hablar o escribir</b> conmigo: copia un ejercicio de la pestaña “Con Claude”</td></tr>
+    </table>
+  </div>
+  <h2>Semana tipo</h2>
+  <div class="card">
+    <ul>
+      <li><b>Lunes a viernes:</b> tu hora diaria.</li>
+      <li><b>Sábado:</b> ✅ Examen + repaso de las tarjetas de la caja 1.</li>
+      <li><b>Domingo:</b> descanso activo: una película o serie en inglés, por puro gusto.</li>
+    </ul>
+  </div>
+  <h2>Orden de las unidades (meses 1–6)</h2>
+  <div class="card small">
+    <p style="margin-top:0"><b>Mes 1:</b> U1–U3 (to be, presente simple y continuo) · <b>Mes 2:</b> U4–U5 (pasado)<br>
+    <b>Mes 3:</b> U6–U7 (futuro, present perfect) · <b>Mes 4:</b> U8–U10 (comparativos, contables, modales)<br>
+    <b>Mes 5:</b> U11–U12 (condicionales, gerundio e infinitivo) · <b>Mes 6:</b> U13–U14 (preguntas, conectores) + repaso general</p>
+  </div>
+</section>
+
+<section id="gram">
+  <h2>Gramática A2 → B1</h2>
+  <p class="small muted">Cada unidad tiene la fórmula, ejemplos con audio, un truco y el error típico de los hispanohablantes. Después practícala en 🎯.</p>
+
+  <details><summary><span><span class="pill b">U1</span> Verbo TO BE (ser y estar)</span></summary><div class="in">
+    <p><span class="f">I am · you/we/they are · he/she/it is</span></p>
+    <p><span class="w">I am an accounting student.</span> <span class="w">She is tired.</span> <span class="w">They are at the bank.</span></p>
+    <div class="hook"><b>💜 Truco:</b> en inglés la edad, el hambre, el frío y la razón van con <b>BE</b>, no con “have”: <span class="w">I am 25 years old.</span> <span class="w">I am hungry.</span> <span class="w">You are right.</span></div>
+    <p class="small">❌ I have 25 years → ✅ I am 25 years old</p>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U2</span> Presente simple (rutinas y hechos)</span></summary><div class="in">
+    <p><span class="f">I/you/we/they work · he/she/it works</span> · Negativa: <span class="f">don't / doesn't + verbo</span> · Pregunta: <span class="f">Do / Does … ?</span></p>
+    <p><span class="w">She works at a bank.</span> <span class="w">I don't drink coffee.</span> <span class="w">Does he study finance?</span></p>
+    <div class="hook"><b>💜 “La S de SHE”:</b> con he, she o it el verbo lleva -s. Cuando aparece <b>does</b>, la S se pasa al auxiliar y el verbo queda limpio: <i>Does she work?</i> (no “works”).</div>
+    <p class="small">❌ She work here · ❌ Does she works? → ✅ She works here · ✅ Does she work?</p>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U3</span> Presente continuo (ahora mismo)</span></summary><div class="in">
+    <p><span class="f">am / is / are + verbo-ing</span></p>
+    <p><span class="w">I am studying right now.</span> <span class="w">They are having a meeting.</span></p>
+    <div class="hook"><b>💜 Simple = siempre · Continuo = ahora:</b> <i>I work at a bank</i> (es mi trabajo) frente a <i>I'm working from home today</i> (solo hoy).</div>
+    <p class="small">Verbos de estado no van en -ing: <b>know, like, want, need, believe</b>. ❌ I'm knowing → ✅ I know</p>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U4</span> Pasado simple</span></summary><div class="in">
+    <p>Regulares: <span class="f">verbo + ed</span> (<span class="w">worked</span>) · Irregulares: de memoria (<span class="w">went</span> <span class="w">had</span> <span class="w">paid</span>)</p>
+    <p>Negativa y pregunta: <span class="f">didn't / Did + verbo BASE</span></p>
+    <p><span class="w">I paid the invoice yesterday.</span> <span class="w">Did you go to class?</span> <span class="w">We didn't finish the report.</span></p>
+    <div class="hook"><b>💜 “DID se roba el pasado”:</b> cuando aparece did, el verbo vuelve a su forma base. ❌ Did you went? → ✅ Did you go?</div>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U5</span> Pasado continuo</span></summary><div class="in">
+    <p><span class="f">was / were + verbo-ing</span>: una acción en progreso en el pasado, que muchas veces es interrumpida.</p>
+    <p><span class="w">I was studying when my phone rang.</span></p>
+    <div class="hook"><b>💜 La película y el flash:</b> la acción larga (was studying) es la película; la corta (rang) es el flash que la interrumpe.</div>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U6</span> Futuro: will · going to · presente continuo</span></summary><div class="in">
+    <p><b>will</b> = decisión del momento, promesa o predicción: <span class="w">I'll call you later.</span></p>
+    <p><b>going to</b> = plan ya decidido: <span class="w">I'm going to take the C1 exam.</span></p>
+    <p><b>presente continuo</b> = cita agendada: <span class="w">I'm meeting my boss on Monday.</span></p>
+    <div class="hook"><b>💜 Will = impulso · Going to = agenda.</b></div>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U7</span> Present perfect (la más difícil para hispanohablantes)</span></summary><div class="in">
+    <p><span class="f">have / has + participio</span></p>
+    <ul>
+      <li>Experiencias: <span class="w">Have you ever been to New York?</span></li>
+      <li>Algo que empezó en el pasado y sigue: <span class="w">I have lived here for five years.</span></li>
+      <li>Resultado que importa ahora: <span class="w">I have finished the report.</span></li>
+    </ul>
+    <p><b>for</b> = duración (for 2 years) · <b>since</b> = punto de inicio (since 2020) · <b>just, already, yet</b>.</p>
+    <div class="hook"><b>💜 Puente pasado → presente:</b> si hay un momento terminado (yesterday, in 2020, last week), usa pasado simple. Si la frase llega hasta hoy, usa present perfect. “Llevo 5 años aquí” = <i>I have been here for 5 years</i>.</div>
+    <p class="small">❌ I live here since 2020 → ✅ I have lived here since 2020</p>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U8</span> Comparativos y superlativos</span></summary><div class="in">
+    <p>Cortos: <span class="f">-er / the -est</span> (<span class="w">cheaper, the cheapest</span>) · Largos: <span class="f">more / the most</span> (<span class="w">more expensive</span>)</p>
+    <p>Irregulares: <span class="w">good, better, the best</span> · <span class="w">bad, worse, the worst</span></p>
+    <p class="small">❌ more cheap · ❌ more better → ✅ cheaper · ✅ better</p>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U9</span> Contables e incontables</span></summary><div class="in">
+    <p><b>many</b> + contables (<i>many clients</i>) · <b>much</b> + incontables (<i>much money</i>) · <b>a lot of</b> sirve para los dos.</p>
+    <p>Incontables que confunden: <b>information, advice, money, news, homework, furniture</b>. No llevan -s.</p>
+    <div class="hook"><b>💜</b> ❌ informations, advices → ✅ information, a piece of advice</div>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U10</span> Modales: can · could · should · must · have to</span></summary><div class="in">
+    <p><span class="w">I can speak English.</span> (habilidad) · <span class="w">Could you help me?</span> (petición educada) · <span class="w">You should rest.</span> (consejo) · <span class="w">You must sign here.</span> (obligación fuerte) · <span class="w">I have to work tomorrow.</span> (obligación externa)</p>
+    <div class="hook"><b>💜 Después de un modal, verbo limpio:</b> sin “to” y sin -s. ❌ She can speaks · ❌ You should to go</div>
+    <p class="small">Ojo: <b>mustn't</b> = está prohibido · <b>don't have to</b> = no es necesario</p>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U11</span> Condicionales 0 y 1</span></summary><div class="in">
+    <p><b>Cero</b> (verdades): <span class="f">If + presente, presente</span>: <span class="w">If you heat water, it boils.</span></p>
+    <p><b>Primero</b> (posible y real): <span class="f">If + presente, will + verbo</span>: <span class="w">If I study every day, I will reach C1.</span></p>
+    <div class="hook"><b>💜 Nunca pongas will después de if:</b> ❌ If I will study → ✅ If I study</div>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U12</span> Gerundio (-ing) o infinitivo (to)</span></summary><div class="in">
+    <p>Con <b>-ing</b>: enjoy, finish, avoid, mind, keep, suggest y después de preposiciones: <span class="w">I enjoy reading.</span> <span class="w">I'm interested in learning.</span></p>
+    <p>Con <b>to</b>: want, need, decide, hope, plan, would like: <span class="w">I want to improve my English.</span></p>
+    <div class="hook"><b>💜</b> look forward <b>to</b> + <b>-ing</b>: <span class="w">I look forward to hearing from you.</span> Aquí el “to” es preposición, no infinitivo.</div>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U13</span> Hacer preguntas</span></summary><div class="in">
+    <p><span class="f">Palabra interrogativa + auxiliar + sujeto + verbo</span></p>
+    <p><span class="w">Where do you work?</span> <span class="w">What did she say?</span> <span class="w">How long have you studied English?</span></p>
+    <div class="hook"><b>💜 QASV:</b> Question word · Auxiliar · Sujeto · Verbo. ❌ Where you work? → ✅ Where do you work?</div>
+  </div></details>
+
+  <details><summary><span><span class="pill b">U14</span> Conectores (para sonar B1)</span></summary><div class="in">
+    <p><b>and, but, so, because</b> · <b>although</b> (aunque) · <b>however</b> (sin embargo) · <b>also</b> · <b>first, then, finally</b> · <b>for example</b></p>
+    <p><span class="w">Although it was late, I finished the test.</span> <span class="w">The test was hard. However, I passed.</span></p>
+    <div class="hook"><b>💜 Para subir de nivel,</b> no basta con saber más palabras: hay que unir ideas. Una persona en A2 habla en frases sueltas; una en B1 las conecta.</div>
+  </div></details>
+</section>
+
+<section id="fichas">
+  <h2>Tarjetas A2 → B1</h2>
+  <p class="small muted">Di la respuesta en voz alta antes de voltear la tarjeta. 🔊 para escuchar y 🐢 para oírla lento.</p>
+  <div class="chips" id="fcFilter"></div>
+  <div class="chips" id="fcDir"></div>
+  <div class="small muted" id="fcStats"></div>
+  <div class="bar"><i id="fcBar"></i></div>
+  <div class="card fc" id="fcCard"></div>
+  <div class="row" id="fcBtns" style="display:none"><button class="btn no" id="fcNo">✗ No lo sabía</button><button class="btn ok" id="fcYes">✓ Lo sabía</button></div>
+  <p class="small muted" style="margin-top:14px">Caja 1 = repasar hoy · Caja 2 = mañana · Caja 3 = dominada. <button class="chip" id="fcReset">Reiniciar progreso</button></p>
+</section>
+
+<section id="drill">
+  <h2>🎯 Práctica de gramática</h2>
+  <p class="small muted">Completa la frase. Puedes filtrar por unidad.</p>
+  <div class="chips" id="drFilter"></div>
+  <div class="card" id="drCard"></div>
+  <div class="small muted" id="drScore"></div>
+</section>
+
+<section id="claude">
+  <h2>💬 Practica conmigo</h2>
+  <div class="card"><p style="margin:0" class="small">Una app no puede corregir cómo hablas o escribes. Yo sí. Toca <b>Copiar</b>, abre un chat nuevo con Claude, pega el texto y practica 10 minutos. Si puedes, usa el <b>modo de voz</b> para practicar la pronunciación.</p></div>
+  <div id="prompts"></div>
+</section>
+
+<section id="quiz">
+  <h2>✅ Examen A2 → B1</h2>
+  <p class="small muted">Hazlo cada sábado. Si pasas de 85% dos semanas seguidas, ya estás lista para un nuevo EF SET.</p>
+  <div id="qzBox"></div>
+</section>
+</main>
+<script>
+let VOICE=null;
+function pickVoice(){try{const vs=speechSynthesis.getVoices();VOICE=vs.find(v=>v.lang==='en-US'&&/Samantha|Google US|Aaron|Nicky/i.test(v.name))||vs.find(v=>v.lang==='en-US')||vs.find(v=>v.lang&&v.lang.startsWith('en'))||null}catch(e){}}
+try{pickVoice();speechSynthesis.onvoiceschanged=pickVoice}catch(e){}
+function speak(t,slow){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=slow?0.55:0.9;if(VOICE)u.voice=VOICE;speechSynthesis.speak(u)}catch(e){}}
+document.addEventListener('click',e=>{const w=e.target.closest('.w');if(w)speak(w.textContent)});
+const tabs=document.querySelectorAll('#tabs button');
+function show(id){tabs.forEach(b=>b.classList.toggle('on',b.dataset.s===id));document.querySelectorAll('main section').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo({top:0})}
+tabs.forEach(b=>b.onclick=()=>show(b.dataset.s));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+// [categoria, español, inglés, nota]
+const CARDS=[
+ ["Verbos irregulares","ir → fui → ido","go · went · gone",""],
+ ["Verbos irregulares","tener → tuve → tenido","have · had · had",""],
+ ["Verbos irregulares","hacer → hice → hecho","do · did · done",""],
+ ["Verbos irregulares","hacer (crear) → hice → hecho","make · made · made",""],
+ ["Verbos irregulares","conseguir / obtener","get · got · gotten",""],
+ ["Verbos irregulares","decir","say · said · said",""],
+ ["Verbos irregulares","decirle a alguien","tell · told · told",""],
+ ["Verbos irregulares","saber / conocer","know · knew · known",""],
+ ["Verbos irregulares","pensar","think · thought · thought",""],
+ ["Verbos irregulares","tomar","take · took · taken",""],
+ ["Verbos irregulares","ver","see · saw · seen",""],
+ ["Verbos irregulares","venir","come · came · come",""],
+ ["Verbos irregulares","dar","give · gave · given",""],
+ ["Verbos irregulares","encontrar","find · found · found",""],
+ ["Verbos irregulares","sentir","feel · felt · felt",""],
+ ["Verbos irregulares","dejar / salir de","leave · left · left",""],
+ ["Verbos irregulares","traer","bring · brought · brought",""],
+ ["Verbos irregulares","comprar","buy · bought · bought",""],
+ ["Verbos irregulares","pagar","pay · paid · paid",""],
+ ["Verbos irregulares","gastar (dinero)","spend · spent · spent",""],
+ ["Verbos irregulares","enviar","send · sent · sent",""],
+ ["Verbos irregulares","perder","lose · lost · lost",""],
+ ["Verbos irregulares","escribir","write · wrote · written",""],
+ ["Verbos irregulares","hablar","speak · spoke · spoken",""],
+ ["Verbos irregulares","leer","read · read · read","Se escribe igual, pero en pasado suena “red”."],
+ ["Verbos irregulares","entender","understand · understood · understood",""],
+ ["Verbos irregulares","enseñar","teach · taught · taught",""],
+ ["Verbos irregulares","conocer (a alguien) / reunirse","meet · met · met",""],
+ ["Verbos irregulares","vender","sell · sold · sold",""],
+ ["Verbos irregulares","costar","cost · cost · cost",""],
+ ["Verbos irregulares","empezar","begin · began · begun",""],
+ ["Verbos irregulares","olvidar","forget · forgot · forgotten",""],
+ ["Verbos irregulares","elegir","choose · chose · chosen",""],
+ ["Verbos irregulares","ganar (competencia)","win · won · won",""],
+ ["Verbos irregulares","prestar","lend · lent · lent",""],
+ ["Conectores","aunque","although","Although it was late, I studied."],
+ ["Conectores","sin embargo","however","Al inicio de la oración, seguido de coma."],
+ ["Conectores","por lo tanto / así que","so / therefore",""],
+ ["Conectores","porque","because",""],
+ ["Conectores","además","also / in addition",""],
+ ["Conectores","por ejemplo","for example",""],
+ ["Conectores","primero… luego… finalmente","first… then… finally",""],
+ ["Conectores","en cambio / mientras que","while / whereas",""],
+ ["Conectores","a pesar de","despite / in spite of","Va seguido de un sustantivo o -ing."],
+ ["Trabajo y dinero","ahorrar dinero","save money",""],
+ ["Trabajo y dinero","pedir un préstamo","take out a loan / borrow money",""],
+ ["Trabajo y dinero","prestar dinero","lend money",""],
+ ["Trabajo y dinero","sueldo","salary",""],
+ ["Trabajo y dinero","solicitar un empleo","apply for a job",""],
+ ["Trabajo y dinero","entrevista de trabajo","job interview",""],
+ ["Trabajo y dinero","fecha límite","deadline",""],
+ ["Trabajo y dinero","reunión","meeting",""],
+ ["Trabajo y dinero","jefe / gerente","boss / manager",""],
+ ["Trabajo y dinero","cliente","client / customer",""],
+ ["Trabajo y dinero","ganar dinero","earn money / make money","❌ win money (solo si es un premio)"],
+ ["Trabajo y dinero","gastos","expenses",""],
+ ["Trabajo y dinero","pagar con tarjeta","pay by card",""],
+ ["Trabajo y dinero","cuenta bancaria","bank account",""],
+ ["Opiniones","Creo que…","I think… / In my opinion…",""],
+ ["Opiniones","Estoy de acuerdo","I agree.","❌ I am agree"],
+ ["Opiniones","No estoy de acuerdo","I disagree. / I don't agree.",""],
+ ["Opiniones","Depende de…","It depends on…","❌ depends of"],
+ ["Opiniones","Tiene sentido","It makes sense.",""],
+ ["Opiniones","No estoy seguro/a","I'm not sure.",""],
+ ["Opiniones","¿Qué opinas de…?","What do you think about…?",""],
+ ["Opiniones","Por un lado… por otro lado…","On the one hand… on the other hand…",""],
+ ["Expresiones","Tengo que irme","I have to go.",""],
+ ["Expresiones","Tengo prisa","I'm in a hurry.",""],
+ ["Expresiones","Me da igual","I don't mind.",""],
+ ["Expresiones","¡Qué pena!","What a pity!",""],
+ ["Expresiones","Vale la pena","It's worth it.",""],
+ ["Expresiones","Ponerse al día","catch up",""],
+ ["Expresiones","Cuenta conmigo","Count me in.",""],
+ ["Expresiones","Lo tengo / entendido","Got it.",""],
+ ["Expresiones","¿Cuánto tiempo llevas…?","How long have you been…?",""],
+ ["Expresiones","Hace dos años","two years ago","❌ before two years"],
+ ["Gramática","Pasado de “Did you ___ (go)?”","Did you go?","Después de did, el verbo va en forma base."],
+ ["Gramática","for o since: ___ 2020","since 2020","since = punto de inicio."],
+ ["Gramática","for o since: ___ three years","for three years","for = duración."],
+ ["Gramática","much o many: ___ money","much money","money es incontable."],
+ ["Gramática","Plural de “advice”","advice (no tiene plural)","a piece of advice"],
+ ["Gramática","If I ___ (study), I will pass.","If I study…","Nunca will después de if."],
+ ["Gramática","mustn't vs don't have to","mustn't = prohibido · don't have to = no es necesario",""],
+ ["Gramática","enjoy + …","enjoy + -ing: I enjoy reading.",""],
+ ["Gramática","want + …","want + to: I want to learn.",""]
+];
+const SETS=["Todas","Verbos irregulares","Gramática","Conectores","Trabajo y dinero","Opiniones","Expresiones"];
+let fcSet="Todas",fcDirEs=true,fcIdx=null,fcFlip=false,boxes=store.get('b1_boxes',{});
+const boxOf=i=>boxes[i]||1;
+const pool=()=>CARDS.map((c,i)=>i).filter(i=>fcSet==="Todas"||CARDS[i][0]===fcSet);
+function pick(){const p=pool(),min=Math.min(...p.map(boxOf));let c=p.filter(i=>boxOf(i)===min);if(c.length>1)c=c.filter(i=>i!==fcIdx);fcIdx=c[Math.floor(Math.random()*c.length)];fcFlip=false;renderFc()}
+const clean=t=>t.replace(/___/g,'blank').replace(/·/g,',');
+function renderFc(){
+  const [cat,es,en,nota]=CARDS[fcIdx],front=fcDirEs?es:en,back=fcDirEs?en:es,b=boxOf(fcIdx);
+  const enBtn='<button class="spk" id="say">🔊 Escuchar</button> <button class="spk" id="slow">🐢 Lento</button>';
+  document.getElementById('fcCard').innerHTML=`<div><span class="pill v">${cat}</span> <span class="pill ${b===3?'g':b===2?'a':'r'}">Caja ${b}</span></div>
+   <div class="q" style="margin-top:12px">${front}</div>${!fcDirEs?'<div>'+enBtn+'</div>':''}
+   ${fcFlip?`<div class="ans"><b>${back}</b>${fcDirEs?'<div>'+enBtn+'</div>':''}${nota?`<div class="small muted" style="margin-top:6px">${nota}</div>`:''}</div>`:'<div class="tap">Toca para ver la respuesta</div>'}`;
+  const s=document.getElementById('say'),sl=document.getElementById('slow');
+  if(s){s.onclick=e=>{e.stopPropagation();speak(clean(en))};sl.onclick=e=>{e.stopPropagation();speak(clean(en),true)}}
+  document.getElementById('fcBtns').style.display=fcFlip?'flex':'none';
+  const p=pool(),done=p.filter(i=>boxOf(i)===3).length;
+  document.getElementById('fcStats').textContent=`${p.length} tarjetas · dominadas ${done} · caja 1: ${p.filter(i=>boxOf(i)===1).length}`;
+  document.getElementById('fcBar').style.width=(100*done/p.length)+'%';
+}
+document.getElementById('fcCard').onclick=()=>{if(!fcFlip){fcFlip=true;renderFc();if(fcDirEs)speak(clean(CARDS[fcIdx][2]))}};
+document.getElementById('fcYes').onclick=()=>{boxes[fcIdx]=Math.min(3,boxOf(fcIdx)+1);store.set('b1_boxes',boxes);pick()};
+document.getElementById('fcNo').onclick=()=>{boxes[fcIdx]=1;store.set('b1_boxes',boxes);pick()};
+document.getElementById('fcReset').onclick=()=>{boxes={};store.set('b1_boxes',boxes);pick()};
+const ff=document.getElementById('fcFilter');
+SETS.forEach(s=>{const b=document.createElement('button');b.className='chip'+(s===fcSet?' on':'');b.textContent=s;b.onclick=()=>{fcSet=s;ff.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));pick()};ff.appendChild(b)});
+const fd=document.getElementById('fcDir');
+[["Español → Inglés",true],["Inglés → Español",false]].forEach(([t,v])=>{const b=document.createElement('button');b.className='chip'+(v===fcDirEs?' on':'');b.textContent=t;b.onclick=()=>{fcDirEs=v;fd.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));renderFc()};fd.appendChild(b)});
+pick();
+
+// práctica: [unidad, frase con ___, opciones, correcta, explicación]
+const DR=[
+ ["U1","I ___ 25 years old.",["have","am","has"],1,"La edad va con BE."],
+ ["U1","They ___ at the office now.",["is","are","be"],1,"they → are"],
+ ["U2","She ___ at a bank.",["work","works","working"],1,"he/she/it → -s"],
+ ["U2","___ he study finance?",["Do","Does","Is"],1,"he → does"],
+ ["U2","Does she ___ English?",["speaks","speak","speaking"],1,"Con does, el verbo va limpio."],
+ ["U2","I ___ like coffee.",["don't","doesn't","not"],0,"I → don't"],
+ ["U3","Look! It ___ .",["rains","is raining","rain"],1,"Ahora mismo → continuo."],
+ ["U3","I ___ the answer.",["am knowing","know","knows"],1,"know es verbo de estado: no va con -ing."],
+ ["U4","I ___ the invoice yesterday.",["pay","paid","payed"],1,"pay → paid (irregular)"],
+ ["U4","Did you ___ to class?",["went","go","goes"],1,"DID se roba el pasado."],
+ ["U4","We ___ finish the report.",["didn't","don't","wasn't"],0,"Negativa en pasado: didn't + base."],
+ ["U5","I ___ when you called.",["slept","was sleeping","am sleeping"],1,"La película (was sleeping) y el flash (called)."],
+ ["U6","I'm tired. I think I ___ go to bed.",["will","am going","going"],0,"Decisión del momento → will."],
+ ["U6","Next year I ___ take the C1 exam.",["will to","am going to","going"],1,"Plan decidido → going to."],
+ ["U7","I have lived here ___ 2020.",["for","since","from"],1,"since + punto de inicio."],
+ ["U7","She has worked here ___ five years.",["for","since","during"],0,"for + duración."],
+ ["U7","___ you ever been to Mexico?",["Did","Have","Are"],1,"Experiencias → present perfect."],
+ ["U7","I ___ the report yesterday.",["have finished","finished","finish"],1,"yesterday = momento terminado → pasado simple."],
+ ["U8","This bank is ___ than that one.",["more cheap","cheaper","cheapest"],1,"Adjetivo corto → -er."],
+ ["U8","It's the ___ day of my life.",["goodest","best","better"],1,"good → better → the best"],
+ ["U9","How ___ money do you need?",["many","much","lot"],1,"money es incontable."],
+ ["U9","She gave me some good ___ .",["advices","advice","advise"],1,"advice es incontable."],
+ ["U10","You ___ smoke here. It's prohibited.",["don't have to","mustn't","shouldn't to"],1,"mustn't = prohibido."],
+ ["U10","She can ___ three languages.",["speaks","speak","to speak"],1,"Después de un modal, verbo limpio."],
+ ["U11","If I study every day, I ___ pass.",["will","would","am"],0,"Condicional 1: if + presente, will + verbo."],
+ ["U11","If it ___ tomorrow, we will stay home.",["will rain","rains","rained"],1,"Nunca will después de if."],
+ ["U12","I enjoy ___ English.",["to learn","learning","learn"],1,"enjoy + -ing"],
+ ["U12","I want ___ my English.",["improving","to improve","improve"],1,"want + to"],
+ ["U12","I look forward to ___ from you.",["hear","hearing","heard"],1,"look forward to + -ing"],
+ ["U13","Where ___ you work?",["are","do","does"],1,"QASV: pregunta, auxiliar, sujeto, verbo."],
+ ["U13","What ___ she say yesterday?",["does","did","was"],1,"Pasado → did."],
+ ["U14","___ it was late, I finished the test.",["However","Although","Because"],1,"although = aunque, une dos ideas."],
+ ["U14","The test was hard. ___, I passed.",["Although","However","Because"],1,"however = sin embargo; va al inicio, con coma."]
+];
+const units=["Todas",...new Set(DR.map(d=>d[0]))];let drU="Todas",dr={ok:0,n:0},drCur=null;
+const drf=document.getElementById('drFilter');
+units.forEach(u=>{const b=document.createElement('button');b.className='chip'+(u===drU?' on':'');b.textContent=u;b.onclick=()=>{drU=u;drf.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));drNew()};drf.appendChild(b)});
+function drNew(){const p=DR.filter(d=>drU==="Todas"||d[0]===drU);let n=p[Math.floor(Math.random()*p.length)];if(p.length>1&&n===drCur)n=p.find(x=>x!==drCur);drCur=n;drRender(null)}
+function drRender(ch){const [u,f,o,c,ex]=drCur;const shown=ch===null?f.replace('___','<b>_____</b>'):f.replace('___','<b style="color:var(--green)">'+o[c]+'</b>');
+ let h=`<span class="pill b">${u}</span><p style="font-size:1.15rem;font-weight:600">${shown}</p>`+o.map((x,i)=>`<button class="opt ${ch!==null?(i===c?'right':(i===ch?'wrong':'')):''}" data-i="${i}" ${ch!==null?'disabled':''}>${x}</button>`).join('');
+ if(ch!==null)h+=`<p class="small">${ch===c?'✓ ':'✗ '}${ex}</p><div class="row"><button class="spk" id="drSay">🔊 Escuchar la frase</button></div><button class="btn" style="width:100%;margin-top:8px" id="drNext">Siguiente →</button>`;
+ const el=document.getElementById('drCard');el.innerHTML=h;
+ if(ch===null)el.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{dr.n++;if(+b.dataset.i===c)dr.ok++;document.getElementById('drScore').textContent=`Aciertos: ${dr.ok}/${dr.n}`;drRender(+b.dataset.i)});
+ else{document.getElementById('drSay').onclick=()=>speak(f.replace('___',o[c]));document.getElementById('drNext').onclick=drNew}}
+drNew();
+
+// prompts para Claude
+const PROMPTS=[
+ ["🗣️ Conversación diaria (10 min)","Let's practice English. My level is A2 and my goal is B1. Ask me one question at a time about my day, my studies (I study accounting and finance in Honduras) or my plans. After each answer, correct my mistakes and explain them briefly in Spanish. Then ask the next question."],
+ ["✍️ Corrígeme un texto","Corrige este texto en inglés (mi nivel es A2 y quiero llegar a B1). Muéstrame la versión corregida, explícame en español cada error y dame 3 frases para practicar lo que fallé: [PEGA AQUÍ TU TEXTO]"],
+ ["📐 Practica una unidad de gramática","Quiero practicar [ESCRIBE LA UNIDAD, por ejemplo: present perfect]. Dame 10 frases para completar, de una en una. Espera mi respuesta y corrígeme en español antes de pasar a la siguiente."],
+ ["💼 Simulacro de entrevista de trabajo","Act as an interviewer at a bank in Honduras. I'm applying for a junior accountant position. Ask me one question at a time in simple English (A2-B1 level). After each answer, give me feedback in Spanish and a better version of my answer."],
+ ["📰 Lectura con preguntas","Write a short text (150 words, B1 level) about a topic related to banking or personal finance. Then ask me 5 comprehension questions. Correct my answers in Spanish."],
+ ["🧠 Repaso de mis errores","Hazme un repaso de los errores más típicos que cometemos los hispanohablantes en nivel A2 y B1. Dame 10 frases con errores para que yo las corrija, de una en una."]
+];
+document.getElementById('prompts').innerHTML=PROMPTS.map((p,i)=>`<div class="card"><button class="copy" data-c="${i}">📋 Copiar</button><b>${p[0]}</b><div class="prompt">${p[1]}</div></div>`).join('');
+document.querySelectorAll('[data-c]').forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(PROMPTS[+b.dataset.c][1]);b.textContent='✓ Copiado'}catch(e){b.textContent='Mantén presionado el texto para copiarlo'}setTimeout(()=>b.textContent='📋 Copiar',2500)});
+
+// examen
+const Q=DR.map(d=>[d[1].replace('___','_____'),d[2],d[3],d[4]]).concat([
+ ["“Aunque” en inglés es…",["however","although","because"],1,"however = sin embargo."],
+ ["¿Cuál es correcta?",["I am agree","I agree","I'm agreeing"],1,"agree es un verbo: no lleva am."],
+ ["“Hace dos años” se dice…",["before two years","two years ago","since two years"],1,"two years ago"],
+ ["Pasado de “buy”",["buyed","bought","brought"],1,"buy → bought · bring → brought"],
+ ["“Ganar dinero” trabajando se dice…",["win money","earn money","gain money"],1,"win = ganar un premio."]
+]);
+let qO=[],qi=0,qs=0;const QN=25;
+function qStart(){qO=Q.map((_,i)=>i).sort(()=>Math.random()-.5).slice(0,QN);qi=0;qs=0;qR()}
+function qR(){const box=document.getElementById('qzBox');
+ if(qi>=qO.length){const p=Math.round(100*qs/QN);box.innerHTML=`<div class="card" style="text-align:center"><div class="big">${qs}/${QN}</div><p>${p>=85?'🔥 ¡Nivel B1 en camino! Si se repite la próxima semana, haz el EF SET.':p>=65?'👍 Vas bien. Repasa en 🎯 las unidades que fallaste.':'📚 Repasa 📐 Gramática y vuelve a intentarlo el próximo sábado.'}</p><button class="btn" id="qA">Repetir examen</button></div>`;document.getElementById('qA').onclick=qStart;return}
+ const q=Q[qO[qi]];box.innerHTML=`<div class="small muted">Pregunta ${qi+1} de ${QN} · Aciertos ${qs}</div><div class="bar"><i style="width:${100*qi/QN}%"></i></div><div class="card"><b>${q[0]}</b>${q[1].map((o,j)=>`<button class="opt" data-j="${j}">${o}</button>`).join('')}<div id="qE"></div></div>`;
+ box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const j=+b.dataset.j;box.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(+x.dataset.j===q[2])x.classList.add('right')});if(j===q[2])qs++;else b.classList.add('wrong');
+  document.getElementById('qE').innerHTML=`<p class="small" style="margin-bottom:8px">${j===q[2]?'✓ ':'✗ '}${q[3]}</p><button class="btn" style="width:100%" id="qN">Siguiente →</button>`;document.getElementById('qN').onclick=()=>{qi++;qR()}})}
+qStart();
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}</script>
+</body>
+</html>
