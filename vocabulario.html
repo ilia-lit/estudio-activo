@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vocabulario hacia C1</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f2d5a">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--ink:#1d1d1f;--muted:#6b6b70;--line:#e6e3dc;--blue:#2f5bd3;--blue-s:#e8eefc;--green:#1f8a5b;--green-s:#e3f4ec;--amber:#b7791f;--amber-s:#fbf1df;--red:#c2412d;--red-s:#fbe7e3;--violet:#6b46c1;--violet-s:#efe9fb;--teal:#0f7c86;--teal-s:#e0f2f3}
+@media (prefers-color-scheme:dark){:root{--bg:#141416;--card:#1e1e21;--ink:#f2f2f3;--muted:#a0a0a8;--line:#2e2e33;--blue:#7c9cf5;--blue-s:#232b45;--green:#5fcf9b;--green-s:#1d3329;--amber:#e8b45a;--amber-s:#3a2f1c;--red:#f08a76;--red-s:#3d2420;--violet:#b39af0;--violet-s:#2e2742;--teal:#5cc5cf;--teal-s:#1b3335}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5}
+header{padding:20px 16px 8px;max-width:760px;margin:0 auto}
+header .back{display:inline-block;margin-bottom:8px;color:var(--blue);font-weight:600;font-size:.9rem;text-decoration:none}
+header h1{font-size:1.35rem;margin:0 0 4px}
+header p{margin:0;color:var(--muted);font-size:.92rem}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;max-width:760px;margin:0 auto;scrollbar-width:none}
+nav .tabs::-webkit-scrollbar{display:none}
+nav button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 13px;border-radius:999px;font:600 .85rem Inter,sans-serif;cursor:pointer}
+nav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{max-width:760px;margin:0 auto;padding:14px 14px 80px}
+section{display:none} section.on{display:block}
+h2{font-size:1.2rem;margin:18px 0 8px} h3{font-size:1.02rem;margin:16px 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px;margin:10px 0}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.75rem;font-weight:700}
+.b{background:var(--blue-s);color:var(--blue)} .g{background:var(--green-s);color:var(--green)} .a{background:var(--amber-s);color:var(--amber)} .r{background:var(--red-s);color:var(--red)} .v{background:var(--violet-s);color:var(--violet)} .t{background:var(--teal-s);color:var(--teal)}
+.hook{border-left:4px solid var(--violet);background:var(--violet-s);padding:10px 12px;border-radius:0 10px 10px 0;margin:10px 0}
+.hook b{color:var(--violet)}
+.big{font-size:1.9rem;font-weight:800;letter-spacing:-.01em}
+ul,ol{padding-left:20px;margin:6px 0} li{margin:3px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin:6px 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 5px;text-align:left;vertical-align:top}
+th{font-weight:700;color:var(--muted);font-size:.74rem;text-transform:uppercase}
+.day{display:flex;gap:12px}
+.day .n{flex:0 0 42px;height:42px;border-radius:12px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;text-align:center;line-height:1.1}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden}
+summary{padding:13px 15px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.2rem;color:var(--muted)} details[open] summary::after{content:"–"}
+details .in{padding:0 15px 14px}
+.btn{border:none;border-radius:12px;padding:12px 14px;font:700 .95rem Inter,sans-serif;cursor:pointer;background:var(--ink);color:var(--bg)}
+.btn.ok{background:var(--green);color:#fff} .btn.no{background:var(--red);color:#fff} .btn.sec{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.row{display:flex;gap:8px;flex-wrap:wrap} .row .btn{flex:1}
+.fc{min-height:230px;display:flex;flex-direction:column;justify-content:center;text-align:center;cursor:pointer;padding:22px 18px;user-select:none}
+.fc .q{font-size:1.15rem;font-weight:700}
+.fc .ans{font-size:1.05rem;margin-top:14px;border-top:1px dashed var(--line);padding-top:14px}
+.fc .tap{color:var(--muted);font-size:.8rem;margin-top:14px}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.bar>i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.opt{display:block;width:100%;text-align:left;margin:7px 0;padding:12px 13px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 .95rem Inter,sans-serif;cursor:pointer}
+.opt.right{background:var(--green-s);border-color:var(--green)} .opt.wrong{background:var(--red-s);border-color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 12px;font:600 .82rem Inter,sans-serif;cursor:pointer}
+.chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.spk{border:none;background:var(--blue-s);color:var(--blue);border-radius:999px;padding:6px 12px;font:700 .85rem Inter,sans-serif;cursor:pointer;margin:4px 2px}
+.w{display:inline-block;background:var(--blue-s);color:var(--blue);border-radius:8px;padding:1px 7px;margin:2px 1px;font-weight:600;cursor:pointer}
+.choice{flex:1;padding:18px 10px;font-size:1.3rem;font-weight:800;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.choice.right{border-color:var(--green);background:var(--green-s)} .choice.wrong{border-color:var(--red);background:var(--red-s)}
+</style>
+<style>
+.stage{border-left:4px solid var(--blue);padding-left:12px;margin:12px 0}
+.stage.s2{border-color:var(--amber)} .stage.s3{border-color:var(--green)}
+.copy{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:6px 10px;font:600 .8rem Inter,sans-serif;cursor:pointer;float:right}
+.prompt{background:var(--bg);border:1px dashed var(--line);border-radius:10px;padding:10px;font-size:.88rem;margin-top:6px}
+.f{font-family:ui-monospace,Menlo,monospace;background:var(--teal-s);color:var(--teal);padding:2px 6px;border-radius:6px;font-size:.88rem}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="back">← Mis materias</a>
+  <h1>📚 Vocabulario hacia C1</h1>
+  <p>16 bloques · unas 8,000 palabras en 2 años · repaso espaciado por días (como Anki)</p>
+</header>
+<nav><div class="tabs" id="tabs">
+  <button data-s="hoy" class="on">⚡ Hoy</button>
+  <button data-s="lista">🔎 Lista</button>
+  <button data-s="mapa">🗺️ Bloques</button>
+  <button data-s="como">💡 Cómo funciona</button>
+</div></nav>
+<main>
+<div class="card small" style="background:var(--amber-s);border-color:var(--amber)">🔊 <b>¿No se escucha?</b> Quita el <b>modo silencio</b> del iPhone y sube el volumen.</div>
+
+<section id="hoy" class="on">
+  <div class="card">
+    <div class="row" style="text-align:center">
+      <div style="flex:1"><div class="big" id="stDue">0</div><div class="small muted">por repasar</div></div>
+      <div style="flex:1"><div class="big" id="stNew">0</div><div class="small muted">nuevas hoy</div></div>
+      <div style="flex:1"><div class="big" id="stLearned">0</div><div class="small muted">aprendidas</div></div>
+    </div>
+    <div class="bar"><i id="stBar"></i></div>
+    <div class="small muted" id="stTxt"></div>
+  </div>
+  <div class="chips" id="dirChips"></div>
+  <div class="card fc" id="card"></div>
+  <div class="row" id="btns" style="display:none">
+    <button class="btn no" data-r="0">Otra vez</button>
+    <button class="btn sec" data-r="1">Difícil</button>
+    <button class="btn ok" data-r="2">Bien</button>
+  </div>
+  <div class="card small">
+    <b>Palabras nuevas por día:</b>
+    <div class="chips" id="limChips"></div>
+    <span class="muted">Recomendado: 15. Si un día tienes muchas por repasar, no agregues nuevas.</span>
+  </div>
+</section>
+
+<section id="lista">
+  <h2>Bloque 1 · todas las palabras</h2>
+  <input id="q" placeholder="Buscar en inglés o español…" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 1rem Inter,sans-serif">
+  <div id="listBox"></div>
+</section>
+
+<section id="mapa">
+  <h2>Los 16 bloques hacia C1</h2>
+  <p class="small muted">Cuando tengas aprendidas unas tres cuartas partes de un bloque, pídele a Claude el siguiente y súbelo igual que siempre.</p>
+  <div id="blocks"></div>
+</section>
+
+<section id="como">
+  <h2>Por qué este método funciona</h2>
+  <div class="card">
+    <ol>
+      <li><b>Repetición espaciada:</b> cada palabra vuelve justo cuando estás a punto de olvidarla. Si la sabes, la siguiente vez aparece 1, 3, 7, 14 y luego 30 días después. Si la fallas, vuelve hoy mismo.</li>
+      <li><b>Recuperación activa:</b> antes de voltear la tarjeta, <b>dila en voz alta</b>. El esfuerzo de recordar es lo que la fija.</li>
+      <li><b>Contexto:</b> cada palabra trae una frase de ejemplo. Repítela completa con el 🔊 (shadowing).</li>
+      <li><b>Frecuencia:</b> los bloques van de las palabras más usadas a las más avanzadas. Lo primero que aprendes es lo que más vas a oír.</li>
+    </ol>
+  </div>
+  <div class="hook"><b>💜 Los 3 botones:</b> <b>Otra vez</b> = no la recordé (vuelve en unos minutos) · <b>Difícil</b> = la recordé con esfuerzo (vuelve mañana) · <b>Bien</b> = la recordé (sube de nivel y tarda más en volver).</div>
+  <div class="card small"><b>Regla de oro:</b> haz tus repasos <b>todos los días</b>, aunque sean 10 minutos. Si dejas de repasar una semana, se te acumulan las tarjetas.</div>
+</section>
+</main>
+<script>
+let VOICE=null;
+function pickVoice(){try{const vs=speechSynthesis.getVoices();VOICE=vs.find(v=>v.lang==='en-US'&&/Samantha|Google US|Aaron|Nicky/i.test(v.name))||vs.find(v=>v.lang==='en-US')||vs.find(v=>v.lang&&v.lang.startsWith('en'))||null}catch(e){}}
+try{pickVoice();speechSynthesis.onvoiceschanged=pickVoice}catch(e){}
+function speak(t,slow){try{const ss=window.speechSynthesis;if(!ss)return;if(ss.speaking||ss.pending)ss.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=slow?0.6:0.9;u.volume=1;if(!VOICE)pickVoice();if(VOICE)u.voice=VOICE;ss.speak(u);ss.resume()}catch(e){}}
+const tabs=document.querySelectorAll('#tabs button');
+function show(id){tabs.forEach(b=>b.classList.toggle('on',b.dataset.s===id));document.querySelectorAll('main section').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo({top:0})}
+tabs.forEach(b=>b.onclick=()=>show(b.dataset.s));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+const BLOCK1=[["ask", "preguntar / pedir", "Can I ask you a question?"], ["answer", "responder; respuesta", "Please answer the phone."], ["become", "llegar a ser / convertirse en", "She wants to become an accountant."], ["begin", "empezar", "The class begins at seven."], ["believe", "creer", "I believe you."], ["borrow", "pedir prestado", "Can I borrow your pen?"], ["bring", "traer", "Bring your notebook tomorrow."], ["build", "construir", "They are building a new bank."], ["buy", "comprar", "I need to buy groceries."], ["call", "llamar", "Call me after work."], ["carry", "llevar / cargar", "She carries a heavy bag."], ["change", "cambiar; cambio", "I want to change my plans."], ["check", "revisar / verificar", "Check your email."], ["choose", "elegir", "Choose one option."], ["clean", "limpiar; limpio", "I clean my room on Saturdays."], ["close", "cerrar; cerca", "Close the door, please."], ["cook", "cocinar", "My mother cooks very well."], ["cost", "costar; costo", "How much does it cost?"], ["count", "contar (números)", "Count the money again."], ["cry", "llorar", "The baby is crying."], ["cut", "cortar", "Cut the paper in half."], ["decide", "decidir", "I decided to study English."], ["describe", "describir", "Describe your best friend."], ["die", "morir", "Plants die without water."], ["draw", "dibujar", "Can you draw a map?"], ["dream", "soñar; sueño", "I dream of traveling."], ["drink", "beber", "Drink more water."], ["drive", "manejar", "I can't drive."], ["end", "terminar; fin", "The movie ends at ten."], ["enjoy", "disfrutar", "I enjoy music."], ["explain", "explicar", "Can you explain this to me?"], ["fall", "caer", "Be careful, don't fall."], ["feel", "sentir(se)", "I feel happy today."], ["fill in", "llenar (un formulario)", "Fill in the form, please."], ["find", "encontrar", "I can't find my keys."], ["finish", "terminar", "I finished my homework."], ["fix", "arreglar", "He fixed my phone."], ["fly", "volar", "Birds fly south."], ["follow", "seguir", "Follow me."], ["forget", "olvidar", "Don't forget your ID."], ["get", "obtener / conseguir / llegar", "I get home at six."], ["give", "dar", "Give me a minute."], ["grow", "crecer / cultivar", "Children grow fast."], ["happen", "pasar / ocurrir", "What happened?"], ["hate", "odiar", "I hate waiting."], ["hear", "oír", "Can you hear me?"], ["help", "ayudar; ayuda", "Can you help me?"], ["hold", "sostener", "Hold my bag, please."], ["hope", "esperar (con esperanza)", "I hope you feel better."], ["hurry", "apurarse", "Hurry up! We're late."], ["hurt", "doler / lastimar", "My back hurts."], ["improve", "mejorar", "I want to improve my English."], ["invite", "invitar", "She invited me to her party."], ["join", "unirse a", "Join our team."], ["keep", "mantener / guardar", "Keep the change."], ["know", "saber / conocer", "I know the answer."], ["laugh", "reír", "We laughed a lot."], ["learn", "aprender", "I learn new words every day."], ["leave", "irse / dejar", "I leave work at five."], ["lend", "prestar", "Can you lend me ten dollars?"], ["let", "dejar / permitir", "Let me help you."], ["lie", "mentir; mentira", "Don't lie to me."], ["listen", "escuchar", "Listen to the teacher."], ["live", "vivir", "I live in Tegucigalpa."], ["look", "mirar / parecer", "Look at this."], ["look for", "buscar", "I'm looking for a job."], ["lose", "perder", "Don't lose your ticket."], ["make", "hacer / fabricar", "She makes great cakes."], ["mean", "significar", "What does this word mean?"], ["meet", "conocer / reunirse", "Nice to meet you."], ["miss", "extrañar / perder (el bus)", "I miss my grandmother."], ["move", "mover(se) / mudarse", "We moved to a new house."], ["need", "necesitar", "I need help."], ["open", "abrir; abierto", "Open your books."], ["order", "pedir (comida) / ordenar", "I'd like to order a pizza."], ["own", "tener / poseer; propio", "She owns a small business."], ["pass", "pasar / aprobar", "I passed the exam."], ["pay", "pagar", "I'll pay by card."], ["pick up", "recoger", "Pick me up at eight."], ["plan", "planear; plan", "We plan to travel in May."], ["play", "jugar / tocar", "He plays the guitar."], ["prefer", "preferir", "I prefer tea."], ["prepare", "preparar", "Prepare for the exam."], ["promise", "prometer; promesa", "I promise to call you."], ["put", "poner", "Put it on the table."], ["rain", "llover; lluvia", "It rains a lot in June."], ["reach", "alcanzar / llegar a", "We reached our goal."], ["receive", "recibir", "Did you receive my email?"], ["remember", "recordar", "I remember your name."], ["rent", "alquilar; alquiler", "They rent an apartment."], ["repeat", "repetir", "Repeat after me."], ["rest", "descansar; descanso", "You need to rest."], ["return", "regresar / devolver", "Return the book on Monday."], ["run", "correr", "I run every morning."], ["save", "ahorrar / guardar / salvar", "Save your money."], ["see", "ver", "I see the problem."], ["sell", "vender", "They sell cars."], ["send", "enviar", "Send me the file."], ["share", "compartir", "Let's share the cost."], ["show", "mostrar", "Show me your work."], ["sing", "cantar", "She sings beautifully."], ["sit down", "sentarse", "Sit down, please."], ["sleep", "dormir", "I sleep eight hours."], ["smile", "sonreír; sonrisa", "Smile for the photo."], ["spend", "gastar / pasar (tiempo)", "I spend too much money."], ["stand", "estar de pie / soportar", "I can't stand the noise."], ["stay", "quedarse", "Stay at home."], ["steal", "robar", "Someone stole my phone."], ["stop", "parar / dejar de", "Stop talking."], ["succeed", "tener éxito", "You will succeed."], ["suggest", "sugerir", "I suggest a short break."], ["take", "tomar / llevar", "Take your time."], ["talk", "hablar / conversar", "We need to talk."], ["teach", "enseñar", "She teaches math."], ["tell", "decir / contar", "Tell me the truth."], ["think", "pensar / creer", "I think so."], ["throw", "lanzar / tirar", "Don't throw trash on the street."], ["travel", "viajar", "I want to travel to Canada."], ["try", "intentar / probar", "Try again."], ["turn", "girar / voltear", "Turn left at the bank."], ["understand", "entender", "I don't understand."], ["use", "usar", "Can I use your phone?"], ["visit", "visitar", "Visit us soon."], ["wait", "esperar", "Wait for me."], ["wake up", "despertarse", "I wake up at six."], ["walk", "caminar", "I walk to work."], ["wash", "lavar", "Wash your hands."], ["watch", "ver (TV) / vigilar", "We watch movies on Fridays."], ["wear", "llevar puesto", "She wears glasses."], ["win", "ganar (un premio)", "Our team won."], ["wish", "desear", "I wish you luck."], ["worry", "preocuparse", "Don't worry."], ["agree", "estar de acuerdo", "I agree with you."], ["allow", "permitir", "Phones are not allowed."], ["arrive", "llegar", "The bus arrives at nine."], ["attend", "asistir", "I attend class every day."], ["avoid", "evitar", "Avoid sugar."], ["belong", "pertenecer", "This bag belongs to me."], ["book", "reservar; libro", "Book a table for two."], ["break", "romper; descanso", "Let's take a break."], ["catch", "atrapar / tomar (el bus)", "I need to catch the bus."], ["celebrate", "celebrar", "We celebrate Christmas together."], ["compare", "comparar", "Compare the prices."], ["complain", "quejarse", "He always complains."], ["continue", "continuar", "Continue reading."], ["create", "crear", "Create a new password."], ["deliver", "entregar", "They deliver food."], ["depend on", "depender de", "It depends on you."], ["develop", "desarrollar", "Develop your skills."], ["discuss", "hablar de / analizar", "Let's discuss the plan."], ["earn", "ganar (dinero)", "She earns a good salary."], ["expect", "esperar (algo probable)", "I expect good results."], ["fail", "fallar / reprobar", "Don't be afraid to fail."], ["fight", "pelear", "They fight a lot."], ["forgive", "perdonar", "Please forgive me."], ["guess", "adivinar", "Guess what!"], ["include", "incluir", "The price includes tax."], ["introduce", "presentar (a alguien)", "Let me introduce my friend."], ["manage", "gestionar / lograr", "She manages a team."], ["mention", "mencionar", "He mentioned your name."], ["notice", "notar", "I noticed a mistake."], ["offer", "ofrecer; oferta", "They offered me a job."], ["practice", "practicar", "Practice every day."], ["print", "imprimir", "Print the report."], ["produce", "producir", "This farm produces coffee."], ["protect", "proteger", "Protect your password."], ["provide", "proporcionar / dar", "The bank provides loans."], ["raise", "levantar / subir", "Raise your hand."], ["realize", "darse cuenta", "I realized my mistake."], ["recommend", "recomendar", "I recommend this book."], ["reduce", "reducir", "Reduce your expenses."], ["refuse", "negarse", "She refused to pay."], ["relax", "relajarse", "Relax and breathe."], ["replace", "reemplazar", "Replace the old battery."], ["reply", "responder", "Reply to the email."], ["require", "requerir", "This job requires English."], ["solve", "resolver", "Solve the problem."], ["support", "apoyar; apoyo", "My family supports me."], ["seem", "parecer", "You seem tired."], ["thing", "cosa", "I have many things to do."], ["life", "vida", "Life is beautiful."], ["world", "mundo", "English is spoken all over the world."], ["child", "niño/a (plural: children)", "The children are playing."], ["woman", "mujer (plural: women)", "She is a strong woman."], ["family", "familia", "My family is big."], ["friend", "amigo/a", "She is my best friend."], ["home", "hogar / casa", "I'm at home."], ["job", "empleo", "I'm looking for a new job."], ["company", "empresa", "She works for a big company."], ["business", "negocio", "He has his own business."], ["money", "dinero", "I need more money."], ["price", "precio", "The price is too high."], ["bill", "cuenta / factura", "Can I have the bill, please?"], ["school", "escuela", "My school was near my house."], ["university", "universidad", "I study at the university."], ["teacher", "profesor/a", "My teacher is very patient."], ["student", "estudiante", "I'm a student."], ["question", "pregunta", "I have a question."], ["problem", "problema", "No problem!"], ["idea", "idea", "That's a great idea."], ["reason", "razón / motivo", "What's the reason?"], ["example", "ejemplo", "Give me an example."], ["group", "grupo", "We work in groups."], ["country", "país", "Honduras is a beautiful country."], ["city", "ciudad", "I live in a big city."], ["street", "calle", "The bank is on this street."], ["place", "lugar", "This is a nice place."], ["room", "habitación / cuarto", "My room is small."], ["office", "oficina", "I'm at the office."], ["store", "tienda", "The store opens at nine."], ["market", "mercado", "I buy fruit at the market."], ["health", "salud", "Health is important."], ["body", "cuerpo", "Exercise is good for your body."], ["head", "cabeza", "I have a headache."], ["hand", "mano", "Raise your hand."], ["eye", "ojo", "She has green eyes."], ["heart", "corazón", "My heart is beating fast."], ["food", "comida", "I love Honduran food."], ["water", "agua", "Drink water."], ["breakfast", "desayuno", "I eat breakfast at seven."], ["lunch", "almuerzo", "Let's have lunch."], ["dinner", "cena", "Dinner is ready."], ["car", "carro", "My car is old."], ["road", "carretera / camino", "The road is closed."], ["trip", "viaje", "How was your trip?"], ["vacation", "vacaciones", "I need a vacation."], ["weekend", "fin de semana", "See you on the weekend."], ["morning", "mañana (parte del día)", "Good morning!"], ["afternoon", "tarde", "I study in the afternoon."], ["night", "noche", "Good night!"], ["week", "semana", "I work five days a week."], ["month", "mes", "Next month I'll start a new course."], ["hour", "hora", "The meeting lasts one hour."], ["minute", "minuto", "Wait a minute."], ["moment", "momento", "Just a moment, please."], ["future", "futuro", "Think about your future."], ["past", "pasado", "Don't live in the past."], ["story", "historia / cuento", "Tell me a story."], ["news", "noticias", "I watch the news every day."], ["information", "información", "I need more information."], ["phone", "teléfono", "My phone is dead."], ["computer", "computadora", "I work on a computer."], ["music", "música", "I listen to music every day."], ["movie", "película", "Let's watch a movie."], ["game", "juego / partido", "Did you watch the game?"], ["team", "equipo", "Our team is strong."], ["goal", "meta / gol", "My goal is to speak English."], ["party", "fiesta", "The party starts at eight."], ["gift", "regalo", "Thank you for the gift."], ["weather", "clima / tiempo", "The weather is nice today."], ["door", "puerta", "Close the door."], ["window", "ventana", "Open the window."], ["table", "mesa", "Put it on the table."], ["chair", "silla", "Take a chair."], ["bed", "cama", "I go to bed at ten."], ["clothes", "ropa", "I need new clothes."], ["bag", "bolsa / bolso", "Where is my bag?"], ["key", "llave", "I lost my keys."], ["paper", "papel", "I need a piece of paper."], ["page", "página", "Open your book to page ten."], ["word", "palabra", "I learned a new word."], ["language", "idioma", "English is a global language."], ["letter", "carta / letra", "I wrote a letter."], ["number", "número", "What's your phone number?"], ["part", "parte", "This is the best part."], ["side", "lado", "Sit on this side."], ["kind", "tipo; amable", "What kind of music do you like?"], ["size", "tamaño / talla", "What size are you?"], ["form", "formulario", "Please complete this form."], ["list", "lista", "Make a shopping list."], ["rule", "regla", "Follow the rules."], ["law", "ley", "It's against the law."], ["government", "gobierno", "The government raised taxes."], ["nature", "naturaleza", "I love nature."], ["noise", "ruido", "Too much noise!"], ["voice", "voz", "She has a beautiful voice."], ["mistake", "error", "Everyone makes mistakes."], ["fact", "hecho / dato", "That's a fact."], ["truth", "verdad", "Tell me the truth."], ["experience", "experiencia", "Do you have work experience?"], ["skill", "habilidad", "Communication is a key skill."], ["knowledge", "conocimiento", "Knowledge is power."], ["education", "educación", "Education changes lives."], ["career", "carrera profesional", "I want a career in finance."], ["salary", "sueldo", "The salary is good."], ["meeting", "reunión", "I have a meeting at ten."], ["boss", "jefe/a", "My boss is very nice."], ["customer", "cliente", "The customer is always right."], ["service", "servicio", "The service was excellent."], ["product", "producto", "This product is new."], ["tax", "impuesto", "The price includes tax."], ["bank", "banco", "I work at a bank."], ["account", "cuenta", "I opened a bank account."], ["loan", "préstamo", "I applied for a loan."], ["debt", "deuda", "I want to pay my debt."], ["cash", "efectivo", "Do you accept cash?"], ["receipt", "recibo", "Keep the receipt."], ["appointment", "cita (médica / de trabajo)", "I have a doctor's appointment."], ["interview", "entrevista", "My job interview is tomorrow."], ["choice", "opción / elección", "You have a choice."], ["decision", "decisión", "It's your decision."], ["opinion", "opinión", "In my opinion, it's a good idea."], ["feeling", "sentimiento", "I have a good feeling."], ["fear", "miedo", "Don't let fear stop you."], ["luck", "suerte", "Good luck!"], ["age", "edad", "Age is just a number."], ["birthday", "cumpleaños", "Happy birthday!"], ["neighbor", "vecino/a", "My neighbor is very friendly."], ["husband", "esposo", "Her husband is a doctor."], ["wife", "esposa", "His wife is a teacher."], ["parents", "padres", "My parents live in San Pedro Sula."], ["person", "persona", "She is a good person."], ["member", "miembro", "I'm a member of the club."], ["area", "área / zona", "This is a safe area."], ["level", "nivel", "My level is A2."], ["result", "resultado", "The results are good."], ["exam", "examen", "I have an exam on Friday."], ["grade", "nota / calificación", "I got a good grade."], ["homework", "tarea", "I finished my homework."], ["subject", "materia / tema", "Math is my favorite subject."], ["topic", "tema", "Choose a topic."], ["project", "proyecto", "We're working on a project."], ["report", "informe", "Send me the report."], ["chance", "oportunidad / posibilidad", "Give me a chance."], ["opportunity", "oportunidad", "This is a great opportunity."], ["advantage", "ventaja", "Speaking English is an advantage."], ["habit", "hábito", "Reading is a good habit."], ["step", "paso", "One step at a time."], ["new", "nuevo", "I have a new phone."], ["old", "viejo / antiguo", "This building is old."], ["young", "joven", "She is young."], ["big", "grande", "They live in a big house."], ["small", "pequeño", "I have a small car."], ["long", "largo", "It was a long day."], ["short", "corto / bajo", "The meeting was short."], ["high", "alto", "Prices are high."], ["low", "bajo", "The interest rate is low."], ["early", "temprano", "I wake up early."], ["late", "tarde", "Sorry, I'm late."], ["easy", "fácil", "This exercise is easy."], ["difficult", "difícil", "English isn't difficult."], ["important", "importante", "This is very important."], ["possible", "posible", "Is it possible?"], ["different", "diferente", "We are very different."], ["same", "mismo", "We have the same idea."], ["next", "siguiente / próximo", "See you next week."], ["last", "último / pasado", "Last year I started English."], ["free", "libre / gratis", "The class is free."], ["busy", "ocupado", "I'm busy right now."], ["happy", "feliz", "I'm happy today."], ["sad", "triste", "Why are you sad?"], ["tired", "cansado", "I'm very tired."], ["angry", "enojado", "Don't be angry."], ["afraid", "asustado / con miedo", "I'm afraid of dogs."], ["ready", "listo", "Are you ready?"], ["sure", "seguro", "Are you sure?"], ["right", "correcto / derecho", "You are right."], ["wrong", "incorrecto / equivocado", "That's wrong."], ["true", "verdadero", "Is it true?"], ["real", "real", "This is a real problem."], ["full", "lleno", "The bus is full."], ["empty", "vacío", "The room is empty."], ["cheap", "barato", "This phone is cheap."], ["expensive", "caro", "Rent is expensive."], ["rich", "rico", "He is rich."], ["poor", "pobre", "They are poor but happy."], ["safe", "seguro (sin peligro)", "Is this area safe?"], ["dangerous", "peligroso", "That road is dangerous."], ["healthy", "saludable", "Eat healthy food."], ["sick", "enfermo", "I feel sick."], ["quiet", "tranquilo / callado", "The library is quiet."], ["loud", "ruidoso / fuerte", "The music is too loud."], ["hot", "caliente / caluroso", "It's hot today."], ["cold", "frío", "The water is cold."], ["fast", "rápido", "He drives fast."], ["slow", "lento", "The internet is slow."], ["strong", "fuerte", "She is very strong."], ["weak", "débil", "I feel weak."], ["beautiful", "hermoso", "What a beautiful day!"], ["nice", "agradable / bonito", "Have a nice day."], ["friendly", "amigable", "People here are friendly."], ["funny", "gracioso", "He is very funny."], ["interesting", "interesante", "This book is interesting."], ["boring", "aburrido (que aburre)", "The movie was boring."], ["bored", "aburrido (que se aburre)", "I'm bored."], ["famous", "famoso", "She is a famous singer."], ["popular", "popular", "This app is popular."], ["useful", "útil", "This app is useful."], ["necessary", "necesario", "Is it necessary?"], ["special", "especial", "Today is a special day."], ["simple", "simple / sencillo", "The answer is simple."], ["common", "común", "It's a common mistake."], ["main", "principal", "What's the main idea?"], ["whole", "entero / completo", "I ate the whole pizza."], ["careful", "cuidadoso", "Be careful!"], ["polite", "educado / cortés", "Be polite with customers."], ["rude", "grosero", "Don't be rude."], ["honest", "honesto", "She is very honest."], ["lazy", "perezoso", "Don't be lazy."], ["smart", "inteligente", "You are smart."], ["proud", "orgulloso", "I'm proud of you."], ["worried", "preocupado", "I'm worried about the exam."], ["surprised", "sorprendido", "I was surprised."], ["excited", "emocionado", "I'm excited about the trip."], ["nervous", "nervioso", "I'm nervous about the interview."], ["alone", "solo (sin compañía)", "I live alone."], ["available", "disponible", "Are you available tomorrow?"], ["crowded", "lleno de gente", "The bus was crowded."], ["comfortable", "cómodo", "This chair is comfortable."], ["delicious", "delicioso", "The food is delicious."], ["wonderful", "maravilloso", "We had a wonderful time."], ["terrible", "terrible", "The traffic is terrible."], ["strange", "extraño", "That's strange."], ["normal", "normal", "It's normal to make mistakes."], ["public", "público", "Use public transportation."], ["private", "privado", "This is a private bank."], ["local", "local", "I support local businesses."], ["international", "internacional", "It's an international company."], ["modern", "moderno", "The office is very modern."], ["fair", "justo", "That's not fair."], ["serious", "serio / grave", "This is serious."], ["clear", "claro", "Is it clear?"], ["always", "siempre", "I always study at night."], ["usually", "normalmente", "I usually take the bus."], ["often", "a menudo", "I often read in English."], ["sometimes", "a veces", "Sometimes I cook."], ["rarely", "rara vez", "I rarely watch TV."], ["never", "nunca", "I never smoke."], ["already", "ya", "I already paid."], ["yet", "todavía (negativas) / ya (preguntas)", "I haven't finished yet."], ["still", "todavía / aún", "I still live with my parents."], ["just", "solo / acabar de", "I just arrived."], ["soon", "pronto", "See you soon."], ["later", "más tarde", "Call me later."], ["ago", "hace (tiempo)", "I started two years ago."], ["almost", "casi", "I'm almost ready."], ["enough", "suficiente", "I don't have enough time."], ["too", "demasiado / también", "It's too expensive."], ["very", "muy", "Thank you very much."], ["really", "realmente / de verdad", "I really like it."], ["quite", "bastante", "It's quite good."], ["only", "solo / únicamente", "I only have five dollars."], ["even", "incluso / aun", "Even my boss agreed."], ["maybe", "quizás", "Maybe tomorrow."], ["probably", "probablemente", "I'll probably go."], ["actually", "en realidad", "Actually, I'm from Honduras."], ["especially", "especialmente", "I love fruit, especially mango."], ["finally", "finalmente / por fin", "Finally, we finished!"], ["suddenly", "de repente", "Suddenly, the lights went out."], ["together", "juntos", "Let's study together."], ["abroad", "en el extranjero", "I want to study abroad."], ["everywhere", "en todas partes", "I looked everywhere."], ["instead", "en vez de eso", "Let's walk instead."], ["once", "una vez", "I go to the gym once a week."], ["twice", "dos veces", "I called you twice."], ["quickly", "rápidamente", "Come quickly!"], ["slowly", "despacio", "Speak slowly, please."], ["carefully", "con cuidado", "Drive carefully."], ["well", "bien", "You speak English well."], ["fortunately", "afortunadamente", "Fortunately, nobody was hurt."], ["unfortunately", "lamentablemente", "Unfortunately, I can't come."]];
+const BLOCKS=[
+ ["1","A2 → B1","Palabras esenciales del día a día, el trabajo y el dinero",true],
+ ["2","A2 → B1","Las 1,000 más comunes: verbos, adjetivos y expresiones frecuentes",false],
+ ["3","B1","Casa, salud, viajes, compras y sentimientos",false],
+ ["4","B1","Estudios, trabajo, tecnología y opiniones",false],
+ ["5","B1 → B2","Phrasal verbs I (los 100 más usados)",false],
+ ["6","B1 → B2","Colocaciones: make/do, take/have, verbo + sustantivo",false],
+ ["7","B2","Negocios y oficina: reuniones, correos, proyectos",false],
+ ["8","B2","Finanzas y contabilidad en inglés",false],
+ ["9","B2","Banca, riesgo y regulación (CNBS, Basilea, MISBR)",false],
+ ["10","B2","Phrasal verbs II y verbos con preposición",false],
+ ["11","B2 → C1","Academic Word List I: el inglés académico más usado",false],
+ ["12","B2 → C1","Academic Word List II",false],
+ ["13","C1","Conectores avanzados y lenguaje para argumentar",false],
+ ["14","C1","Expresiones idiomáticas y modismos frecuentes",false],
+ ["15","C1","Matices: sinónimos, registro formal e informal",false],
+ ["16","C1","Economía, sociedad y actualidad: vocabulario de noticias",false]
+];
+document.getElementById('blocks').innerHTML=BLOCKS.map(b=>`<div class="card" style="${b[3]?'':'opacity:.6'}"><span class="pill ${b[3]?'g':'b'}">Bloque ${b[0]} · ${b[1]}</span> ${b[3]?'<span class="pill g">✓ Disponible · '+BLOCK1.length+' palabras</span>':'<span class="pill a">🔒 Próximamente</span>'}<div style="margin-top:6px"><b>${b[2]}</b></div></div>`).join('');
+
+const IV=[0,1,3,7,14,30,60];
+const today=()=>Math.floor((Date.now()-new Date().getTimezoneOffset()*60000)/86400000);
+let S=store.get('voc_state',{});   // idx -> {b,d}
+let meta=store.get('voc_meta',{day:0,n:0,lim:15,dir:'en'});
+if(meta.day!==today()){meta.day=today();meta.n=0;store.set('voc_meta',meta)}
+let queue=[],cur=null,flip=false;
+function build(){
+  const t=today();queue=[];
+  BLOCK1.forEach((r,i)=>{if(S[i]&&S[i].d<=t)queue.push(i)});
+  queue.sort(()=>Math.random()-.5);
+  let room=Math.max(0,meta.lim-meta.n);
+  for(let i=0;i<BLOCK1.length&&room>0;i++){if(!S[i]){queue.push(i);room--}}
+}
+function stats(){
+  const t=today(),due=Object.values(S).filter(s=>s.d<=t).length,learned=Object.values(S).filter(s=>s.b>=3).length;
+  document.getElementById('stDue').textContent=queue.filter(i=>S[i]).length;
+  document.getElementById('stNew').textContent=Math.max(0,meta.lim-meta.n);
+  document.getElementById('stLearned').textContent=learned;
+  document.getElementById('stBar').style.width=(100*learned/BLOCK1.length)+'%';
+  document.getElementById('stTxt').textContent=`Bloque 1: ${learned} de ${BLOCK1.length} aprendidas · ${Object.keys(S).length} vistas`;
+}
+function render(){
+  stats();const el=document.getElementById('card');
+  if(!queue.length){cur=null;el.innerHTML='<div class="big">🎉</div><div class="q">¡Terminaste por hoy!</div><div class="small muted" style="margin-top:8px">Vuelve mañana para tus repasos. Si quieres más, sube el número de palabras nuevas por día.</div>';document.getElementById('btns').style.display='none';return}
+  cur=queue[0];const [en,es,ex]=BLOCK1[cur],isNew=!S[cur],enFront=meta.dir==='en';
+  const sp=`<div><button class="spk" id="sw">🔊 Palabra</button> <button class="spk" id="sx">🔊 Frase</button> <button class="spk" id="sl">🐢 Lento</button></div>`;
+  el.innerHTML=`<div>${isNew?'<span class="pill v">Nueva</span>':'<span class="pill b">Repaso</span>'}</div>
+   <div class="q" style="margin-top:12px;font-size:${enFront?'1.6rem':'1.2rem'}">${enFront?en:es}</div>
+   ${enFront?'<div><button class="spk" id="sw0">🔊</button></div>':''}
+   ${flip?`<div class="ans"><div style="font-size:1.2rem"><b>${enFront?es:en}</b></div><div style="margin-top:8px"><i>${ex}</i></div>${sp}</div>`:'<div class="tap">Dilo en voz alta y luego toca la tarjeta</div>'}`;
+  const b=(id,f)=>{const x=document.getElementById(id);if(x)x.onclick=e=>{e.stopPropagation();f()}};
+  b('sw0',()=>speak(en));b('sw',()=>speak(en));b('sx',()=>speak(ex));b('sl',()=>speak(ex,true));
+  document.getElementById('btns').style.display=flip?'flex':'none';
+}
+document.getElementById('card').onclick=()=>{if(cur!==null&&!flip){flip=true;render();speak(BLOCK1[cur][0])}};
+document.querySelectorAll('#btns [data-r]').forEach(bt=>bt.onclick=()=>{
+  const r=+bt.dataset.r,t=today(),i=queue.shift(),wasNew=!S[i];let s=S[i]||{b:0,d:t};
+  if(wasNew){meta.n++;store.set('voc_meta',meta)}
+  if(r===0){s={b:0,d:t};queue.splice(Math.min(3,queue.length),0,i)}
+  else if(r===1){s={b:Math.max(1,s.b),d:t+1}}
+  else{const nb=Math.min(IV.length-1,s.b+1);s={b:nb,d:t+IV[nb]}}
+  S[i]=s;store.set('voc_state',S);flip=false;render()});
+const dc=document.getElementById('dirChips');
+[["Inglés → Español","en"],["Español → Inglés","es"]].forEach(([t,v])=>{const b=document.createElement('button');b.className='chip'+(meta.dir===v?' on':'');b.textContent=t;b.onclick=()=>{meta.dir=v;store.set('voc_meta',meta);dc.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));flip=false;render()};dc.appendChild(b)});
+const lc=document.getElementById('limChips');
+[0,5,10,15,20,30].forEach(n=>{const b=document.createElement('button');b.className='chip'+(meta.lim===n?' on':'');b.textContent=n;b.onclick=()=>{meta.lim=n;store.set('voc_meta',meta);lc.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));build();flip=false;render()};lc.appendChild(b)});
+build();render();
+
+function list(f){f=(f||'').toLowerCase();document.getElementById('listBox').innerHTML=BLOCK1.map((r,i)=>[r,i]).filter(([r])=>!f||r[0].toLowerCase().includes(f)||r[1].toLowerCase().includes(f)).map(([r,i])=>{const s=S[i];const tag=!s?'<span class="pill b">Nueva</span>':s.b>=3?'<span class="pill g">Aprendida</span>':'<span class="pill a">En repaso</span>';return `<div class="card" style="padding:10px 12px"><span class="w">${r[0]}</span> — ${r[1]} ${tag}<div class="small muted" style="margin-top:4px"><i>${r[2]}</i></div></div>`}).join('')}
+document.getElementById('q').oninput=e=>list(e.target.value);
+document.addEventListener('click',e=>{const w=e.target.closest('.w');if(w)speak(w.textContent)});
+tabs.forEach(b=>b.addEventListener('click',()=>{if(b.dataset.s==='lista'){S=store.get('voc_state',{});list(document.getElementById('q').value)}}));
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}</script>
+</body>
+</html>

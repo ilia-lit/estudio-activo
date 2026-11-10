@@ -58,10 +58,13 @@ const MATERIAS=[
   {file:"ingles-b1.html", tag:"Inglés · Ruta a C1 · Etapa 1", title:"Inglés A2 → B1: gramática y vocabulario",
    desc:"Tu ruta de 2 años hacia C1, 14 unidades de gramática, práctica, ejercicios para hacer con Claude y examen semanal. Con audio 🔊.",
    key:"b1_boxes", total:85}
+  ,{file:"vocabulario.html", tag:"Inglés · Vocabulario C1", title:"Vocabulario hacia C1 · 16 bloques",
+   desc:"Bloque 1 disponible (461 palabras). Repaso por días como Anki, frase de ejemplo y audio en cada palabra.",
+   key:"voc_state", total:461}
 ];
 function get(k){try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return {}}}
 document.getElementById('list').innerHTML=MATERIAS.map(m=>{
-  const b=get(m.key); const done=Object.values(b).filter(v=>v===3).length; const pct=Math.round(100*done/m.total);
+  const b=get(m.key); const done=Object.values(b).filter(v=>typeof v==='number'?v===3:(v&&v.b>=3)).length; const pct=Math.round(100*done/m.total);
   return `<a class="m" href="${m.file}"><div class="tag">${m.tag}</div><h2>${m.title}</h2><p>${m.desc}</p>
   <div class="bar"><i style="width:${pct}%"></i></div><div class="prog">${done} de ${m.total} tarjetas dominadas (${pct}%)</div></a>`}).join('');
 // instalación
