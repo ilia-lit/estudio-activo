@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funciones de vigilancia · LM1–LM7</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f2d5a">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f2; --card:#ffffff; --ink:#1d1d1f; --muted:#6b6b70; --line:#e6e3dc;
+  --blue:#2f5bd3; --blue-s:#e8eefc; --green:#1f8a5b; --green-s:#e3f4ec;
+  --amber:#b7791f; --amber-s:#fbf1df; --red:#c2412d; --red-s:#fbe7e3;
+  --violet:#6b46c1; --violet-s:#efe9fb; --teal:#0f7c86; --teal-s:#e0f2f3;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#141416; --card:#1e1e21; --ink:#f2f2f3; --muted:#a0a0a8; --line:#2e2e33;
+  --blue:#7c9cf5; --blue-s:#232b45; --green:#5fcf9b; --green-s:#1d3329;
+  --amber:#e8b45a; --amber-s:#3a2f1c; --red:#f08a76; --red-s:#3d2420;
+  --violet:#b39af0; --violet-s:#2e2742; --teal:#5cc5cf; --teal-s:#1b3335;}
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5}
+header{padding:20px 16px 8px;max-width:760px;margin:0 auto}
+header h1{font-size:1.35rem;margin:0 0 4px;letter-spacing:-.01em}
+header .back{display:inline-block;margin-bottom:8px;color:var(--blue);font-weight:600;font-size:.9rem;text-decoration:none}
+header p{margin:0;color:var(--muted);font-size:.92rem}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;max-width:760px;margin:0 auto;scrollbar-width:none}
+nav .tabs::-webkit-scrollbar{display:none}
+nav button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 13px;border-radius:999px;font:600 .85rem Inter,sans-serif;cursor:pointer}
+nav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{max-width:760px;margin:0 auto;padding:14px 14px 80px}
+section{display:none} section.on{display:block}
+h2{font-size:1.2rem;margin:18px 0 8px;letter-spacing:-.01em}
+h3{font-size:1.02rem;margin:16px 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px;margin:10px 0}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.75rem;font-weight:700;letter-spacing:.02em}
+.b{background:var(--blue-s);color:var(--blue)} .g{background:var(--green-s);color:var(--green)}
+.a{background:var(--amber-s);color:var(--amber)} .r{background:var(--red-s);color:var(--red)}
+.v{background:var(--violet-s);color:var(--violet)} .t{background:var(--teal-s);color:var(--teal)}
+.hook{border-left:4px solid var(--violet);background:var(--violet-s);padding:10px 12px;border-radius:0 10px 10px 0;margin:10px 0}
+.hook b{color:var(--violet)}
+.big{font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+ul,ol{padding-left:20px;margin:6px 0} li{margin:3px 0}
+table{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 5px;text-align:left;vertical-align:top}
+th{font-weight:700;color:var(--muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.03em}
+.scroll{overflow-x:auto}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:520px){.grid2{grid-template-columns:1fr}}
+.day{display:flex;gap:12px}
+.day .n{flex:0 0 42px;height:42px;border-radius:12px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800}
+.day .n.rev{background:var(--amber)}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden}
+summary{padding:13px 15px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.2rem;color:var(--muted)}
+details[open] summary::after{content:"–"}
+details .in{padding:0 15px 14px}
+.btn{border:none;border-radius:12px;padding:12px 14px;font:700 .95rem Inter,sans-serif;cursor:pointer;background:var(--ink);color:var(--bg)}
+.btn.sec{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn.ok{background:var(--green);color:#fff} .btn.no{background:var(--red);color:#fff}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row .btn{flex:1}
+/* flashcards */
+.fc{min-height:230px;display:flex;flex-direction:column;justify-content:center;text-align:center;cursor:pointer;padding:22px 18px;user-select:none}
+.fc .q{font-size:1.12rem;font-weight:700}
+.fc .ans{font-size:1rem;margin-top:14px;border-top:1px dashed var(--line);padding-top:14px;text-align:left}
+.fc .tap{color:var(--muted);font-size:.8rem;margin-top:14px}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.bar > i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.opt{display:block;width:100%;text-align:left;margin:7px 0;padding:12px 13px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 .95rem Inter,sans-serif;cursor:pointer}
+.opt.right{background:var(--green-s);border-color:var(--green)} .opt.wrong{background:var(--red-s);border-color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 12px;font:600 .82rem Inter,sans-serif;cursor:pointer}
+.chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.stair{display:flex;align-items:flex-end;gap:6px;height:120px;margin:10px 0 4px}
+.stair div{flex:1;border-radius:8px 8px 0 0;display:flex;align-items:flex-start;justify-content:center;font-weight:800;font-size:.85rem;padding-top:4px;color:#fff}
+.stairl{display:flex;gap:6px;font-size:.72rem;color:var(--muted);text-align:center}
+.stairl span{flex:1}
+.kbd{font-variant-numeric:tabular-nums;font-weight:800}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="back">← Mis materias</a>
+  <h1>🛡️ Funciones de vigilancia (LM1–LM7)</h1>
+  <p>Unidad 2 · MISBR · CNBS — quién vigila qué, cómo se evalúa y cómo se califica</p>
+</header>
+<nav><div class="tabs" id="tabs">
+  <button data-s="plan" class="on">📅 Plan</button>
+  <button data-s="mapa">🗺️ Mapa</button>
+  <button data-s="lm">📘 LM1–7</button>
+  <button data-s="comparar">🔍 Comparar</button>
+  <button data-s="fichas">🃏 Tarjetas</button>
+  <button data-s="quiz">✅ Examen</button>
+</div></nav>
+<main>
+
+<section id="plan" class="on">
+  <h2>Tu plan de 5 días</h2>
+  <div class="card"><p style="margin:0" class="small">Mismo método que en Recursos Financieros: lees la ficha, la cierras y escribes en una <b>hoja en blanco</b> lo que recuerdas. Empieza cada día con 10 minutos de 🃏 Tarjetas.</p></div>
+  <div class="card day"><div class="n">1</div><div><b>Mapa + el gobierno: LM7 Junta Directiva y LM6 Alta Gerencia</b><div class="small">Primero entiende quién manda y quién ejecuta. Aprende los ganchos <b>FU-CO-CO-P-E</b> (Junta) y el de la Alta Gerencia.</div></div></div>
+  <div class="card day"><div class="n">2</div><div><b>LM1 Gestión de Riesgos y LM5 Auditoría Interna</b><div class="small">Son las dos funciones de vigilancia más importantes. Aprende el molde <b>“Mi Equipo Revisa Métodos y Reporta”</b> y lo que tiene de especial cada una. Repasa las tarjetas del día 1.</div></div></div>
+  <div class="card day"><div class="n">3</div><div><b>LM2 Actuarial, LM3 Análisis Financiero y LM4 Cumplimiento</b><div class="small">Las tres usan el mismo molde de 8 bloques. Fíjate en el único cambio: en LM4 los <b>Reportes</b> se van al bloque 7.</div></div></div>
+  <div class="card day"><div class="n">4</div><div><b>🔍 Comparar + las 4 calificaciones</b><div class="small">Dibuja de memoria la tabla de bloques de los 7 LM. Aprende los verbos de las calificaciones: <b>exceden · reúnen · generalmente reúnen · no son</b>.</div></div></div>
+  <div class="card day"><div class="n" style="background:var(--amber)">5</div><div><b>Simulacro</b><div class="small">✅ Examen dos veces + explica en voz alta cómo se relacionan los LM1–7 con los LM8–13 (riesgo neto + recursos financieros = riesgo compuesto).</div></div></div>
+</section>
+
+<section id="mapa">
+  <h2>La foto completa</h2>
+  <div class="card">
+    <p style="margin-top:0">El MISBR evalúa primero el <b>riesgo inherente</b> de los negocios. Luego pregunta: <i>¿quién lo gestiona y lo vigila, y qué tan bien?</i> Esas son las <b>7 funciones de vigilancia</b> (LM1–LM7). Si son buenas, el <b>riesgo neto</b> baja; si son débiles, sube.</p>
+    <p style="margin-bottom:0" class="small muted">Los 7 documentos son de la CNBS, versión 01, del 25/11/2020, y se leen junto con el MISBR. Todos evalúan dos cosas: <b>Características + Desempeño = Efectividad</b>, según la naturaleza, alcance, complejidad y perfil de riesgo de la institución.</p>
+  </div>
+
+  <h2>El barco 🚢</h2>
+  <div class="card">
+    <ul>
+      <li><b>LM7 Junta Directiva</b> = el <b>dueño del barco</b>. Decide el destino (estrategia) y el riesgo que se acepta. Es la principal responsable. <b>Puede delegar funciones, pero no la responsabilidad.</b></li>
+      <li><b>LM6 Alta Gerencia</b> = el <b>capitán</b>. Bajo la dirección de la Junta, dirige, ejecuta y vigila la operación diaria.</li>
+      <li><b>LM1–LM5</b> = los <b>vigías independientes</b>. Tienen línea directa con el dueño (acceso a la Junta y sus comités), sin pasar por el capitán.</li>
+    </ul>
+    <table>
+      <tr><td><b>LM1</b> Gestión de Riesgos</td><td>📡 El <b>radar</b>: ve todos los riesgos</td></tr>
+      <tr><td><b>LM2</b> Actuarial</td><td>🧮 La <b>calculadora del seguro</b>: precios, reservas, reaseguro</td></tr>
+      <tr><td><b>LM3</b> Análisis Financiero</td><td>📊 El <b>traductor de números</b>: informes y sistema de información gerencial</td></tr>
+      <tr><td><b>LM4</b> Cumplimiento Regulatorio</td><td>⚖️ El <b>árbitro</b>: que se cumplan leyes y normas</td></tr>
+      <tr><td><b>LM5</b> Auditoría Interna</td><td>🔍 El <b>inspector</b>: revisa a todos, incluso a los demás vigías</td></tr>
+    </table>
+  </div>
+  <div class="hook"><b>💜 Gancho del orden 1→7:</b> “<b>R</b>adar, <b>A</b>ctuario, <b>A</b>nalista, <b>C</b>umplimiento, <b>A</b>uditor… y arriba el <b>C</b>apitán (AG) y el <b>D</b>ueño (JD).” Las 5 de vigilancia van primero (1–5) y el gobierno al final (6–7).</div>
+
+  <h2>Los 3 moldes</h2>
+  <div class="card">
+    <span class="pill v">Molde A · Vigías (LM1–LM5)</span>
+    <p>Base de 5 bloques: <b>Mandato · Estructura organizacional · Recursos · Metodologías (y políticas/prácticas) · Reportes</b>, más los bloques de quién los vigila.</p>
+    <div class="hook" style="margin-bottom:0"><b>💜 “Mi Equipo Revisa Métodos y Reporta… y lo Vigilan.”</b> M-E-R-M-R + bloques de vigilancia.</div>
+  </div>
+  <div class="card">
+    <span class="pill a">Molde B · Capitán (LM6)</span>
+    <p><b>Funciones y responsabilidades · Mandato · Estructura organizacional · Comités · Competencias · Prácticas · Vigilancia de la Junta</b> (7 bloques).</p>
+    <div class="hook" style="margin-bottom:0"><b>💜 “El capitán tiene FUnciones, un MAndato, una ESTructura, COmités, COmpetencias y PRÁcticas… y el dueño lo VIgila.”</b></div>
+  </div>
+  <div class="card">
+    <span class="pill g">Molde C · Dueño (LM7)</span>
+    <p><b>Funciones y responsabilidades · Composición · Comités · Prácticas · Evaluación</b> (5 bloques).</p>
+    <div class="hook" style="margin-bottom:0"><b>💜 FU-CO-CO-P-E:</b> FUnciones, COmposición, COmités, Prácticas, Evaluación. Como nadie vigila a la Junta desde arriba, <b>se evalúa a sí misma</b>.</div>
+  </div>
+
+  <h2>Las 4 calificaciones (iguales en los 7)</h2>
+  <div class="card scroll">
+    <table>
+      <tr><th>Nota</th><th>Características</th><th>Desempeño</th><th>vs. prácticas</th></tr>
+      <tr><td><span class="pill g">Fuerte</span></td><td><b>Exceden</b> lo necesario</td><td>Consistentemente <b>altamente efectivo</b></td><td>Superiores</td></tr>
+      <tr><td><span class="pill b">Aceptable</span></td><td><b>Reúnen</b> lo necesario</td><td><b>Efectivo</b></td><td>Cumplen</td></tr>
+      <tr><td><span class="pill a">Necesita mejorar</span></td><td><b>Generalmente reúnen</b>, con áreas importantes por mejorar</td><td>Generalmente efectivo</td><td>No cumplen consistentemente</td></tr>
+      <tr><td><span class="pill r">Débil</span></td><td><b>No son</b>, de manera material, lo necesario</td><td>Casos serios: <b>acción inmediata</b></td><td>A menudo no cumplen</td></tr>
+    </table>
+    <div class="hook" style="margin-bottom:0"><b>💜 La escalera de verbos:</b> <b>exceden → reúnen → generalmente reúnen → no son</b>. La pista de “Necesita mejorar”: las áreas de mejora <b>no causan preocupaciones prudenciales si se abordan oportunamente</b>. En “Débil” hace falta <b>acción inmediata</b>.</div>
+  </div>
+</section>
+
+<section id="lm">
+  <h2>Fichas por lineamiento</h2>
+  <p class="small muted">Lee una ficha, ciérrala y di en voz alta lo que recuerdas. Después ábrela y compara.</p>
+
+  <details><summary><span><span class="pill g">LM7</span> Junta Directiva u órgano equivalente · 👑 Dueño</span></summary><div class="in">
+    <div class="hook"><b>💜</b> La Junta es la <b>principal responsable</b> de la adecuada administración de toda la institución. <b>Puede delegar funciones, pero nunca la responsabilidad.</b></div>
+    <p><b>Rol:</b> aprueba la estrategia, el plan de negocio, las iniciativas significativas, el <b>marco de apetito de riesgo</b> y la <b>cultura de riesgos</b>. Vigila a la Alta Gerencia y los controles internos.</p>
+    <h3>1 · Funciones y responsabilidades (15, de la a a la o)</h3>
+    <p class="small">Las más preguntables:</p>
+    <ul class="small">
+      <li>Nombrar al <b>Presidente Ejecutivo</b>, fijar su mandato, monitorearlo y aprobar su compensación.</li>
+      <li>Aprobar objetivos, estrategias y planes de negocio, y vigilar que la AG los implemente.</li>
+      <li>Aprobar la estructura de <b>gobierno corporativo</b>, la cultura de riesgos y la estructura organizacional.</li>
+      <li>Definir <b>junto con la AG y la Función de Riesgos</b> el apetito, la capacidad y los límites de riesgo, y supervisar el marco de apetito y su <b>declaración</b>.</li>
+      <li>Revisar <b>al menos una vez al año</b> las políticas de riesgos significativos, con estrés y planes de contingencia.</li>
+      <li>Aprobar las políticas de <b>liquidez, financiación y capital</b> (aquí se conecta con LM8–LM10).</li>
+      <li>Aprobar y supervisar las funciones de vigilancia, las políticas de <b>conflictos de interés</b> y los <b>planes de sucesión</b>.</li>
+    </ul>
+    <h3>2 · Composición</h3>
+    <p class="small">Tamaño, calificaciones, diversidad de conocimientos, selección y sucesión de directores, y <b>representación independiente suficiente</b>, verificando periódicamente que los independientes lo sigan siendo.</p>
+    <h3>3 · Comités</h3>
+    <p class="small">Revisar periódicamente su número, composición, mandato y alcance, y que tengan representación independiente apropiada y reportes oportunos.</p>
+    <h3>4 · Prácticas</h3>
+    <p class="small">Orientar y capacitar a los directores, decidir de forma independiente, fijar la agenda, registrar las decisiones, recibir información oportuna y completa, tener una compensación prudente y manejar conflictos de interés e información confidencial. Frente a las funciones de vigilancia debe aprobar sus nombramientos, darles autoridad, independencia y recursos, garantizarles <b>acceso ilimitado</b>, pedir revisiones independientes y <b>aprobar el plan de auditoría interna y externa</b>.</p>
+    <h3>5 · Evaluación</h3>
+    <p class="small">Evaluarse periódicamente (la Junta, sus comités y sus miembros) y comunicar sus resultados a la <b>Asamblea de Accionistas</b>.</p>
+    <p class="small"><b>Desempeño (11 indicadores), los clave:</b> se involucra en elegir y evaluar al Presidente Ejecutivo, <b>cuestiona los supuestos</b> de la AG, da seguimiento a las recomendaciones de AI, auditoría externa, Riesgos y el regulador, y permite que los <b>directores independientes se reúnan a puerta cerrada</b>.</p>
+  </div></details>
+
+  <details><summary><span><span class="pill a">LM6</span> Alta Gerencia · 🧑‍✈️ Capitán</span></summary><div class="in">
+    <div class="hook"><b>💜</b> La AG trabaja <b>bajo la dirección y supervisión de la Junta</b>: dirige, ejecuta y vigila las operaciones de forma consistente con el plan estratégico, el plan de negocios, el apetito y la capacidad de riesgo y la política de compensación.</div>
+    <h3>1 · Funciones y responsabilidades</h3>
+    <ul class="small">
+      <li><b>Propone</b> a la Junta los objetivos, la estrategia, el plan de negocio y la estructura organizacional. (La Junta <b>aprueba</b>.)</li>
+      <li>Promueve el buen gobierno corporativo, la cultura organizacional y la ética.</li>
+      <li><b>Vigila</b> el logro de objetivos, el control interno, la estructura de gobierno de riesgos y la adherencia al apetito de riesgo.</li>
+      <li><b>Mantiene informada a la Junta</b> sobre riesgos materiales: cambios de estrategia o apetito, cambios en el perfil de riesgo, riesgos emergentes, <b>excesos de límites o incumplimientos</b>, deficiencias de control interno y asuntos legales y regulatorios.</li>
+    </ul>
+    <h3>2 · Mandato</h3><p class="small">La Junta delega en el Presidente Ejecutivo la gestión estratégica, de riesgos, de recursos financieros y del control interno. La AG designa a los responsables de las funciones de vigilancia, les asegura autoridad, independencia y recursos, atiende sus recomendaciones y promueve una <b>cultura de riesgos</b>.</p>
+    <h3>3 · Estructura · 4 · Comités · 5 · Competencias</h3><p class="small">Roles claros con <b>segregación de funciones</b> para controlar conflictos de interés; comités que vigilan las actividades significativas; competencias revisadas periódicamente y planes de <b>selección y sucesión</b>.</p>
+    <h3>6 · Prácticas</h3><p class="small">Monitorear el desempeño; revisar el apetito de riesgo, los recursos financieros y el fondeo; aplicar la gestión de riesgos en toda la institución; cumplir la normativa; atraer y retener talento; <b>remuneración que promueva la toma prudente de riesgos</b>; comunicación a las partes interesadas, y buen gobierno y ética.</p>
+    <h3>7 · Vigilancia de la Junta</h3><p class="small">La Junta aprueba la estructura organizacional, los nombramientos de la AG, los objetivos y las políticas de liquidez, fondeo y capital, y evalúa el desempeño y la remuneración de la AG.</p>
+    <p class="small"><b>Desempeño (6 criterios):</b> estrategias prudentes, monitoreo de controles, <b>acciones correctivas oportunas</b> (incluso de lo que hallan las funciones de vigilancia y el regulador), retener talento, actuar con ética e informar a la Junta.</p>
+  </div></details>
+
+  <details><summary><span><span class="pill b">LM1</span> Función de Gestión de Riesgos (FGR) · 📡 Radar</span></summary><div class="in">
+    <div class="hook"><b>💜 Los 6 verbos de la FGR:</b> <b>I</b>dentificar, <b>M</b>edir, <b>M</b>onitorear, <b>C</b>ontrolar, <b>M</b>itigar y <b>R</b>eportar las exposiciones a <b>todos</b> los riesgos. Además da una vigilancia y evaluación <b>independiente</b>.</div>
+    <h3>Sus 6 bloques: M-E-R-M-R + Supervisión</h3>
+    <ol class="small">
+      <li><b>Mandato:</b> independencia, acceso irrestricto a la información, acceso a la Junta y al <b>Comité de Riesgos sin la presencia de la AG</b>, opinión obligatoria sobre las exposiciones frente a los límites y sobre <b>nuevos productos, líneas de negocio y mercado meta</b>, y seguimiento a lo que hace la AG.</li>
+      <li><b>Estructura:</b> jerarquía adecuada del encargado, acceso a la Junta y al Presidente Ejecutivo, <b>independencia de la gestión diaria de los riesgos</b> y segregación de funciones.</li>
+      <li><b>Recursos:</b> personal suficiente y competente, y capacitación.</li>
+      <li><b>Metodologías y prácticas:</b> revisar límites y políticas, alinearlos con la estrategia y el apetito, monitorear límites y riesgos emergentes, hacer <b>pruebas de estrés y análisis de escenarios</b>, y crear y validar <b>modelos</b>.</li>
+      <li><b>Reportes:</b> a la Junta y la AG sobre riesgos inherentes, estrés, riesgo-retorno, apetito, límites y cambios del entorno, con seguimiento de hallazgos.</li>
+      <li><b>Supervisión de la Junta y la AG:</b> aprueban el nombramiento o remoción del encargado, su mandato y recursos, y las políticas y límites.</li>
+    </ol>
+    <p class="small"><b>Desempeño (7 criterios):</b> existe una <b>cultura de riesgos</b>, políticas y límites actualizados, participación en nuevas iniciativas <b>antes</b> de implementarlas, infracciones a los límites atendidas, <b>alertas tempranas</b>, participación en los comités y gestión de modelos.</p>
+  </div></details>
+
+  <details><summary><span><span class="pill b">LM5</span> Función de Auditoría Interna (FAI) · 🔍 Inspector</span></summary><div class="in">
+    <div class="hook"><b>💜</b> La Auditoría Interna es el <b>inspector de los inspectores</b>: revisa de forma independiente las actividades, el control interno, la gestión de riesgos, los sistemas de información y el área de cumplimiento. Por eso <b>no tiene “vigilancia de AI”</b>; en su lugar tiene <b>Aseguramiento de la calidad</b>.</div>
+    <h3>Sus 7 bloques: M-E-R-M-R + Calidad + Supervisión</h3>
+    <ol class="small">
+      <li><b>Mandato:</b> autoridad independiente con <b>autonomía para elaborar su plan de auditoría y el universo auditable</b>, acceso irrestricto, acceso a la Junta y al <b>Comité de Auditoría</b>, opinión sobre la efectividad de los controles y seguimiento a la AG. Incluye actividades tercerizadas y subordinadas.</li>
+      <li><b>Estructura:</b> independencia de las actividades que audita y de los procesos diarios de control interno.</li>
+      <li><b>Recursos:</b> personal suficiente y competente y <b>rotación idónea del personal</b> en las áreas auditadas (dato exclusivo de LM5).</li>
+      <li><b>Metodologías y prácticas:</b> mejores prácticas, metodología <b>basada en riesgos</b>, cuándo <b>tercerizar con expertos externos</b>, plan anual con objetivos y alcance, y evaluación independiente de 5 frentes: actividades, control interno, gestión de riesgos, sistemas de información y cumplimiento.</li>
+      <li><b>Reportes:</b> hallazgos, recomendaciones y <b>cumplimiento del plan</b> a la Junta, el Comité de Auditoría y la AG, con seguimiento.</li>
+      <li><b>Aseguramiento de la calidad:</b> monitorear que el propio personal de auditoría cumpla los estándares profesionales y la metodología aprobada.</li>
+      <li><b>Supervisión de la Junta y la AG:</b> aprueban el nombramiento o remoción, el mandato y recursos y el <b>plan anual de trabajo</b>.</li>
+    </ol>
+    <p class="small"><b>Desempeño (7 criterios), el más preguntable:</b> saber <b>diferenciar los hallazgos que afectan la seguridad y solidez</b> de la institución de los que solo afectan la <b>eficiencia operativa</b>. También se apoya en información de Riesgos, el actuario, Cumplimiento, los auditores externos y la CNBS.</p>
+  </div></details>
+
+  <details><summary><span><span class="pill t">LM2</span> Función Actuarial (FA) · 🧮 Calculadora del seguro</span></summary><div class="in">
+    <div class="hook"><b>💜 Ojo:</b> la Función Actuarial es <b>independiente y distinta del actuario designado</b>. El actuario designado hace el trabajo de rutina (diseñar productos, calcular reservas, notas técnicas); la Función Actuarial <b>lo vigila</b>.</div>
+    <p class="small"><b>Responsabilidades:</b> evaluar el diseño, la <b>tarificación</b> y valoración de los seguros; la razonabilidad de las <b>reservas técnicas</b>; los modelos de exposición y los programas de <b>reaseguro</b>; los modelos internos y las políticas de <b>suscripción</b>, y las pruebas de estrés y la planeación de capital.</p>
+    <h3>Sus 8 bloques</h3>
+    <ol class="small">
+      <li><b>Mandato</b>, incluida autoridad para evaluar el desempeño de los ramos y de las políticas de <b>precio y suscripción</b>, y opinión obligatoria sobre nuevos productos.</li>
+      <li><b>Estructura:</b> independiente de la gestión cotidiana de riesgos.</li>
+      <li><b>Recursos:</b> con planes de sucesión para puestos clave.</li>
+      <li><b>Políticas, prácticas y metodologías:</b> alineadas con la gestión de capital y liquidez, para modelar riesgos y reservas técnicas.</li>
+      <li><b>Reportes</b></li>
+      <li><b>Relación con la Gestión de Riesgos</b></li>
+      <li><b>Vigilancia de la Auditoría Interna</b></li>
+      <li><b>Vigilancia de la Junta y la AG</b></li>
+    </ol>
+    <p class="small"><b>Desempeño (8 indicadores):</b> trabajo alineado con los estándares profesionales, alertas tempranas y <b>divulgación transparente de los métodos y supuestos actuariales</b>.</p>
+  </div></details>
+
+  <details><summary><span><span class="pill t">LM3</span> Función de Análisis Financiero (FAF) · 📊 Traductor de números</span></summary><div class="in">
+    <div class="hook"><b>💜</b> La FAF convierte los números en decisiones. Su sello es <b>administrar el Sistema de Información Gerencial (SIG)</b> y <b>recomendar sobre estrategia y oportunidades de negocio</b>.</div>
+    <p class="small"><b>Responsabilidades:</b> que la información financiera sea <b>oportuna, completa y precisa</b>; analizar resultados financieros y operativos para tomar decisiones; analizar las principales <b>líneas de negocio</b>, y administrar el SIG.</p>
+    <h3>Sus 8 bloques (mismo orden que LM2)</h3>
+    <ol class="small">
+      <li><b>Mandato:</b> incluye el <b>deber de recomendar</b> sobre estrategia, oportunidades de negocio y cambios al SIG.</li>
+      <li><b>Estructura:</b> independiente de las unidades de negocio.</li>
+      <li><b>Recursos</b></li>
+      <li><b>Políticas, metodologías y prácticas:</b> reportes oportunos, precisos y comprensibles, con indicadores de desempeño, y reportes especiales cuando los pida la Junta o la AG.</li>
+      <li><b>Reportes</b></li>
+      <li><b>Relación con la Gestión de Riesgos</b></li>
+      <li><b>Vigilancia de la Auditoría Interna</b></li>
+      <li><b>Vigilancia de la Junta y la AG</b></li>
+    </ol>
+    <p class="small"><b>Desempeño (5 criterios):</b> reportes independientes de las áreas tomadoras de riesgo, recomendaciones <b>proactivas</b>, respuesta oportuna a solicitudes, involucrar a la Junta y la AG, y evaluar la suficiencia de los sistemas de información.</p>
+  </div></details>
+
+  <details><summary><span><span class="pill t">LM4</span> Función de Cumplimiento Regulatorio (FCR) · ⚖️ Árbitro</span></summary><div class="in">
+    <div class="hook"><b>💜</b> La FCR vigila que se cumpla el <b>marco regulatorio</b> (leyes, reglamentos, resoluciones), los requerimientos de <b>revelación y transparencia</b> y los estándares de <b>autorregulación</b>, dentro de un buen gobierno corporativo. Además <b>asesora</b> a la Junta y la AG.</div>
+    <h3>Sus 8 bloques (¡cambia el orden!)</h3>
+    <ol class="small">
+      <li><b>Mandato:</b> obligación de <b>dictaminar</b> sobre la idoneidad y efectividad de los procesos de cumplimiento y el nivel de cumplimiento institucional.</li>
+      <li><b>Estructura:</b> independiente de las unidades de negocio y operativas.</li>
+      <li><b>Recursos</b></li>
+      <li><b>Políticas, metodologías y prácticas:</b> mantenerse al día con los cambios regulatorios <b>en todas las jurisdicciones donde opera</b>, actualizar las políticas, asistir a las unidades de negocio y escalar a la AG los problemas significativos.</li>
+      <li><b>Relación con la Gestión de Riesgos</b></li>
+      <li><b>Vigilancia de la Auditoría Interna</b></li>
+      <li><b>Reportes</b> ← en LM4 van aquí, en el bloque 7</li>
+      <li><b>Vigilancia de la Junta y la AG</b></li>
+    </ol>
+    <p class="small"><b>Desempeño (6 criterios):</b> elaborar y comunicar las políticas, asistir a la AG, monitorear el cumplimiento, comunicar las deficiencias significativas, dar seguimiento a las medidas correctivas y atender a las unidades de negocio en el día a día.</p>
+  </div></details>
+</section>
+
+<section id="comparar">
+  <h2>🔍 ¿Qué bloques tiene cada LM?</h2>
+  <p class="small muted">Dibuja esta tabla de memoria el día 4. Es la pregunta más fácil de convertir en examen.</p>
+  <div class="card scroll">
+    <table>
+      <tr><th>Bloque</th><th>LM1</th><th>LM2</th><th>LM3</th><th>LM4</th><th>LM5</th></tr>
+      <tr><td>Mandato</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+      <tr><td>Estructura organizacional</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+      <tr><td>Recursos</td><td>3</td><td>3</td><td>3</td><td>3</td><td>3</td></tr>
+      <tr><td>Metodologías / políticas</td><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td></tr>
+      <tr><td>Reportes</td><td>5</td><td>5</td><td>5</td><td><b>7</b></td><td>5</td></tr>
+      <tr><td>Relación con Gestión de Riesgos</td><td>—</td><td>6</td><td>6</td><td>5</td><td>—</td></tr>
+      <tr><td>Vigilancia de Auditoría Interna</td><td>—</td><td>7</td><td>7</td><td>6</td><td>—</td></tr>
+      <tr><td>Aseguramiento de la calidad</td><td>—</td><td>—</td><td>—</td><td>—</td><td><b>6</b></td></tr>
+      <tr><td>Supervisión / vigilancia de JD y AG</td><td>6</td><td>8</td><td>8</td><td>8</td><td>7</td></tr>
+      <tr><td><b>Total</b></td><td>6</td><td>8</td><td>8</td><td>8</td><td>7</td></tr>
+    </table>
+  </div>
+  <div class="hook"><b>💜 La lógica:</b> la FGR (LM1) <b>es</b> la Gestión de Riesgos, así que no necesita “relación con Gestión de Riesgos”. La AI (LM5) <b>es</b> la Auditoría, así que no se vigila a sí misma: en su lugar asegura su calidad. LM2, LM3 y LM4 son las “hermanas” de 8 bloques.</div>
+  <div class="card scroll">
+    <table>
+      <tr><th>Gobierno</th><th>Bloques</th></tr>
+      <tr><td><b>LM6</b> Alta Gerencia (7)</td><td>Funciones y responsabilidades · Mandato · Estructura organizacional · Comités · Competencias · Prácticas · Vigilancia de la Junta</td></tr>
+      <tr><td><b>LM7</b> Junta Directiva (5)</td><td>Funciones y responsabilidades · Composición · Comités · Prácticas · Evaluación</td></tr>
+    </table>
+  </div>
+  <h2>¿Ante quién responde cada una?</h2>
+  <div class="card small">
+    <ul style="margin:0">
+      <li><b>LM1 y LM2:</b> acceso a la Junta y al <b>Comité de Riesgos sin la presencia de la Alta Gerencia</b>.</li>
+      <li><b>LM5:</b> acceso sin restricción a la Junta y al <b>Comité de Auditoría</b>. La Junta, el comité y la AG aprueban su <b>plan anual</b>.</li>
+      <li><b>LM1, LM2, LM3, LM4 y LM5:</b> la Junta, sus comités o la AG aprueban el <b>nombramiento y la remoción</b> del responsable, su <b>mandato y recursos</b> y sus políticas.</li>
+      <li><b>LM6:</b> responde a la Junta.</li>
+      <li><b>LM7:</b> responde a la <b>Asamblea de Accionistas</b> y a las partes interesadas.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="fichas">
+  <h2>Tarjetas con repetición espaciada</h2>
+  <p class="small muted">Responde en tu cabeza o en voz alta y luego toca la tarjeta. “No lo sabía” la manda a la caja 1.</p>
+  <div class="chips" id="fcFilter"></div>
+  <div class="small muted" id="fcStats"></div>
+  <div class="bar"><i id="fcBar"></i></div>
+  <div class="card fc" id="fcCard"></div>
+  <div class="row" id="fcBtns" style="display:none"><button class="btn no" id="fcNo">✗ No lo sabía</button><button class="btn ok" id="fcYes">✓ Lo sabía</button></div>
+  <p class="small muted" style="margin-top:14px">Caja 1 = repasar hoy · Caja 2 = mañana · Caja 3 = dominada. <button class="chip" id="fcReset">Reiniciar progreso</button></p>
+</section>
+
+<section id="quiz">
+  <h2>✅ Examen de práctica</h2>
+  <p class="small muted">Las preguntas mezclan los 7 lineamientos y salen en otro orden cada vez.</p>
+  <div id="qzBox"></div>
+</section>
+</main>
+<script>
+const tabs=document.querySelectorAll('#tabs button');
+function show(id){tabs.forEach(b=>b.classList.toggle('on',b.dataset.s===id));document.querySelectorAll('main section').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo({top:0})}
+tabs.forEach(b=>b.onclick=()=>show(b.dataset.s));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const CARDS=[
+ ["Mapa","¿Cuáles son las 7 funciones de vigilancia y su número?","LM1 Gestión de Riesgos · LM2 Actuarial · LM3 Análisis Financiero · LM4 Cumplimiento Regulatorio · LM5 Auditoría Interna · LM6 Alta Gerencia · LM7 Junta Directiva."],
+ ["Mapa","¿Qué dos elementos forman la efectividad de una función?","Características + Desempeño, evaluados según la naturaleza, alcance, complejidad y perfil de riesgo de la institución y el marco regulatorio."],
+ ["Mapa","¿Qué efecto tiene la calidad de las funciones de vigilancia en el MISBR?","Si son buenas, reducen el riesgo neto; si son deficientes, lo aumentan."],
+ ["Mapa","Molde de los vigías (LM1–LM5): ¿cuáles son los 5 bloques base?","Mandato · Estructura organizacional · Recursos · Metodologías (políticas y prácticas) · Reportes. “Mi Equipo Revisa Métodos y Reporta… y lo Vigilan”."],
+ ["Mapa","¿Con qué fecha y versión se emitieron los LM1–LM7?","Versión 01, 25/11/2020. Se leen junto con el MISBR."],
+ ["Calificación","Verbo de las características en Fuerte / Aceptable / Necesita mejorar / Débil","Exceden · reúnen · generalmente reúnen · no son (de manera material) lo necesario."],
+ ["Calificación","¿Qué distingue a “Necesita mejorar”?","Generalmente efectiva, pero con áreas importantes por mejorar que no causan preocupaciones prudenciales si se abordan oportunamente."],
+ ["Calificación","¿Qué distingue a “Débil”?","Casos serios que necesitan acción inmediata. A menudo no cumplen las prácticas aceptadas."],
+ ["Calificación","Desempeño en Fuerte vs Aceptable","Fuerte: consistentemente altamente efectivo y superior a las prácticas. Aceptable: efectivo y cumple las prácticas."],
+ ["LM7","¿Qué puede delegar la Junta Directiva y qué no?","Puede delegar funciones, pero NO su responsabilidad."],
+ ["LM7","Bloques de la Junta Directiva (FU-CO-CO-P-E)","Funciones y responsabilidades · Composición · Comités · Prácticas · Evaluación."],
+ ["LM7","¿Qué aprueba la Junta según su rol?","La estrategia, el plan de negocio, las iniciativas significativas, el marco de apetito de riesgo y la cultura de riesgos. Además vigila a la AG y el control interno."],
+ ["LM7","¿Con quién define la Junta el apetito, capacidad y límites de riesgo?","Junto con la Alta Gerencia y la Función de Gestión de Riesgos."],
+ ["LM7","¿Cada cuánto debe la Junta revisar las políticas de riesgos significativos?","Al menos una vez al año, incluyendo escenarios, pruebas de estrés y planes de contingencia."],
+ ["LM7","¿A quién nombra la Junta y le aprueba la compensación?","Al Presidente Ejecutivo (o su equivalente): fija su mandato y monitorea su desempeño."],
+ ["LM7","¿Qué debe garantizar la Junta sobre los directores independientes?","Representación independiente suficiente, verificar periódicamente que conserven esa condición y que puedan reunirse a puerta cerrada."],
+ ["LM7","¿Qué plan de trabajo aprueba la Junta respecto a auditoría?","El plan de trabajo de auditoría interna y externa, dando seguimiento a sus recomendaciones."],
+ ["LM7","¿A quién comunica la Junta los resultados de su evaluación?","A la Asamblea de Accionistas y las partes interesadas."],
+ ["LM7","¿Qué hace la Junta con los supuestos que le presenta la AG?","Los cuestiona activamente y pide información adicional cuando hace falta (indicador de desempeño)."],
+ ["LM6","Rol de la Alta Gerencia","Bajo la dirección de la Junta, dirige, ejecuta y vigila las operaciones de forma consistente con el plan estratégico, el plan de negocios, el apetito de riesgo y la compensación."],
+ ["LM6","Bloques de la Alta Gerencia (7)","Funciones y responsabilidades · Mandato · Estructura organizacional · Comités · Competencias · Prácticas · Vigilancia de la Junta."],
+ ["LM6","¿Qué PROPONE la AG a la Junta?","Los objetivos, la estrategia, el plan de negocio y la estructura organizacional. La Junta aprueba."],
+ ["LM6","¿Sobre qué riesgos materiales debe la AG informar a la Junta?","Cambios de estrategia o apetito, cambios en el perfil de riesgo, riesgos emergentes, excesos de límites o incumplimientos, deficiencias de control interno y asuntos legales y regulatorios."],
+ ["LM6","¿Cómo deben ser los programas de remuneración según LM6?","Deben promover la toma prudente de riesgos y estar alineados con los objetivos estratégicos de largo plazo."],
+ ["LM6","¿Qué garantiza la AG a las funciones de vigilancia?","Designa a sus responsables y les da autoridad, independencia, acceso irrestricto y recursos. Atiende sus recomendaciones y pide revisiones independientes."],
+ ["LM6","Criterio de desempeño de la AG sobre deficiencias","Vigila y garantiza acciones correctivas apropiadas y oportunas, incluso sobre lo encontrado por las funciones de vigilancia y el regulador."],
+ ["LM1","Los 6 verbos de la Función de Gestión de Riesgos","Identificar, medir, monitorear, controlar, mitigar y reportar las exposiciones a todos los riesgos."],
+ ["LM1","¿Cuántos y cuáles bloques tiene LM1?","6: Mandato · Estructura · Recursos · Metodologías y prácticas · Reportes · Supervisión de la Junta y la AG."],
+ ["LM1","¿A qué tiene acceso la FGR sin la presencia de la Alta Gerencia?","A la Junta Directiva y al Comité de Riesgos."],
+ ["LM1","¿Sobre qué debe opinar obligatoriamente la FGR?","Sobre la efectividad de la gestión de riesgos frente a los límites y sobre la exposición en nuevos productos, líneas de negocio y mercado meta."],
+ ["LM1","¿De qué debe ser independiente la FGR?","De la gestión diaria de los riesgos y de otras funciones de control o unidades de negocio."],
+ ["LM1","Primer criterio de desempeño de la FGR","Que exista una cultura de riesgos de la que se deriva un apetito de riesgo, con políticas y límites."],
+ ["LM1","¿Qué herramientas debe tener la FGR según su desempeño?","Herramientas de medición sensibles que den alertas tempranas, además de una política de gestión y validación de modelos."],
+ ["LM5","¿Por qué LM5 no tiene “vigilancia de la Auditoría Interna”?","Porque ella ES la auditoría. En su lugar tiene el bloque de Aseguramiento de la calidad."],
+ ["LM5","Bloques de la Auditoría Interna (7)","Mandato · Estructura · Recursos · Metodologías y prácticas · Reportes · Aseguramiento de la calidad · Supervisión de la Junta y la AG."],
+ ["LM5","¿Qué autonomía especial tiene la AI en su mandato?","Elaborar su plan de auditoría y definir el universo auditable. También cubre actividades tercerizadas y subordinadas."],
+ ["LM5","¿Qué dato de Recursos es exclusivo de LM5?","La rotación idónea del personal en las áreas auditadas."],
+ ["LM5","¿Cómo debe ser la metodología de la AI?","Basada en riesgos, que responda a los cambios del perfil de riesgo, con criterios para tercerizar con expertos externos."],
+ ["LM5","¿Qué 5 frentes evalúa la AI de forma independiente?","Las actividades, el control interno, la gestión de riesgos, los sistemas de información y el área de Cumplimiento."],
+ ["LM5","¿Qué aprueban la Junta, el Comité de Auditoría y la AG respecto a la AI?","El nombramiento o remoción del responsable, su mandato y recursos y su plan anual de trabajo."],
+ ["LM5","Habilidad clave del desempeño de la AI","Diferenciar los hallazgos que afectan la seguridad y solidez de los que solo afectan la eficiencia operativa."],
+ ["LM2","¿En qué se diferencia la Función Actuarial del actuario designado?","La FA es independiente y vigila. El actuario designado hace el trabajo de rutina: diseñar productos, calcular reservas y elaborar notas técnicas."],
+ ["LM2","Responsabilidades de la Función Actuarial","Evaluar el diseño y la tarificación, las reservas técnicas, los modelos de exposición y el reaseguro, los modelos internos y la suscripción, y el estrés y la planeación de capital."],
+ ["LM2","Autoridad especial del mandato de la FA","Evaluar el desempeño de los ramos y de las políticas de precio y suscripción."],
+ ["LM2","Indicador de desempeño sobre transparencia de la FA","Divulgación transparente de los métodos y supuestos actuariales que respaldan sus informes."],
+ ["LM3","Responsabilidades de la Función de Análisis Financiero","Información financiera oportuna, completa y precisa, análisis de resultados para decidir, análisis de las líneas de negocio y administración del Sistema de Información Gerencial."],
+ ["LM3","¿Qué deber especial tiene la FAF en su mandato?","Recomendar sobre la estrategia, las oportunidades de negocio y los cambios al Sistema de Información Gerencial."],
+ ["LM3","¿Cómo deben ser los reportes de la FAF?","Oportunos, precisos, comprensibles, con indicadores de desempeño e independientes de las áreas tomadoras de riesgo."],
+ ["LM3","¿Cuántos criterios de desempeño tiene la FAF?","5: reportes de calidad, recomendaciones proactivas, respuesta oportuna, involucrar a la Junta y la AG y evaluar la suficiencia de los sistemas de información."],
+ ["LM4","Rol de la Función de Cumplimiento Regulatorio","Vigilar el cumplimiento del marco regulatorio, la revelación y transparencia y la autorregulación, y asesorar a la Junta y la AG."],
+ ["LM4","¿En qué bloque van los Reportes en LM4?","En el 7, después de Relación con Gestión de Riesgos (5) y Vigilancia de AI (6)."],
+ ["LM4","¿Sobre qué debe dictaminar la FCR?","Sobre la idoneidad y efectividad de los procesos de cumplimiento y el nivel de cumplimiento institucional."],
+ ["LM4","¿Con qué cambios debe mantenerse al día la FCR?","Con los cambios del marco regulatorio en todas las jurisdicciones donde opera la institución."],
+ ["Comparar","¿Qué LM tienen 8 bloques?","LM2 Actuarial, LM3 Análisis Financiero y LM4 Cumplimiento."],
+ ["Comparar","¿Por qué LM1 no tiene “Relación con la Gestión de Riesgos”?","Porque la FGR ES la Gestión de Riesgos."],
+ ["Comparar","¿Qué funciones mencionan acceso al Comité de Riesgos sin la presencia de la AG?","LM1 Gestión de Riesgos y LM2 Actuarial."]
+];
+const SETS=["Todas","Mapa","Calificación","LM7","LM6","LM1","LM5","LM2","LM3","LM4","Comparar"];
+let fcSet="Todas",fcIdx=null,fcFlip=false,boxes=store.get('lm17_boxes',{});
+const boxOf=i=>boxes[i]||1;
+const pool=()=>CARDS.map((c,i)=>i).filter(i=>fcSet==="Todas"||CARDS[i][0]===fcSet);
+function pick(){const p=pool(),min=Math.min(...p.map(boxOf));let c=p.filter(i=>boxOf(i)===min);if(c.length>1)c=c.filter(i=>i!==fcIdx);fcIdx=c[Math.floor(Math.random()*c.length)];fcFlip=false;renderFc()}
+function renderFc(){const [cat,q,a]=CARDS[fcIdx],b=boxOf(fcIdx);
+ document.getElementById('fcCard').innerHTML=`<div><span class="pill v">${cat}</span> <span class="pill ${b===3?'g':b===2?'a':'r'}">Caja ${b}</span></div><div class="q" style="margin-top:12px">${q}</div>${fcFlip?`<div class="ans">${a}</div>`:'<div class="tap">Toca para ver la respuesta</div>'}`;
+ document.getElementById('fcBtns').style.display=fcFlip?'flex':'none';
+ const p=pool(),done=p.filter(i=>boxOf(i)===3).length;
+ document.getElementById('fcStats').textContent=`${p.length} tarjetas · dominadas ${done} · caja 1: ${p.filter(i=>boxOf(i)===1).length}`;
+ document.getElementById('fcBar').style.width=(100*done/p.length)+'%'}
+document.getElementById('fcCard').onclick=()=>{if(!fcFlip){fcFlip=true;renderFc()}};
+document.getElementById('fcYes').onclick=()=>{boxes[fcIdx]=Math.min(3,boxOf(fcIdx)+1);store.set('lm17_boxes',boxes);pick()};
+document.getElementById('fcNo').onclick=()=>{boxes[fcIdx]=1;store.set('lm17_boxes',boxes);pick()};
+document.getElementById('fcReset').onclick=()=>{boxes={};store.set('lm17_boxes',boxes);pick()};
+const ff=document.getElementById('fcFilter');
+SETS.forEach(s=>{const b=document.createElement('button');b.className='chip'+(s===fcSet?' on':'');b.textContent=s;b.onclick=()=>{fcSet=s;ff.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));pick()};ff.appendChild(b)});
+pick();
+const Q=[
+ ["¿Qué lineamiento corresponde a la Función de Cumplimiento Regulatorio?",["LM3","LM4","LM5","LM6"],1,"LM4. Orden: Riesgos, Actuarial, Análisis Financiero, Cumplimiento, Auditoría, Alta Gerencia, Junta."],
+ ["La efectividad de una función de vigilancia se evalúa combinando…",["Capital y liquidez","Características y desempeño","Riesgo inherente y residual","Mandato y recursos"],1,"Características + Desempeño = Efectividad."],
+ ["La Junta Directiva puede delegar…",["Funciones y responsabilidad","Funciones, pero no responsabilidad","Solo la responsabilidad","Nada"],1,"Delega funciones, nunca la responsabilidad."],
+ ["¿Cuál NO es un bloque de LM7 Junta Directiva?",["Composición","Evaluación","Competencias","Comités"],2,"Competencias es de LM6. LM7 = FU-CO-CO-P-E."],
+ ["¿Quién PROPONE la estrategia y el plan de negocio?",["La Junta Directiva","La Alta Gerencia","La Auditoría Interna","La CNBS"],1,"La AG propone; la Junta aprueba."],
+ ["La Junta revisa las políticas de riesgos significativos…",["Cada mes","Al menos una vez al año","Cada 3 años","Solo si lo pide la CNBS"],1,"Al menos una vez al año, con estrés y contingencia."],
+ ["¿Con quién define la Junta el apetito, capacidad y límites de riesgo?",["Con la Auditoría Interna","Con la AG y la Función de Gestión de Riesgos","Con la CNBS","Con los accionistas"],1,"Junta + AG + Función de Gestión de Riesgos."],
+ ["¿Cuántos bloques tiene LM1 Gestión de Riesgos?",["5","6","7","8"],1,"6: M-E-R-M-R + Supervisión de la Junta y la AG."],
+ ["¿Qué funciones tienen acceso al Comité de Riesgos sin la presencia de la AG?",["LM1 y LM2","LM3 y LM4","LM5 y LM6","Solo LM7"],0,"La Función de Gestión de Riesgos y la Función Actuarial."],
+ ["El bloque “Aseguramiento de la calidad” es exclusivo de…",["LM1","LM3","LM5","LM7"],2,"De la Auditoría Interna: asegura la calidad de su propio trabajo."],
+ ["La “rotación idónea del personal en las áreas auditadas” aparece en…",["LM1","LM2","LM5","LM6"],2,"Es un dato de Recursos exclusivo de LM5."],
+ ["Habilidad clave del desempeño de la Auditoría Interna:",["Calcular reservas técnicas","Diferenciar hallazgos de seguridad y solidez de los de eficiencia operativa","Proponer la estrategia","Fijar el apetito de riesgo"],1,"Es el último criterio de desempeño de LM5."],
+ ["La autonomía para definir el plan de auditoría y el universo auditable es de…",["La Alta Gerencia","La Auditoría Interna","La Junta","Cumplimiento"],1,"Está en el mandato de LM5."],
+ ["La Función Actuarial es…",["Lo mismo que el actuario designado","Independiente y distinta del actuario designado","Parte de Auditoría Interna","Una función de la AG"],1,"El actuario designado hace la rutina; la FA vigila."],
+ ["Evaluar las reservas técnicas, la tarificación y el reaseguro es responsabilidad de…",["LM1","LM2","LM3","LM4"],1,"La Función Actuarial."],
+ ["Administrar el Sistema de Información Gerencial es responsabilidad de…",["LM1 Riesgos","LM3 Análisis Financiero","LM4 Cumplimiento","LM5 Auditoría"],1,"Es el sello de la FAF."],
+ ["El deber de recomendar sobre estrategia y oportunidades de negocio está en el mandato de…",["LM3","LM4","LM5","LM7"],0,"La Función de Análisis Financiero."],
+ ["En LM4, el bloque de Reportes es el número…",["5","6","7","8"],2,"En LM4 los Reportes se van al bloque 7."],
+ ["Mantenerse al día con los cambios regulatorios en todas las jurisdicciones es tarea de…",["LM2","LM4","LM6","LM7"],1,"La Función de Cumplimiento Regulatorio."],
+ ["¿Qué lineamientos tienen 8 bloques?",["LM1, LM2, LM3","LM2, LM3, LM4","LM3, LM4, LM5","LM5, LM6, LM7"],1,"Las tres “hermanas”: Actuarial, Análisis Financiero y Cumplimiento."],
+ ["Características que “generalmente reúnen” lo necesario, con áreas de mejora que no causan preocupaciones prudenciales si se abordan oportunamente:",["Fuerte","Aceptable","Necesita mejorar","Débil"],2,"Escalera: exceden → reúnen → generalmente reúnen → no son."],
+ ["Casos serios que requieren acción inmediata corresponden a…",["Aceptable","Necesita mejorar","Débil","Fuerte"],2,"Débil."],
+ ["Los programas de remuneración que promueven la toma prudente de riesgos aparecen en las prácticas de…",["LM1","LM5","LM6","LM3"],2,"La Alta Gerencia (LM6). La Junta también vigila la compensación."],
+ ["La Junta comunica los resultados de su autoevaluación a…",["La CNBS solamente","La Asamblea de Accionistas y partes interesadas","La Alta Gerencia","Auditoría externa"],1,"Bloque 5 de LM7: Evaluación."],
+ ["Identificar, medir, monitorear, controlar, mitigar y reportar todos los riesgos es el rol de…",["LM1","LM4","LM5","LM6"],0,"La Función de Gestión de Riesgos."],
+ ["Si las funciones de vigilancia son débiles, en el MISBR…",["Baja el riesgo inherente","Sube el riesgo neto","Sube el capital","No cambia nada"],1,"Una gestión débil eleva el riesgo neto."]
+];
+let qO=[],qi=0,qs=0;
+function qStart(){qO=Q.map((_,i)=>i).sort(()=>Math.random()-.5);qi=0;qs=0;qR()}
+function qR(){const box=document.getElementById('qzBox');
+ if(qi>=qO.length){const p=Math.round(100*qs/Q.length);box.innerHTML=`<div class="card" style="text-align:center"><div class="big">${qs}/${Q.length}</div><p>${p>=85?'🔥 Dominado. Repite el examen en 2 días para fijarlo.':p>=65?'👍 Vas bien. Repasa en 🃏 Tarjetas y 🔍 Comparar lo que fallaste.':'📚 Vuelve a las fichas y a 🔍 Comparar, y repite el examen mañana.'}</p><button class="btn" id="qA">Repetir examen</button></div>`;document.getElementById('qA').onclick=qStart;return}
+ const q=Q[qO[qi]];box.innerHTML=`<div class="small muted">Pregunta ${qi+1} de ${Q.length} · Aciertos ${qs}</div><div class="bar"><i style="width:${100*qi/Q.length}%"></i></div><div class="card"><b>${q[0]}</b>${q[1].map((o,j)=>`<button class="opt" data-j="${j}">${o}</button>`).join('')}<div id="qE"></div></div>`;
+ box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const j=+b.dataset.j;box.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(+x.dataset.j===q[2])x.classList.add('right')});if(j===q[2])qs++;else b.classList.add('wrong');
+  document.getElementById('qE').innerHTML=`<p class="small" style="margin-bottom:8px">${j===q[2]?'✓ ':'✗ '}${q[3]}</p><button class="btn" style="width:100%" id="qN">Siguiente →</button>`;document.getElementById('qN').onclick=()=>{qi++;qR()}})}
+qStart();
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}</script>
+</body>
+</html>

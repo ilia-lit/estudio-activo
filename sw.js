@@ -1,7 +1,7 @@
 // Cambia VERSION cada vez que agregues o actualices una materia
-const VERSION = 'estudio-v6';
+const VERSION = 'estudio-v7';
 const FILES = [
-  './', './index.html', './unidad2.html', './ingles.html', './ingles-b1.html', './vocabulario.html', './manifest.webmanifest',
+  './', './index.html', './unidad2.html', './vigilancia.html', './ingles.html', './ingles-b1.html', './vocabulario.html', './manifest.webmanifest',
   './icon-192.png', './icon-512.png', './icon-maskable.png', './apple-touch-icon.png'
 ];
 
