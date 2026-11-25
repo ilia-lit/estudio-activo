@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan de estudio · Recursos Financieros MISBR + Cartera</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f2d5a">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f2; --card:#ffffff; --ink:#1d1d1f; --muted:#6b6b70; --line:#e6e3dc;
+  --blue:#2f5bd3; --blue-s:#e8eefc; --green:#1f8a5b; --green-s:#e3f4ec;
+  --amber:#b7791f; --amber-s:#fbf1df; --red:#c2412d; --red-s:#fbe7e3;
+  --violet:#6b46c1; --violet-s:#efe9fb; --teal:#0f7c86; --teal-s:#e0f2f3;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#141416; --card:#1e1e21; --ink:#f2f2f3; --muted:#a0a0a8; --line:#2e2e33;
+  --blue:#7c9cf5; --blue-s:#232b45; --green:#5fcf9b; --green-s:#1d3329;
+  --amber:#e8b45a; --amber-s:#3a2f1c; --red:#f08a76; --red-s:#3d2420;
+  --violet:#b39af0; --violet-s:#2e2742; --teal:#5cc5cf; --teal-s:#1b3335;}
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5}
+header{padding:20px 16px 8px;max-width:760px;margin:0 auto}
+header h1{font-size:1.35rem;margin:0 0 4px;letter-spacing:-.01em}
+header .back{display:inline-block;margin-bottom:8px;color:var(--blue);font-weight:600;font-size:.9rem;text-decoration:none}
+header p{margin:0;color:var(--muted);font-size:.92rem}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;max-width:760px;margin:0 auto;scrollbar-width:none}
+nav .tabs::-webkit-scrollbar{display:none}
+nav button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 13px;border-radius:999px;font:600 .85rem Inter,sans-serif;cursor:pointer}
+nav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{max-width:760px;margin:0 auto;padding:14px 14px 80px}
+section{display:none} section.on{display:block}
+h2{font-size:1.2rem;margin:18px 0 8px;letter-spacing:-.01em}
+h3{font-size:1.02rem;margin:16px 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px;margin:10px 0}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.75rem;font-weight:700;letter-spacing:.02em}
+.b{background:var(--blue-s);color:var(--blue)} .g{background:var(--green-s);color:var(--green)}
+.a{background:var(--amber-s);color:var(--amber)} .r{background:var(--red-s);color:var(--red)}
+.v{background:var(--violet-s);color:var(--violet)} .t{background:var(--teal-s);color:var(--teal)}
+.hook{border-left:4px solid var(--violet);background:var(--violet-s);padding:10px 12px;border-radius:0 10px 10px 0;margin:10px 0}
+.hook b{color:var(--violet)}
+.big{font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+ul,ol{padding-left:20px;margin:6px 0} li{margin:3px 0}
+table{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 5px;text-align:left;vertical-align:top}
+th{font-weight:700;color:var(--muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.03em}
+.scroll{overflow-x:auto}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:520px){.grid2{grid-template-columns:1fr}}
+.day{display:flex;gap:12px}
+.day .n{flex:0 0 42px;height:42px;border-radius:12px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800}
+.day .n.rev{background:var(--amber)}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden}
+summary{padding:13px 15px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.2rem;color:var(--muted)}
+details[open] summary::after{content:"–"}
+details .in{padding:0 15px 14px}
+.btn{border:none;border-radius:12px;padding:12px 14px;font:700 .95rem Inter,sans-serif;cursor:pointer;background:var(--ink);color:var(--bg)}
+.btn.sec{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn.ok{background:var(--green);color:#fff} .btn.no{background:var(--red);color:#fff}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row .btn{flex:1}
+/* flashcards */
+.fc{min-height:230px;display:flex;flex-direction:column;justify-content:center;text-align:center;cursor:pointer;padding:22px 18px;user-select:none}
+.fc .q{font-size:1.12rem;font-weight:700}
+.fc .ans{font-size:1rem;margin-top:14px;border-top:1px dashed var(--line);padding-top:14px;text-align:left}
+.fc .tap{color:var(--muted);font-size:.8rem;margin-top:14px}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.bar > i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.opt{display:block;width:100%;text-align:left;margin:7px 0;padding:12px 13px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 .95rem Inter,sans-serif;cursor:pointer}
+.opt.right{background:var(--green-s);border-color:var(--green)} .opt.wrong{background:var(--red-s);border-color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 12px;font:600 .82rem Inter,sans-serif;cursor:pointer}
+.chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.stair{display:flex;align-items:flex-end;gap:6px;height:120px;margin:10px 0 4px}
+.stair div{flex:1;border-radius:8px 8px 0 0;display:flex;align-items:flex-start;justify-content:center;font-weight:800;font-size:.85rem;padding-top:4px;color:#fff}
+.stairl{display:flex;gap:6px;font-size:.72rem;color:var(--muted);text-align:center}
+.stairl span{flex:1}
+.kbd{font-variant-numeric:tabular-nums;font-weight:800}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="back">← Mis materias</a>
+  <h1>🧠 Recursos Financieros (LM8–LM13) + Cartera Crediticia</h1>
+  <p>Unidad 2 · MISBR · CNBS Honduras — plan de 7 días con memoria activa y repetición espaciada</p>
+</header>
+<nav><div class="tabs" id="tabs">
+  <button data-s="plan" class="on">📅 Plan</button>
+  <button data-s="mapa">🗺️ Mapa</button>
+  <button data-s="lm">📘 LM8–13</button>
+  <button data-s="cartera">💳 Cartera</button>
+  <button data-s="fichas">🃏 Tarjetas</button>
+  <button data-s="tablas">🎯 Tablas</button>
+  <button data-s="quiz">✅ Examen</button>
+  <button data-s="refl">💬 Reflexión</button>
+</div></nav>
+<main>
+
+<!-- ================= PLAN ================= -->
+<section id="plan" class="on">
+  <h2>El método (lo que dice la ciencia)</h2>
+  <div class="card">
+    <p style="margin-top:0">Releer y subrayar <b>no funciona</b>. Lo que más retiene es <b>sacar la información de tu cabeza</b>, no meterla. Vas a usar 5 técnicas juntas:</p>
+    <ol>
+      <li><b>Recuperación activa:</b> lees 10 min, cierras todo y escribes lo que recuerdas en una hoja en blanco. Luego corriges.</li>
+      <li><b>Repetición espaciada:</b> repasas el día 1, 2, 4 y 7. La pestaña 🃏 Tarjetas manda al final las que ya sabes y repite las que fallas.</li>
+      <li><b>Imágenes y ganchos:</b> cada lineamiento tiene una imagen o frase absurda (los cuadros morados 💜). Lo raro se recuerda.</li>
+      <li><b>Método Feynman:</b> explícalo en voz alta como si se lo contaras a tu hermano de 12 años. Donde te trabes, ahí está el hueco.</li>
+      <li><b>Práctica intercalada:</b> mezcla temas en vez de estudiar uno por uno. El 🎯 Entrenador de tablas y el ✅ Examen lo hacen solos.</li>
+    </ol>
+    <p class="small muted" style="margin-bottom:0">Ritmo: bloques de 25 min + 5 min de descanso (Pomodoro). Máximo 4 bloques por día. El celular en otra habitación mientras haces “hoja en blanco”.</p>
+  </div>
+
+  <h2>Tu semana</h2>
+  <div class="card day"><div class="n">1</div><div>
+    <b>Mapa general + LM8 Capital + LM10 Liquidez</b>
+    <div class="small">Lee 🗺️ Mapa. Luego LM8 y LM10: tienen <b>la misma estructura</b> (la “casa” de 4 cuartos), así que aprendes dos de una vez. Hoja en blanco: dibuja la casa de memoria.</div>
+  </div></div>
+  <div class="card day"><div class="n">2</div><div>
+    <b>LM9 Rentabilidad + LM12 Desempeño continuo</b>
+    <div class="small">Las dos usan el “carro”: retrovisor, ventana y parabrisas. <b>Empieza</b> con 10 min de tarjetas del día 1 (repaso espaciado).</div>
+  </div></div>
+  <div class="card day"><div class="n">3</div><div>
+    <b>LM11 Solvencia + LM13 Financiamiento + las 4 calificaciones</b>
+    <div class="small">Aprende el contraste <b>fondo cerrado vs fondo abierto</b> y la regla 50-20-10. Feynman: explica en voz alta en qué se diferencian LM11, LM12 y LM13.</div>
+  </div></div>
+  <div class="card day"><div class="n">4</div><div>
+    <b>Cartera I: tipos de crédito, 5 categorías, 4 factores</b>
+    <div class="small">Gran deudor, pequeño deudor, microcrédito, arrendamiento. Aprende la “escalera universal” 0 · 4 · 25 · 60 · 100. Repaso rápido de LM8–LM13 (espaciado).</div>
+  </div></div>
+  <div class="card day"><div class="n">5</div><div>
+    <b>Cartera II: consumo, tarjeta, vivienda + reglas de garantía</b>
+    <div class="small">Tablas 5A, 5B, 6 y 7. Reglas 15-40-60, categoría única (15%) y alineamiento (20%). 20 rondas en 🎯 Entrenador de tablas.</div>
+  </div></div>
+  <div class="card day"><div class="n">6</div><div>
+    <b>Cartera III: refinanciados, castigo, cobertura y números clave</b>
+    <div class="small">Tabla 8, castigo a 1 y 2 años, cobertura 110%. Después haz el ✅ Examen completo y anota en qué fallaste.</div>
+  </div></div>
+  <div class="card day"><div class="n rev">7</div><div>
+    <b>Simulacro final</b>
+    <div class="small">Examen otra vez + responde en voz alta las 5 preguntas de 💬 Reflexión <b>sin mirar</b>. Al final, solo repasa las tarjetas que sigan en la caja 1.</div>
+  </div></div>
+  <div class="hook"><b>¿El examen es antes?</b> Comprime así: Día A = días 1–3 · Día B = días 4–6 · Día C = día 7. No te saltes la hoja en blanco: es lo que más rinde.</div>
+</section>
+
+<!-- ================= MAPA ================= -->
+<section id="mapa">
+  <h2>La foto completa en 30 segundos</h2>
+  <div class="card">
+    <p style="margin-top:0">El MISBR mira 3 cosas de una institución: <b>riesgo inherente</b> → <b>calidad de la gestión</b> (LM1–LM7) → queda el <b>riesgo neto</b>. Después pregunta: <i>“¿tiene con qué aguantar?”</i> Eso son los <b>recursos financieros</b> (LM8–LM13). Riesgo neto + recursos = <b>riesgo compuesto</b>.</p>
+    <p style="margin-bottom:0">Recurso financiero = el colchón. No importa lo bien gestionado que esté un banco: si el colchón es delgado, el riesgo compuesto sube.</p>
+  </div>
+
+  <div class="hook"><b>💜 Gancho maestro:</b> “El <b>BANCO</b> canta <b>CA-RE-LI</b>; el <b>INSTITUTO</b> de pensiones canta <b>SO-DE-FI</b>.” (suena a do-re-mi)</div>
+
+  <div class="grid2">
+    <div class="card">
+      <span class="pill b">Sector financiero y asegurador</span>
+      <h3>CA·RE·LI</h3>
+      <ul>
+        <li><b>LM8 Capital</b>: colchón para pérdidas <b>no esperadas</b></li>
+        <li><b>LM9 Rentabilidad</b>: absorbe pérdidas <b>esperadas</b> y genera capital interno</li>
+        <li><b>LM10 Liquidez</b>: pagar obligaciones de corto plazo, también en estrés</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="pill t">Solo institutos públicos de previsión</span>
+      <h3>SO·DE·FI</h3>
+      <ul>
+        <li><b>LM11 Solvencia</b>: ¿alcanza hoy? (fondo <b>cerrado</b>)</li>
+        <li><b>LM12 Desempeño continuo</b>: ¿rinden las inversiones a largo plazo? (fondo <b>abierto</b>)</li>
+        <li><b>LM13 Financiamiento</b>: ¿llegan las contribuciones a tiempo?</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Hay solo 3 “moldes”. Aprende el molde, no el documento</h2>
+  <div class="card">
+    <span class="pill v">Molde A · La CASA 🏠</span> <span class="small muted">LM8 Capital · LM10 Liquidez · LM11 Solvencia</span>
+    <ol>
+      <li><b>Reglas de la casa</b> → Políticas y prácticas de gestión</li>
+      <li><b>Los papás</b> → Rol de Junta Directiva (aprueba y supervisa) y Alta Gerencia (implementa)</li>
+      <li><b>El inspector</b> → Gestión de Riesgos y Auditoría Interna (evalúan independientemente)</li>
+      <li><b>La despensa llena</b> → Suficiencia (¿alcanza?)</li>
+    </ol>
+  </div>
+  <div class="card">
+    <span class="pill a">Molde B · El CARRO 🚗</span> <span class="small muted">LM9 Rentabilidad · LM12 Desempeño continuo</span>
+    <ol>
+      <li><b>Retrovisor</b> → Nivel y tendencias históricas (el pasado)</li>
+      <li><b>Ventana lateral</b> → Comparación con instituciones pares (los vecinos)</li>
+      <li><b>Parabrisas</b> → Perspectiva futura (lo que viene)</li>
+    </ol>
+  </div>
+  <div class="card">
+    <span class="pill g">Molde C · La TUBERÍA 🚰</span> <span class="small muted">LM13 Financiamiento</span>
+    <ol>
+      <li><b>¿Llega el agua?</b> → Disponibilidad de recursos (recaudo, mora patronal, bonos del Estado)</li>
+      <li><b>¿Alcanza el agua?</b> → Suficiencia del financiamiento (también en estrés)</li>
+      <li><b>¿Quién vigila la llave?</b> → Desempeño de funciones de vigilancia y gestión operativa</li>
+    </ol>
+  </div>
+
+  <h2>Las 4 calificaciones (iguales en todos)</h2>
+  <div class="card scroll">
+    <table>
+      <tr><th>Nota</th><th>Suficiencia</th><th>Tendencia 12 meses</th><th>Políticas vs industria</th></tr>
+      <tr><td><span class="pill g">Fuerte</span></td><td>Sólida / superior</td><td>Positiva</td><td><b>Superiores</b></td></tr>
+      <tr><td><span class="pill b">Aceptable</span></td><td>Apropiada</td><td>Positiva</td><td><b>Cumplen</b></td></tr>
+      <tr><td><span class="pill a">Necesita mejorar</span></td><td>No siempre apropiada (cumple mínimo)</td><td><b>Incierta</b></td><td>Pueden no cumplir</td></tr>
+      <tr><td><span class="pill r">Débil</span></td><td>Inapropiada / cumple marginal o no cumple</td><td><b>Negativa</b></td><td>No cumplen</td></tr>
+    </table>
+    <div class="hook" style="margin-bottom:0"><b>💜 Semáforo del clima:</b> Fuerte y Aceptable = ☀️ soleado (positiva). Necesita mejorar = ⛅ nublado (incierta). Débil = ⛈️ tormenta (negativa). La diferencia entre Fuerte y Aceptable está en las políticas: <b>superiores</b> vs <b>cumplen</b>.</div>
+  </div>
+</section>
+
+<!-- ================= LM ================= -->
+<section id="lm">
+  <h2>Fichas por lineamiento</h2>
+  <p class="small muted">Lee una ficha, ciérrala y di en voz alta lo que recuerdas. Después ábrela y compara.</p>
+
+  <details><summary><span><span class="pill b">LM8</span> Capital · 🏠 Casa</span></summary><div class="in">
+    <div class="hook"><b>💜 Imagen:</b> el capital es el <b>airbag</b> del banco. No evita el choque (eso es la gestión), pero te salva en el choque <b>inesperado</b>.</div>
+    <p><b>Rol:</b> fuente de soporte financiero que protege contra <b>pérdidas no esperadas</b>. La cantidad de capital, por sí sola, <b>no sustituye</b> una gestión prudente de riesgos. Se evalúa la <b>suficiencia (cantidad y calidad)</b> y las políticas y prácticas.</p>
+    <h3>1 · Reglas de la casa (políticas)</h3>
+    <ul>
+      <li>Aplican a toda la institución, con autoridad y recursos suficientes</li>
+      <li>Fijan un <b>objetivo interno de capital</b> acorde con estrategia, plan de negocios y apetito de riesgo</li>
+      <li>Monitoreo continuo + <b>pruebas de estrés</b></li>
+      <li><b>Autoevaluación de suficiencia de capital</b>, incluidos escenarios extremos</li>
+      <li>Asignación de capital y su costo por negocio</li>
+      <li>La planificación de capital está integrada al plan estratégico (actual y futuro, normal y estresado) y evalúa fuentes internas y externas</li>
+    </ul>
+    <h3>2 · Los papás (JD y AG)</h3>
+    <p>La JD aprueba y supervisa y la AG implementa: el plan de capital de corto y largo plazo, el mandato y los recursos, y las políticas. Reciben informes sobre el plan, el objetivo interno, los mínimos regulatorios y los resultados de estrés.</p>
+    <h3>3 · El inspector</h3>
+    <p>Auditoría Interna y Riesgos hacen evaluaciones <b>periódicas e independientes</b>. Riesgos usa <b>modelos</b> para los objetivos internos y escenarios de estrés.</p>
+    <h3>4 · La despensa (suficiencia)</h3>
+    <ul>
+      <li>Frente a los mínimos regulatorios, el perfil de riesgo y el objetivo interno</li>
+      <li><b>Capital de alta calidad</b>: buena mezcla de instrumentos</li>
+      <li>Grado de <b>arbitraje regulatorio</b> (una alerta roja)</li>
+      <li>Alcanza para sostener el plan de negocios</li>
+      <li>Capacidad de los <b>accionistas u holding</b> para hacer aportes extraordinarios</li>
+    </ul>
+  </div></details>
+
+  <details><summary><span><span class="pill b">LM9</span> Rentabilidad · 🚗 Carro</span></summary><div class="in">
+    <div class="hook"><b>💜 Imagen:</b> la rentabilidad es la <b>fábrica de airbags</b>: produce el capital desde adentro. Se evalúan las <b>3 C</b>: <b>Cantidad, Calidad y Consistencia</b>.</div>
+    <p><b>Rol:</b> determina la estabilidad y viabilidad de <b>largo plazo</b>. Genera recursos para absorber <b>pérdidas esperadas</b>, alimenta la <b>generación interna de capital</b> y facilita acceder a capital externo. Se mira lo histórico y lo prospectivo, en condiciones normales y de estrés.</p>
+    <h3>1 · Retrovisor (histórico, nivel y composición)</h3>
+    <ul>
+      <li>Rentabilidad adecuada al apetito de riesgo</li>
+      <li>Ingresos <b>volátiles vs estables</b>; tendencia y volatilidad</li>
+      <li>Diferencia entre lo <b>proyectado y lo obtenido</b>, y su justificación</li>
+      <li>Diversificación (productos y clientes); negocios estrella y negocios <b>deficitarios</b></li>
+      <li>🚩 Ganancias infladas con <b>interpretaciones contables o actuariales</b></li>
+      <li>🚩 Ganancias de fuentes <b>no recurrentes</b></li>
+    </ul>
+    <h3>2 · Ventana (pares)</h3><p>Tendencia frente a instituciones similares.</p>
+    <h3>3 · Parabrisas (futuro)</h3>
+    <ul><li>Vulnerabilidad frente a la competencia</li><li>Impacto de una contracción económica, un evento de mercado o una catástrofe natural</li><li>Viabilidad en condiciones normales y de estrés</li><li>Modelos de <b>rentabilidad ajustada al riesgo</b> (RORAC) reportados a JD y AG</li></ul>
+    <p class="small"><b>Clave de las notas:</b> Fuerte = ganancias consistentes y sin depender de lo no recurrente · Aceptable = satisfactorias, con presión competitiva · NM = inconsistentes y a veces dependientes de lo no recurrente · Débil = pérdidas operacionales consistentes.</p>
+  </div></details>
+
+  <details><summary><span><span class="pill b">LM10</span> Liquidez · 🏠 Casa</span></summary><div class="in">
+    <div class="hook"><b>💜 Imagen:</b> la liquidez es el <b>oxígeno</b>. Un banco puede ser rico (con capital) y morir asfixiado si no tiene efectivo hoy.</div>
+    <p><b>Rol:</b> es esencial para la solidez y solvencia. Se evalúa la composición del balance, las fuentes de financiamiento y la estrategia de liquidez. La CNBS espera un nivel de riesgo de liquidez <b>prudente</b>, en condiciones normales y de estrés. Mide <b>exposición + calidad de gestión</b>.</p>
+    <h3>1 · Reglas (políticas: incisos a–l, los más preguntables)</h3>
+    <ul>
+      <li>Son prioridad de JD y AG y forman parte de la planeación estratégica</li>
+      <li>En grupos: gestión <b>individual e integral</b></li>
+      <li><b>Marco de Gestión de Liquidez</b> acorde al Marco de Apetito de Riesgo</li>
+      <li><b>Objetivo interno de recursos líquidos</b> + reserva de alta calidad, <b>no comprometida</b></li>
+      <li>Estrategia de <b>fondeo diversificada</b></li>
+      <li>Identificar, medir, monitorear y controlar; <b>proyección de flujos</b> (incluye fuera de balance)</li>
+      <li><b>Precios internos</b> (costo de la liquidez) dentro de la aprobación de nuevos negocios</li>
+      <li>Pruebas de estrés “severas pero plausibles”</li>
+      <li><b>Plan de contingencia</b>: estrategia, indicadores de alerta, líneas de reporte, responsables y planes de acción</li>
+      <li>Competencias del personal de liquidez</li>
+    </ul>
+    <h3>2 · Papás</h3><p>La JD aprueba y la AG implementa el marco, las políticas y las metodologías de estrés. Hay evaluaciones independientes e informes oportunos.</p>
+    <h3>3 · Inspector</h3><p>Auditoría Interna y Riesgos evalúan de forma periódica e independiente.</p>
+    <h3>4 · Despensa</h3>
+    <ul><li>Liquidez vs objetivo interno y mínimos regulatorios</li><li><b>Activos líquidos de alta calidad</b></li><li>Alcanza para el plan de negocios</li><li>Diversificar fuentes para evitar concentraciones</li><li><b>Plan de contingencia de fondeo</b></li><li>Capacidad de accionistas o <b>Casa Matriz</b> de transferir liquidez rápido</li></ul>
+  </div></details>
+
+  <details><summary><span><span class="pill t">LM11</span> Solvencia · 🏠 Casa</span></summary><div class="in">
+    <div class="hook"><b>💜 Imagen:</b> una <b>alcancía sellada</b>. Nadie más mete dinero (no entran nuevos participantes). ¿Alcanza para pagar las pensiones de todos los que ya están dentro, hasta liquidarlo?</div>
+    <p><b>Rol:</b> capacidad de hacer frente a las obligaciones. Evalúa el riesgo de los beneficios prometidos a una fecha de corte, con <b>fondo cerrado</b>. Se mide con la relación <b>patrimonio / reservas matemáticas</b>. Solo aplica a <b>institutos públicos de previsión social</b>.</p>
+    <h3>1 · Reglas (políticas, prácticas y metodologías)</h3>
+    <ul>
+      <li>Meta: alcanzar o mantener el <b>equilibrio actuarial</b></li>
+      <li>Objetivo interno de solvencia (límites y tolerancia), acorde al Marco de Apetito de Riesgo</li>
+      <li>Estrés sobre <b>supuestos demográficos y económicos</b></li>
+      <li>Considerar la solvencia <b>antes de cambiar beneficios</b> (ajustes por costo de vida, bonificaciones…)</li>
+      <li>Reservas y <b>costo actuarial anual por participante</b></li>
+      <li>Gobierno: aprueba la JD o Asamblea, implementa la AG, evalúa Riesgos y audita Auditoría Interna</li>
+    </ul>
+    <h3>2 · Papás</h3><p>Fijan los límites internos, planifican los beneficios de corto y largo plazo y gestionan el patrimonio y las reservas matemáticas. Los informes deben servir para proponer <b>reformas</b> hacia el equilibrio actuarial.</p>
+    <h3>3 · Inspector</h3><p>Auditoría y Riesgos revisan los <b>modelos de la Unidad de Actuaría</b> y los escenarios de estrés.</p>
+    <h3>4 · Despensa</h3><ul><li>Solvencia o insolvencia frente al diseño que define la Ley</li><li>Constitución de reservas matemáticas</li><li>¿El <b>déficit actuarial</b> se controla, sube o baja?</li></ul>
+    <p class="small"><b>Notas:</b> Fuerte = equilibrio con escenario <b>base y pesimista</b> · Aceptable = equilibrio con escenario <b>base</b> · NM = insolvencia que se corrige con mejores inversiones y gastos · Débil = insolvencia alta; requiere <b>reformas paramétricas o a la ley</b>.</p>
+  </div></details>
+
+  <details><summary><span><span class="pill t">LM12</span> Desempeño continuo · 🚗 Carro</span></summary><div class="in">
+    <div class="hook"><b>💜 Imagen:</b> un <b>río que sigue corriendo</b>. A diferencia de la alcancía sellada (LM11), aquí se asume que el fondo <b>sigue recibiendo financiamiento</b>. Pregunta: ¿las inversiones rinden lo suficiente a largo plazo?</div>
+    <p><b>Rol:</b> la seguridad de los beneficios en el largo plazo. Evalúa el rendimiento de las inversiones frente a los límites internos y de la CNBS, el gasto administrativo, los ingresos y gastos, y las <b>proyecciones de flujo de efectivo</b>. Los cambios en las <b>tasas de interés</b> pueden mover esta nota.</p>
+    <h3>1 · Retrovisor</h3><ul><li>Rentabilidad de las inversiones vs apetito y diseño del plan</li><li>% de beneficios pagados <b>con rendimientos</b></li><li>Volatilidad de rendimientos, ingresos y gastos</li><li>Benchmarks internos propios</li><li>Inversiones con pérdida o bajo el límite</li><li>Acciones de JD y AG para subir rendimientos y bajar gastos</li></ul>
+    <h3>2 · Ventana</h3><p>Rentabilidad y gastos administrativos frente a pares, el sector financiero y real, y otros institutos de Centroamérica.</p>
+    <h3>3 · Parabrisas</h3><p>Capacidad de pagar beneficios a largo plazo con proyecciones de flujos, y la calidad de los supuestos y del estrés.</p>
+    <div class="hook"><b>💜 Regla 50-20-10 (años de continuidad del fondo):</b><br>Fuerte = <b>≥50 años</b> o creciente a perpetuidad (varios escenarios) · Aceptable = <b>≥20</b> (escenario base, sin dañar el patrimonio) · NM = <b>≥10</b> · Débil = <b>no garantiza ni 10</b>.<br><i>“Medio siglo, veinteañero, una década, nada.”</i></div>
+  </div></details>
+
+  <details><summary><span><span class="pill t">LM13</span> Financiamiento · 🚰 Tubería</span></summary><div class="in">
+    <div class="hook"><b>💜 Imagen:</b> la <b>tubería</b> que llena la alcancía. Los patronos y afiliados abren la llave (aportes). Los problemas: la llave gotea (<b>mora patronal</b>), llega tarde (<b>recaudo inoportuno</b>) o llega en “vales” (<b>bonos del Estado</b> en vez de efectivo).</div>
+    <p><b>Rol:</b> la suficiencia y el recaudo oportuno de las contribuciones, y la capacidad de <b>subir el porcentaje</b> de aportación patronal y cotización individual en el futuro. Es <b>prospectivo</b>. Factores: la situación financiera del patrono, la industria, el instituto y su estructura de financiamiento.</p>
+    <h3>1 · ¿Llega?</h3><ul><li>Recaudo oportuno</li><li>Mora patronal</li><li>Aportes en títulos valores del Estado, que afectan la liquidez de largo plazo</li><li>Renovaciones o reperfilamientos de esos títulos</li></ul>
+    <h3>2 · ¿Alcanza?</h3><p>Alcanza para el equilibrio actuarial, también en estrés (cambios demográficos y riesgos emergentes).</p>
+    <h3>3 · ¿Quién vigila?</h3><p>Facilidad de la JD y AG para <b>reformar la ley o el reglamento</b> y subir aportes, con responsables claros, reportes y gobierno.</p>
+    <p class="small"><b>Notas:</b> Fuerte = sin mora y pocos bonos, en buenas condiciones · Aceptable = algo de mora, pero no significativa · NM = mora sobre lo aceptable y beneficios sin respaldo · Débil = consume las reservas y afecta la solvencia y el desempeño continuo.</p>
+  </div></details>
+
+  <div class="card">
+    <h3 style="margin-top:0">⚡ El trío previsional en una línea</h3>
+    <p style="margin:0"><b>LM11</b> ¿Alcanza lo que ya hay? (alcancía cerrada) · <b>LM12</b> ¿Rinde lo invertido a largo plazo? (río abierto) · <b>LM13</b> ¿Entra el dinero a tiempo? (tubería)</p>
+  </div>
+</section>
+
+<!-- ================= CARTERA ================= -->
+<section id="cartera">
+  <h2>Normas de Evaluación y Clasificación de Cartera (Circular CNBS 001/2025)</h2>
+  <div class="card">
+    <p style="margin-top:0"><b>¿Para qué existe?</b> Para que las instituciones clasifiquen el riesgo de cada crédito y constituyan a tiempo las <b>estimaciones por deterioro</b> (provisiones). Así los estados financieros muestran cifras razonables. Incluye créditos de <b>fideicomisos</b> aunque no estén en el balance.</p>
+    <p style="margin-bottom:0" class="small muted">La reforma 2025 nace del Decreto <b>PCM 40-2024</b>: bajar las estimaciones de los créditos productivos y de vivienda con mora de <b>15 a 30 días</b> (por eso la categoría I-B queda en 0% en varias tablas).</p>
+  </div>
+
+  <h3>Las 5 categorías</h3>
+  <div class="card">
+    <table>
+      <tr><td><b>I</b></td><td>Créditos Buenos</td></tr>
+      <tr><td><b>II</b></td><td>Especialmente Mencionados</td></tr>
+      <tr><td><b>III</b></td><td>Bajo Norma</td></tr>
+      <tr><td><b>IV</b></td><td>Dudosa Recuperación</td></tr>
+      <tr><td><b>V</b></td><td>Pérdida</td></tr>
+    </table>
+    <div class="hook" style="margin-bottom:0"><b>💜 Historia:</b> “Un <b>B</b>uen <b>E</b>studiante <b>B</b>aja notas, <b>D</b>uda y <b>P</b>ierde el año.” → Buenos · Especialmente mencionados · Bajo norma · Dudosa · Pérdida</div>
+  </div>
+
+  <h3>El árbol de tipos de crédito</h3>
+  <div class="card">
+    <p style="margin-top:0"><b>COMERCIALES</b> (financian actividades productivas)</p>
+    <ul>
+      <li><b>Gran deudor comercial:</b> deuda ≥ <b>6% del capital mínimo de los bancos</b>, sumando todo el sistema y su grupo económico. Se analiza caso por caso con 4 factores.</li>
+      <li><b>Pequeño deudor comercial:</b> ni gran deudor ni microcrédito. Se clasifica por <b>mora</b>. Cambia de grupo tras <b>6 meses seguidos</b> por encima o por debajo del 6%. Un gran deudor que baja <b>nunca</b> puede pasar a microcrédito.</li>
+      <li><b>Microcrédito:</b> deuda total ≤ <b>L720,000</b> (sin contar vivienda). Actividades en pequeña escala, formales o informales. Paga con sus ventas. <b>No asalariados.</b></li>
+      <li><b>Arrendamiento financiero:</b> transfiere sustancialmente los riesgos y ventajas del bien.</li>
+      <li><b>Agropecuario:</b> tiene su propia norma diferenciada.</li>
+    </ul>
+    <p><b>PERSONALES</b> (se clasifican solo por <b>mora</b>)</p>
+    <ul>
+      <li><b>Consumo:</b> personas naturales (incluye tarjetas). Paga con salario, rentas o remesas.</li>
+      <li><b>Vivienda:</b> comprar, construir o mejorar la vivienda propia o un lote. Con <b>hipoteca inscrita</b> o en trámite por ≤ 6 meses. Si no, se trata como consumo.</li>
+    </ul>
+    <div class="hook" style="margin-bottom:0"><b>💜 Tres 6:</b> el gran deudor tiene <b>6%</b> del capital mínimo · tarda <b>6 meses</b> en cambiar de grupo · sus estados financieros tienen máximo <b>6 meses</b> de antigüedad.</div>
+  </div>
+
+  <h3>Gran deudor: los 4 factores EN ORDEN</h3>
+  <div class="card">
+    <ol>
+      <li><b>Capacidad de pago</b>: el factor principal. Estados financieros auditados y flujo de caja, actualizados al menos cada año.</li>
+      <li><b>Comportamiento de pago</b>: historial de al menos <b>2 años</b>.</li>
+      <li><b>Garantías</b>: fuente <b>alterna</b>. Pesan solo cuando ya fallaron los dos primeros factores, y deben poder ejecutarse en el corto plazo.</li>
+      <li><b>Entorno económico</b>: sector, dependencia de un producto, obsolescencia…</li>
+    </ol>
+    <div class="hook" style="margin-bottom:0"><b>💜 Las 4 preguntas del prestamista:</b> ¿<b>Puede</b> pagar? → ¿<b>Quiere</b> pagar (cómo ha pagado)? → Si no paga, ¿<b>qué le quito</b>? → ¿Cómo está <b>el mundo</b> a su alrededor?<br>En gran deudor los días de mora <b>no deciden solos</b>: manda la capacidad de pago, salvo que la mora dé una categoría peor.</div>
+  </div>
+
+  <h3>📐 La escalera universal</h3>
+  <div class="card">
+    <p style="margin-top:0" class="small">Casi todas las tablas usan este patrón de estimación por categoría:</p>
+    <div class="stair">
+      <div style="height:12%;background:#1f8a5b">0</div>
+      <div style="height:22%;background:#6aa84f">4–5</div>
+      <div style="height:40%;background:#d69e2e">25</div>
+      <div style="height:68%;background:#dd6b20">60</div>
+      <div style="height:100%;background:#c2412d">100</div>
+    </div>
+    <div class="stairl"><span>I</span><span>II</span><span>III</span><span>IV</span><span>V</span></div>
+    <div class="hook"><b>💜 “0-4-25-60-100”</b> → “<b>Cero</b> problemas, <b>cuatro</b> llamadas, un <b>cuarto</b> perdido, más de la <b>mitad</b> perdido, <b>todo</b> perdido.”<br>La excepción es <b>VIVIENDA</b>, que nunca llega a 100: <b>0 · 0.75 · 3 · 20 · 50 · 70</b>. 🏠 “La casa siempre vale algo.”</div>
+  </div>
+
+  <h3>Las tablas (días de mora → % de estimación)</h3>
+  <div class="card scroll">
+    <p class="small" style="margin-top:0"><b>Tablas 1 y 2 · Gran y pequeño deudor comercial</b></p>
+    <table>
+      <tr><th>Cat</th><th>Hipoteca</th><th>%</th><th>Depósito / recíproca</th><th>%</th><th>Otras</th><th>%</th></tr>
+      <tr><td>I-A</td><td>0–15</td><td>0</td><td>0–15</td><td>0</td><td>0–15</td><td>0</td></tr>
+      <tr><td>I-B</td><td>16–30</td><td>0</td><td>16–30</td><td>0</td><td>16–30</td><td><b>0.5 G / 0.75 P</b></td></tr>
+      <tr><td>II</td><td>31–90</td><td>4</td><td>31–90</td><td><b>0</b></td><td>31–60</td><td>4</td></tr>
+      <tr><td>III</td><td>91–180</td><td>25</td><td>91–180</td><td>25</td><td>61–90</td><td>25</td></tr>
+      <tr><td>IV</td><td>181–360</td><td>60</td><td>181–360</td><td>60</td><td>91–180</td><td>60</td></tr>
+      <tr><td>V</td><td>&gt;360</td><td>100</td><td>&gt;360</td><td>100</td><td>&gt;180</td><td>100</td></tr>
+    </table>
+    <div class="hook"><b>💜 “Con hipoteca caminas, sin hipoteca corres”:</b> con hipoteca los cortes son 90 · 180 · 360. Sin hipoteca se acortan a 60 · 90 · 180. La única diferencia entre grande y pequeño es I-B en “otras”: <b>0.5%</b> el grande y <b>0.75%</b> el pequeño.</div>
+
+    <p class="small"><b>Tabla 3 · Microcrédito</b> (otras garantías | depósito o recíproca)</p>
+    <table>
+      <tr><th>Cat</th><th>Días</th><th>Otras</th><th>Dep/Recíp</th></tr>
+      <tr><td>I</td><td>≤30</td><td>0.75</td><td>0</td></tr>
+      <tr><td>II</td><td>31–60</td><td>5</td><td>0</td></tr>
+      <tr><td>III</td><td>61–90</td><td>25</td><td>25</td></tr>
+      <tr><td>IV</td><td>91–180</td><td>60</td><td>60</td></tr>
+      <tr><td>V</td><td>&gt;180</td><td>100</td><td>100</td></tr>
+    </table>
+
+    <p class="small"><b>Tabla 4 · Arrendamiento financiero</b> (los % son 0 · 4 · 25 · 60 · 100)</p>
+    <table>
+      <tr><th>Cat</th><th>Inmuebles</th><th>Otros bienes</th></tr>
+      <tr><td>I</td><td>≤30</td><td>≤30</td></tr><tr><td>II</td><td>31–90</td><td>31–90</td></tr>
+      <tr><td>III</td><td>91–180</td><td>91–120</td></tr><tr><td>IV</td><td>181–360</td><td>121–180</td></tr><tr><td>V</td><td>&gt;360</td><td>&gt;180</td></tr>
+    </table>
+
+    <p class="small"><b>Tabla 5A · Consumo con cuotas cada ≥30 días</b></p>
+    <table>
+      <tr><th>Cat</th><th>Días</th><th>Otras gtías</th><th>Educación con recíproca o hipoteca</th></tr>
+      <tr><td>I</td><td>≤30</td><td>1</td><td>0</td></tr><tr><td>II</td><td>31–60</td><td>5</td><td>0</td></tr>
+      <tr><td>III</td><td>61–90</td><td>25</td><td>25</td></tr><tr><td>IV</td><td>91–120</td><td>60</td><td>60</td></tr><tr><td>V</td><td>&gt;120</td><td>100</td><td>100</td></tr>
+    </table>
+    <div class="hook"><b>💜 Consumo = “de 30 en 30”:</b> 30 · 60 · 90 · 120. Con 1 · 5 · 25 · 60 · 100.</div>
+
+    <p class="small"><b>Tabla 5B · Tarjeta de crédito</b></p>
+    <table>
+      <tr><th>Cat</th><th>Días</th><th>%</th></tr>
+      <tr><td>I-A</td><td>≤7</td><td>0.5</td></tr><tr><td>I-B</td><td>8–30</td><td>1</td></tr>
+      <tr><td>II</td><td>31–60</td><td>5.25</td></tr><tr><td>III</td><td>61–90</td><td>25</td></tr>
+      <tr><td>IV-A</td><td>91–120</td><td>60</td></tr><tr><td>IV-B</td><td>121–180</td><td>80</td></tr><tr><td>V</td><td>&gt;180</td><td>100</td></tr>
+    </table>
+    <div class="hook"><b>💜 La tarjeta es la única con 7 escalones:</b> una semana de gracia (7 días) y la IV partida en dos (60 → 80). El % raro es <b>5.25</b>: “5 y cuarto”.</div>
+
+    <p class="small"><b>Tabla 6 · Consumo con cuotas cada &lt;30 días</b> (pagos semanales o quincenales)</p>
+    <table>
+      <tr><th>Cat</th><th>Días</th><th>%</th></tr>
+      <tr><td>I</td><td>≤8</td><td>1</td></tr><tr><td>II</td><td>9–30</td><td>5</td></tr><tr><td>III</td><td>31–60</td><td>25</td></tr><tr><td>IV</td><td>61–120</td><td>60</td></tr><tr><td>V</td><td>&gt;120</td><td>100</td></tr>
+    </table>
+
+    <p class="small"><b>Tabla 7 · Vivienda</b> (sobre el saldo, <b>sin restar</b> el avalúo de la garantía)</p>
+    <table>
+      <tr><th>Cat</th><th>Días</th><th>Solo hipoteca</th><th>Hipoteca + depósito/recíproca</th></tr>
+      <tr><td>I-A</td><td>≤30</td><td>0</td><td>0</td></tr><tr><td>I-B</td><td>31–60</td><td>0.75</td><td>0</td></tr>
+      <tr><td>II</td><td>61–120</td><td>3</td><td>3</td></tr><tr><td>III</td><td>121–210</td><td>20</td><td>20</td></tr>
+      <tr><td>IV</td><td>211–360</td><td>50</td><td>50</td></tr><tr><td>V</td><td>&gt;360</td><td>70</td><td>70</td></tr>
+    </table>
+    <div class="hook" style="margin-bottom:0"><b>💜 “La casa es lenta”:</b> la vivienda es la más paciente (hasta 360 días) y la más suave (máximo <b>70%</b>).</div>
+  </div>
+
+  <h3>Reglas que más preguntan</h3>
+  <div class="card">
+    <p style="margin-top:0"><b>Regla 15-40-60 (garantías en categorías III, IV y V).</b> En comerciales, microcrédito, arrendamiento y consumo con hipoteca: en I y II el % se aplica sobre el <b>saldo</b>. En III, IV y V se aplica sobre <b>saldo − avalúo neto de descuento</b>, pero nunca por debajo de <b>15% / 40% / 60%</b> del saldo.</p>
+    <p><b>Categoría única por deudor (misma institución).</b> Si la peor categoría representa <b>≥15%</b> de lo que debe, arrastra a todo lo demás. Si es menos, cada tipo de crédito conserva su peor categoría.</p>
+    <p><b>Alineamiento (varias instituciones).</b> Si la peor categoría del sistema representa <b>≥20%</b> de su deuda total, te reclasifican a <b>una categoría de diferencia</b> de esa peor.</p>
+    <div class="hook"><b>💜 “15 en casa, 20 en la calle”:</b> 15% dentro de la misma institución, 20% en el sistema.</div>
+    <p><b>Contingentes</b> (avales, garantías bancarias, cartas de crédito, aceptaciones, endosos): se estiman sobre el <b>50%</b> de su valor.</p>
+    <p><b>Garantía recíproca</b> (Ley de Fondos de Garantía Recíproca para MIPYMES): no se estima la porción garantizada mientras esté vigente, o sea, mientras no pasen los <b>180 días</b> para cobrarla.</p>
+    <p style="margin-bottom:0"><b>Varios créditos con hipoteca o depósito:</b> la garantía puede cubrir otros créditos si cubre el <b>100%</b> de todo. Se clasifica por el <b>mayor atraso</b> y se usa el % del tipo de garantía que supere el <b>50%</b> (si es 50/50, se usa el de hipoteca).</p>
+  </div>
+
+  <h3>Refinanciado vs readecuado</h3>
+  <div class="card">
+    <div class="grid2">
+      <div><span class="pill r">Refinanciado</span><p class="small">Se cambian las condiciones (plazo, forma de pago, monto o tasa) <b>porque el deudor tiene problemas</b> para pagar. También cuenta prestarle a él o a un tercero para pagar el crédito anterior.</p></div>
+      <div><span class="pill g">Readecuado</span><p class="small">Se cambian las condiciones, pero <b>nunca</b> por problemas de capacidad de pago. No cambia la categoría.</p></div>
+    </div>
+    <div class="hook"><b>💜 Re-FINANCIADO = “FIN-anzas en problemas”.</b> Re-ADECUADO = “solo me <b>acomodo</b>”.</div>
+    <ul>
+      <li>El refinanciado conserva su categoría, pero si era <b>I</b> baja al menos a <b>II</b>.</li>
+      <li><b>Tabla 8:</b> 2 refinanciamientos → III · 3 → IV · 4 o más → V (100% si no tiene hipoteca). 💜 “Dos-tres, tres-cuatro, cuatro-cinco”: siempre suma 1.</li>
+      <li>Si lo registran como readecuado o vigente cuando era refinanciado → <b>mínimo III</b>.</li>
+      <li><b>Mejora una categoría por trimestre</b> con pagos puntuales: cuota mensual → <b>3 meses</b> · cada 1 a 6 meses → <b>1 año</b> · más de 6 meses → <b>2 años</b>. Puntual = dentro de <b>5 días</b>.</li>
+      <li>Puede registrarse como vigente si está en I o II y pagó <b>20% del capital</b>.</li>
+      <li>No es refinanciamiento si estuvo 6 meses en categoría I y le dan un crédito nuevo o una ampliación.</li>
+      <li>Líneas revolventes: se evalúan cada <b>12 meses</b>. Reporte a la CNBS: <b>10 días hábiles</b>.</li>
+    </ul>
+  </div>
+
+  <h3>🔢 Números ancla (repásalos en voz alta)</h3>
+  <div class="card scroll">
+    <table>
+      <tr><td class="kbd">6%</td><td>Del capital mínimo de los bancos = gran deudor</td></tr>
+      <tr><td class="kbd">6 meses</td><td>Seguidos para cambiar entre gran y pequeño deudor</td></tr>
+      <tr><td class="kbd">L720,000</td><td>Tope de deuda de un microcrédito</td></tr>
+      <tr><td class="kbd">2 años</td><td>Historial de pago del gran deudor · castigo al 100% (comercial, agro con hipoteca, vivienda)</td></tr>
+      <tr><td class="kbd">1 año</td><td>Castigo al 100% en microcrédito y consumo con hipoteca</td></tr>
+      <tr><td class="kbd">110%</td><td>Cobertura mínima de estimaciones sobre los créditos en mora</td></tr>
+      <tr><td class="kbd">25% / 30 días</td><td>Si la clasificación difiere ≥25%, la CNBS la rechaza completa y hay que reclasificar en 30 días</td></tr>
+      <tr><td class="kbd">15% · 20%</td><td>Categoría única · alineamiento</td></tr>
+      <tr><td class="kbd">15-40-60</td><td>Pisos mínimos de III, IV y V con garantía</td></tr>
+      <tr><td class="kbd">50%</td><td>Base de estimación de los contingentes</td></tr>
+      <tr><td class="kbd">180 días</td><td>Vigencia para cobrar la garantía recíproca</td></tr>
+      <tr><td class="kbd">10 días hábiles</td><td>Plazo para reportar a la Central de Información Crediticia</td></tr>
+      <tr><td class="kbd">Mensual</td><td>Clasificación de la cartera, hecha por personal distinto al que otorga el crédito (Riesgos + Comité de Riesgos)</td></tr>
+    </table>
+    <p class="small" style="margin-bottom:0"><b>Castigo contable:</b> requiere 3 cosas: aprobación de la JD, comprobar que es incobrable y tener el 100% estimado. Si es a partes relacionadas, necesita autorización previa de la CNBS. <b>Muestra:</b> si el 100% de la muestra cumple, el resto se acepta; si no, se aplica el coeficiente de riesgo a la cartera no evaluada.</p>
+  </div>
+</section>
+
+<!-- ================= FLASHCARDS ================= -->
+<section id="fichas">
+  <h2>Tarjetas con repetición espaciada</h2>
+  <p class="small muted">Lee la pregunta, <b>responde en tu cabeza o en voz alta</b> y luego toca la tarjeta. Sé honesto: “No lo sabía” la manda a la caja 1 y vuelve pronto.</p>
+  <div class="chips" id="fcFilter"></div>
+  <div class="small muted" id="fcStats"></div>
+  <div class="bar"><i id="fcBar"></i></div>
+  <div class="card fc" id="fcCard"></div>
+  <div class="row" id="fcBtns" style="display:none">
+    <button class="btn no" id="fcNo">✗ No lo sabía</button>
+    <button class="btn ok" id="fcYes">✓ Lo sabía</button>
+  </div>
+  <p class="small muted" style="margin-top:14px">Caja 1 = repasar hoy · Caja 2 = mañana · Caja 3 = dominada. <button class="chip" id="fcReset">Reiniciar progreso</button></p>
+</section>
+
+<!-- ================= TABLAS TRAINER ================= -->
+<section id="tablas">
+  <h2>🎯 Entrenador de tablas</h2>
+  <p class="small muted">Te doy un tipo de crédito y los días de mora. Elige la categoría y adivina el % antes de ver la respuesta. Haz 20 rondas al día desde el día 5.</p>
+  <div class="card" id="trCard"></div>
+  <div class="small muted" id="trScore"></div>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section id="quiz">
+  <h2>✅ Examen de práctica</h2>
+  <p class="small muted">Las preguntas mezclan todos los temas (eso es intercalar). Cada vez salen en otro orden.</p>
+  <div id="qzBox"></div>
+</section>
+
+<!-- ================= REFLEXIÓN ================= -->
+<section id="refl">
+  <h2>💬 Preguntas de reflexión de la unidad</h2>
+  <p class="small muted">Primero respóndelas tú en voz alta (Feynman). Después abre la guía y compara: son ideas para armar tu respuesta, no para copiar.</p>
+
+  <details><summary>1 · Riesgo operacional vs riesgo legal: ¿un evento puede generar ambos?</summary><div class="in">
+    <p><b>Operacional:</b> pérdidas por fallas en procesos, personas, sistemas o eventos externos. Lo vigila <b>LM1</b> (Gestión de Riesgos). <b>Legal:</b> pérdidas por incumplir leyes o contratos, o por fallos judiciales. Lo vigila <b>LM4</b> (Cumplimiento). Basilea mete el legal dentro del operacional, pero el MISBR los trata por separado.</p>
+    <p><b>Sí, un mismo evento genera ambos.</b> Ejemplo hipotético: un error en el sistema de un banco hondureño cobra de más los intereses de las tarjetas por meses. La falla del sistema es riesgo <b>operacional</b> (devoluciones, costo de corregirla). Los reclamos de usuarios, las demandas y una posible sanción de la CNBS por violar las normas de protección al usuario financiero son riesgo <b>legal</b>.</p>
+  </div></details>
+  <details><summary>2 · ¿Por qué los sistemas de información pesan en el riesgo neto?</summary><div class="in">
+    <p>Sin datos confiables, íntegros y a tiempo no se puede identificar, medir, controlar ni reportar el riesgo. La gestión se vuelve “a ciegas”. Por eso el MISBR califica la gestión como débil y el <b>riesgo neto sube</b>.</p>
+    <p><b>Consecuencias de tener sistemas inadecuados:</b> reportes regulatorios con errores, alertas tempranas que no llegan, malas decisiones de la JD, clasificación de cartera mal hecha y provisiones insuficientes. Ojo: la norma de cartera exige un <b>control automatizado</b> del valor de las garantías, y el MISBR exige KRIs y dashboards.</p>
+  </div></details>
+  <details><summary>3 · Capital, rentabilidad y liquidez: ¿cuál es el más crítico?</summary><div class="in">
+    <p><b>Capital</b> = airbag para pérdidas no esperadas (LM8). <b>Rentabilidad</b> = la fábrica que genera capital y absorbe las pérdidas esperadas (LM9). <b>Liquidez</b> = oxígeno para pagar hoy (LM10). La CNBS los evalúa juntos porque, sumados al riesgo neto, forman el <b>riesgo compuesto</b>. Una institución con buena gestión pero poco colchón sigue siendo riesgosa.</p>
+    <p><b>Para defender tu postura</b> (no hay una única respuesta correcta): puedes argumentar que la <b>liquidez</b> es la más crítica porque una corrida mata a un banco en días, aunque sea solvente. O que lo es el <b>capital</b>, porque es la última línea de defensa y lo que exige Basilea. Lo importante es reconocer que son <b>interdependientes</b>: sin rentabilidad no hay capital, y sin capital el banco no consigue fondeo.</p>
+  </div></details>
+  <details><summary>4 · Dos funciones de vigilancia (LM1–LM7) que, si fallan, suben el riesgo neto</summary><div class="in">
+    <p><b>LM1 Gestión de Riesgos:</b> si no es independiente o no tiene matrices actualizadas, los riesgos no se miden y llegan pérdidas sorpresa. Además, en LM8 y LM10 es la que hace los modelos y el estrés.</p>
+    <p><b>LM5 Auditoría Interna:</b> si no revisa de forma independiente, nadie detecta que los controles fallan. Por ejemplo, la norma de cartera le exige verificar que los expedientes de crédito estén completos.</p>
+    <p class="small muted">Otras opciones válidas: LM4 Cumplimiento (multas y riesgo legal) o LM7 Junta Directiva (sin supervisión ni aprobación de políticas, fallan todas las demás funciones).</p>
+  </div></details>
+  <details><summary>5 · El papel de las plantillas de evaluación (PE)</summary><div class="in">
+    <p>Las plantillas convierten cada lineamiento en una <b>lista estructurada</b> para recopilar evidencia, evaluar controles y asignar calificaciones. Así, dos supervisores distintos llegan a conclusiones parecidas (<b>consistencia</b>), se basan en evidencia y no en opiniones (<b>objetividad</b>) y queda todo <b>documentado</b>. Las notas de orientación (NO) explican cómo interpretar cada criterio.</p>
+    <p><b>Como auditor interno de un banco:</b> puedes usar la plantilla del LM8 o del LM10 como tu programa de auditoría, recorriendo los 4 bloques (políticas, JD/AG, riesgos/AI, suficiencia). Así te anticipas a lo que revisará la CNBS y calificas tú mismo (Fuerte, Aceptable, Necesita mejorar o Débil) antes de que llegue el supervisor.</p>
+  </div></details>
+</section>
+</main>
+
+<script>
+// ---------- tabs ----------
+const tabs=document.querySelectorAll('#tabs button');
+function show(id){tabs.forEach(b=>b.classList.toggle('on',b.dataset.s===id));
+  document.querySelectorAll('main section').forEach(s=>s.classList.toggle('on',s.id===id));
+  window.scrollTo({top:0});}
+tabs.forEach(b=>b.onclick=()=>show(b.dataset.s));
+
+// ---------- storage ----------
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+// ---------- flashcards ----------
+const CARDS=[
+ ["Mapa","¿Cuáles son los recursos financieros del sector financiero y asegurador?","CA-RE-LI: LM8 Capital, LM9 Rentabilidad, LM10 Liquidez."],
+ ["Mapa","¿Cuáles son los recursos financieros de los institutos públicos de previsión?","SO-DE-FI: LM11 Solvencia, LM12 Desempeño continuo, LM13 Financiamiento."],
+ ["Mapa","Riesgo neto + recursos financieros = ¿?","Riesgo compuesto."],
+ ["Mapa","¿Qué 4 bloques tiene el molde “Casa” (LM8, LM10, LM11)?","1) Políticas y prácticas · 2) Rol de JD y AG · 3) Gestión de Riesgos y Auditoría Interna · 4) Suficiencia."],
+ ["Mapa","¿Qué 3 bloques tiene el molde “Carro” (LM9, LM12)?","1) Nivel y tendencias históricas (retrovisor) · 2) Comparación con pares (ventana) · 3) Perspectiva futura (parabrisas)."],
+ ["Mapa","¿Qué 3 bloques tiene LM13 (Tubería)?","1) Disponibilidad de recursos · 2) Suficiencia del financiamiento · 3) Desempeño de las funciones de vigilancia y gestión operativa."],
+ ["Mapa","¿Qué distingue a “Fuerte” de “Aceptable”?","Las dos tienen tendencia positiva a 12 meses. En Fuerte las políticas son SUPERIORES a la industria; en Aceptable solo CUMPLEN."],
+ ["Mapa","¿Qué tendencia a 12 meses tienen “Necesita mejorar” y “Débil”?","Necesita mejorar = incierta. Débil = negativa."],
+ ["LM8","¿Contra qué tipo de pérdidas protege el capital?","Pérdidas NO esperadas."],
+ ["LM8","¿El capital puede sustituir una buena gestión de riesgos?","No. La cantidad de capital, por sí sola, no sustituye una gestión sana y prudente."],
+ ["LM8","¿Qué dos cosas se evalúan del capital?","La suficiencia (cantidad y calidad) y las políticas y prácticas de gestión."],
+ ["LM8","¿Qué autoevaluación exige LM8?","La autoevaluación de suficiencia de capital, con todos los riesgos, escenarios extremos y la estrategia de negocio."],
+ ["LM8","¿Qué práctica es una alerta roja en la suficiencia de capital?","El arbitraje regulatorio al gestionar el capital."],
+ ["LM8","¿Quién puede rescatar el capital en una emergencia?","Los accionistas o el holding, con aportes extraordinarios, o el acceso a capital externo."],
+ ["LM9","¿Qué pérdidas absorbe la rentabilidad?","Las pérdidas ESPERADAS. Además genera capital internamente."],
+ ["LM9","¿En qué 3 términos evalúa la CNBS la rentabilidad?","Cantidad, calidad y consistencia (más lo histórico y lo prospectivo, en condiciones normales y de estrés)."],
+ ["LM9","¿Cuáles son las dos “trampas” de ganancias que vigila LM9?","Las ganancias de fuentes NO recurrentes y las ganancias infladas con interpretaciones contables o actuariales."],
+ ["LM9","¿Qué modelos de rentabilidad pide la perspectiva futura?","Modelos de rentabilidad ajustada al riesgo (como el RORAC), reportados a la JD y la AG."],
+ ["LM10","¿Qué es la reserva de liquidez que exige LM10?","Recursos líquidos de alta calidad, NO comprometidos, capaces de soportar estrés."],
+ ["LM10","¿Qué debe incluir el plan de contingencia de liquidez?","Estrategia, indicadores de alerta, líneas de reporte, responsables, instancias de decisión y planes de acción."],
+ ["LM10","¿Qué son los “precios internos” en LM10?","Cobrar internamente el costo de la liquidez a cada negocio e incluirlo en la aprobación de nuevos negocios."],
+ ["LM10","¿Cómo deben ser las pruebas de estrés de liquidez?","Severas pero plausibles, con sustento metodológico."],
+ ["LM10","¿Quién puede transferir liquidez rápido según LM10?","Los accionistas o la Casa Matriz, o la institución obteniendo recursos en los mercados de capitales."],
+ ["LM11","¿Con qué relación se mide la solvencia previsional?","Patrimonio / reservas matemáticas."],
+ ["LM11","¿Qué supuesto de fondo usa LM11 Solvencia?","Fondo CERRADO: no entran nuevos participantes y continúa hasta su liquidación."],
+ ["LM11","¿Cuál es la meta de la gestión de solvencia?","Alcanzar o mantener el equilibrio actuarial."],
+ ["LM11","Solvencia Fuerte vs Aceptable: ¿con qué escenarios mantiene el equilibrio actuarial?","Fuerte: escenario base Y pesimista. Aceptable: solo escenario base."],
+ ["LM11","¿Qué requiere normalmente una solvencia Débil?","Modificaciones paramétricas o reformas a la ley del instituto (un diseño inadecuado)."],
+ ["LM11","Solvencia “Necesita mejorar”: ¿cómo se puede superar?","Con mejor desempeño de las inversiones y mejor manejo de los gastos."],
+ ["LM12","¿Qué supuesto de fondo usa LM12 Desempeño continuo?","El instituto seguirá siendo financiado de forma continua (fondo abierto)."],
+ ["LM12","¿Qué variable externa puede mover mucho la calificación de LM12?","Los cambios en las tasas de interés."],
+ ["LM12","Regla 50-20-10: ¿qué significa?","Años que las proyecciones garantizan la continuidad del fondo. Fuerte ≥50 (o a perpetuidad) · Aceptable ≥20 · NM ≥10 · Débil no garantiza 10."],
+ ["LM12","¿Con quién se compara un instituto en LM12?","Con sus pares, otras empresas del sector financiero y real del país, y otros institutos de previsión de Centroamérica."],
+ ["LM13","¿Cuáles son los 3 problemas de la “tubería” en LM13?","Recaudo inoportuno, mora patronal y aportes pagados con títulos valores del Estado."],
+ ["LM13","¿LM13 es histórico o prospectivo?","Prospectivo: evalúa la capacidad de cumplir el financiamiento en el corto y largo plazo."],
+ ["LM13","¿Qué capacidad futura evalúa LM13?","La de aumentar el porcentaje de contribución (aportación patronal y cotización individual), incluso reformando la ley o el reglamento."],
+ ["LM13","Financiamiento Débil: ¿qué efecto tiene en los otros recursos?","Afecta la solvencia y el desempeño continuo y consume las reservas constituidas."],
+ ["Cartera","¿Cuáles son las 5 categorías de riesgo?","I Buenos · II Especialmente Mencionados · III Bajo Norma · IV Dudosa Recuperación · V Pérdida."],
+ ["Cartera","¿Quién es un Gran Deudor Comercial?","Quien debe ≥6% del capital mínimo vigente de los bancos, en todo el sistema e incluyendo su grupo económico."],
+ ["Cartera","¿Cuáles son los 4 factores del gran deudor y en qué orden?","1) Capacidad de pago (principal) · 2) Comportamiento de pago (2 años) · 3) Garantías (fuente alterna) · 4) Entorno económico."],
+ ["Cartera","¿Cuál es el tope de deuda de un microcrédito?","L720,000 en todo el sistema (sin contar vivienda). No aplica a asalariados."],
+ ["Cartera","¿Cuánto tiempo hace falta para pasar de pequeño a gran deudor (o al revés)?","6 meses consecutivos sobre o bajo el 6%. Un gran deudor nunca puede pasar a microcrédito."],
+ ["Cartera","¿Cuál es la escalera universal de estimaciones?","0 · 4(5) · 25 · 60 · 100 para las categorías I a V."],
+ ["Cartera","¿Cuál es la escalera de vivienda (Tabla 7)?","I-A 0 · I-B 0.75 · II 3 · III 20 · IV 50 · V 70 (nunca llega a 100)."],
+ ["Cartera","¿Cuáles son los rangos de días de vivienda?","≤30 · 31–60 · 61–120 · 121–210 · 211–360 · >360."],
+ ["Cartera","Tarjeta de crédito: ¿qué % tiene la categoría II?","5.25% (31–60 días)."],
+ ["Cartera","Tarjeta de crédito: ¿cómo se divide la categoría IV?","IV-A 91–120 días = 60% · IV-B 121–180 días = 80%."],
+ ["Cartera","Consumo con cuotas cada ≥30 días: ¿cuáles son los rangos?","≤30 · 31–60 · 61–90 · 91–120 · >120 → 1 · 5 · 25 · 60 · 100."],
+ ["Cartera","¿Cuáles son los pisos mínimos con garantía para III, IV y V?","15% · 40% · 60% sobre el saldo adeudado."],
+ ["Cartera","En comerciales con garantía, ¿sobre qué base se calcula el % en III a V?","Sobre el saldo menos el avalúo de la garantía neto de descuento (Anexo 1), respetando los pisos 15-40-60."],
+ ["Cartera","¿Cuándo aplica la categoría única por deudor?","Cuando la peor categoría representa ≥15% de las obligaciones del deudor en la misma institución."],
+ ["Cartera","¿Qué es el alineamiento del deudor?","Si tiene créditos en 2 o más instituciones y la peor categoría representa ≥20% de su deuda total, se le reclasifica a una categoría de diferencia de esa peor."],
+ ["Cartera","¿Refinanciado o readecuado? Se cambia la tasa porque el cliente no puede pagar.","Refinanciado (por dificultades en la capacidad de pago)."],
+ ["Cartera","Tabla 8: ¿qué categoría corresponde a 2, 3 y 4+ refinanciamientos?","2 → III · 3 → IV · 4 o más → V (100% si no tiene hipoteca)."],
+ ["Cartera","Un crédito categoría I se refinancia. ¿Qué pasa?","Pasa al menos a la categoría II."],
+ ["Cartera","¿Qué pasa si un refinanciado se registró como readecuado?","Se clasifica al menos en la categoría III (Bajo Norma)."],
+ ["Cartera","¿Cuándo mejora un refinanciado con cuota mensual?","Una categoría por trimestre, tras 3 meses de pagos puntuales (dentro de 5 días)."],
+ ["Cartera","¿Cuándo se castiga al 100% un crédito comercial o de vivienda en mora?","A los 2 años de mora. En microcrédito y consumo con hipoteca, a 1 año."],
+ ["Cartera","¿Cuáles son los 3 requisitos del castigo contable?","Aprobación de la JD, comprobar que es incobrable y tener constituido el 100% de la estimación."],
+ ["Cartera","¿Cuál es la cobertura mínima de estimaciones?","110% del total de créditos en mora."],
+ ["Cartera","¿Cuándo rechaza la CNBS la clasificación completa?","Si difiere 25% de la estimación requerida en la muestra. La institución debe reclasificar en un plazo ≤30 días."],
+ ["Cartera","¿Sobre qué % se estiman los contingentes (avales, cartas de crédito…)?","Sobre el 50% de su valor contabilizado."],
+ ["Cartera","¿Cuándo no se estima la porción con garantía recíproca?","Mientras la garantía esté vigente: los 180 días que hay para cobrarla al fondo."],
+ ["Cartera","¿Cada cuánto y quién clasifica la cartera?","Cada mes, personal distinto al que otorga el crédito (unidad de riesgos, coordinada por el Comité de Riesgos)."],
+ ["Cartera","¿Qué decreto motivó la reforma 2025 y qué cambió?","El PCM 40-2024: bajó las estimaciones de los créditos productivos y de vivienda con 15 a 30 días de mora."]
+];
+const SETS=["Todas","Mapa","LM8","LM9","LM10","LM11","LM12","LM13","Cartera"];
+let fcSet="Todas", fcIdx=null, fcFlipped=false;
+let boxes=store.get('u2_boxes',{});
+function boxOf(i){return boxes[i]||1}
+function pool(){return CARDS.map((c,i)=>i).filter(i=>fcSet==="Todas"||CARDS[i][0]===fcSet)}
+function pick(){
+  const p=pool(); const min=Math.min(...p.map(boxOf));
+  let cand=p.filter(i=>boxOf(i)===min); if(cand.length>1) cand=cand.filter(i=>i!==fcIdx);
+  fcIdx=cand[Math.floor(Math.random()*cand.length)]; fcFlipped=false; renderFc();
+}
+function renderFc(){
+  const c=CARDS[fcIdx], el=document.getElementById('fcCard');
+  el.innerHTML=`<div><span class="pill v">${c[0]}</span> <span class="pill ${boxOf(fcIdx)===3?'g':boxOf(fcIdx)===2?'a':'r'}">Caja ${boxOf(fcIdx)}</span></div>
+   <div class="q" style="margin-top:12px">${c[1]}</div>
+   ${fcFlipped?`<div class="ans">${c[2]}</div>`:`<div class="tap">Toca para ver la respuesta</div>`}`;
+  document.getElementById('fcBtns').style.display=fcFlipped?'flex':'none';
+  const p=pool(), done=p.filter(i=>boxOf(i)===3).length;
+  document.getElementById('fcStats').textContent=`${p.length} tarjetas · dominadas ${done} · caja 1: ${p.filter(i=>boxOf(i)===1).length}`;
+  document.getElementById('fcBar').style.width=(100*done/p.length)+'%';
+}
+document.getElementById('fcCard').onclick=()=>{if(!fcFlipped){fcFlipped=true;renderFc()}};
+document.getElementById('fcYes').onclick=()=>{boxes[fcIdx]=Math.min(3,boxOf(fcIdx)+1);store.set('u2_boxes',boxes);pick()};
+document.getElementById('fcNo').onclick=()=>{boxes[fcIdx]=1;store.set('u2_boxes',boxes);pick()};
+document.getElementById('fcReset').onclick=()=>{boxes={};store.set('u2_boxes',boxes);pick()};
+const ff=document.getElementById('fcFilter');
+SETS.forEach(s=>{const b=document.createElement('button');b.className='chip'+(s===fcSet?' on':'');b.textContent=s;
+  b.onclick=()=>{fcSet=s;ff.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));pick()};ff.appendChild(b)});
+pick();
+
+// ---------- table trainer ----------
+const I=1e9;
+const TB={
+ "Gran deudor comercial · garantía hipotecaria":[[0,15,"I-A",0],[16,30,"I-B",0],[31,90,"II",4],[91,180,"III",25],[181,360,"IV",60],[361,I,"V",100]],
+ "Gran deudor comercial · otras garantías":[[0,15,"I-A",0],[16,30,"I-B",0.5],[31,60,"II",4],[61,90,"III",25],[91,180,"IV",60],[181,I,"V",100]],
+ "Pequeño deudor comercial · otras garantías":[[0,15,"I-A",0],[16,30,"I-B",0.75],[31,60,"II",4],[61,90,"III",25],[91,180,"IV",60],[181,I,"V",100]],
+ "Pequeño deudor · depósitos pignorados":[[0,15,"I-A",0],[16,30,"I-B",0],[31,90,"II",0],[91,180,"III",25],[181,360,"IV",60],[361,I,"V",100]],
+ "Microcrédito · otras garantías":[[0,30,"I",0.75],[31,60,"II",5],[61,90,"III",25],[91,180,"IV",60],[181,I,"V",100]],
+ "Arrendamiento financiero · inmuebles":[[0,30,"I",0],[31,90,"II",4],[91,180,"III",25],[181,360,"IV",60],[361,I,"V",100]],
+ "Arrendamiento financiero · otros bienes":[[0,30,"I",0],[31,90,"II",4],[91,120,"III",25],[121,180,"IV",60],[181,I,"V",100]],
+ "Consumo (cuotas cada ≥30 días)":[[0,30,"I",1],[31,60,"II",5],[61,90,"III",25],[91,120,"IV",60],[121,I,"V",100]],
+ "Tarjeta de crédito":[[0,7,"I-A",0.5],[8,30,"I-B",1],[31,60,"II",5.25],[61,90,"III",25],[91,120,"IV-A",60],[121,180,"IV-B",80],[181,I,"V",100]],
+ "Consumo (cuotas cada <30 días)":[[0,8,"I",1],[9,30,"II",5],[31,60,"III",25],[61,120,"IV",60],[121,I,"V",100]],
+ "Vivienda · solo hipoteca":[[0,30,"I-A",0],[31,60,"I-B",0.75],[61,120,"II",3],[121,210,"III",20],[211,360,"IV",50],[361,I,"V",70]]
+};
+let tr={ok:0,n:0}, cur=null;
+function trNew(){
+  const keys=Object.keys(TB), k=keys[Math.floor(Math.random()*keys.length)], rows=TB[k];
+  const r=rows[Math.floor(Math.random()*rows.length)];
+  const hi=r[1]===I?r[0]+200:r[1]; const d=r[0]+Math.floor(Math.random()*(hi-r[0]+1));
+  cur={k,d,row:r,rows}; renderTr(null);
+}
+function renderTr(choice){
+  const {k,d,row,rows}=cur, el=document.getElementById('trCard');
+  let h=`<span class="pill b">${k}</span><div class="big" style="margin:10px 0">${d} días de mora</div><div class="small muted">¿Qué categoría le toca? Piensa también el %.</div><div class="chips">`;
+  rows.forEach(r=>{let cls='chip'; if(choice){ if(r[2]===row[2]) cls+=' on'; }
+    h+=`<button class="${cls}" ${choice?'disabled':''} data-c="${r[2]}" style="${choice&&r[2]===choice&&choice!==row[2]?'background:var(--red);color:#fff;border-color:var(--red)':''}">${r[2]}</button>`});
+  h+='</div>';
+  if(choice){
+    const ok=choice===row[2];
+    h+=`<p><b>${ok?'✓ ¡Correcto!':'✗ Era '+row[2]}</b> → estimación <b>${row[3]}%</b></p><div class="scroll"><table><tr><th>Cat</th><th>Días</th><th>%</th></tr>`+
+     rows.map(r=>`<tr style="${r===row?'background:var(--green-s)':''}"><td>${r[2]}</td><td>${r[1]===I?'> '+(r[0]-1):r[0]+'–'+r[1]}</td><td>${r[3]}</td></tr>`).join('')+
+     `</table></div>${k.startsWith('Gran')?'<p class="small muted">Recuerda: en gran deudor la mora no decide sola. Manda la capacidad de pago, salvo que la mora dé una categoría peor.</p>':''}
+     <button class="btn" style="width:100%;margin-top:8px" id="trNext">Siguiente →</button>`;
+  }
+  el.innerHTML=h;
+  if(!choice) el.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{tr.n++; if(b.dataset.c===row[2]) tr.ok++; renderTr(b.dataset.c);
+     document.getElementById('trScore').textContent=`Aciertos: ${tr.ok}/${tr.n}`});
+  else document.getElementById('trNext').onclick=trNew;
+}
+trNew();
+
+// ---------- quiz ----------
+const Q=[
+ ["¿Cuál recurso financiero se evalúa SOLO en institutos públicos de previsión?",["Liquidez","Rentabilidad","Desempeño continuo","Capital"],2,"LM11, LM12 y LM13 (SO-DE-FI) son exclusivos de los institutos públicos de previsión social."],
+ ["El capital protege principalmente contra pérdidas…",["Esperadas","No esperadas","Operativas recurrentes","Contables"],1,"Capital = airbag para lo inesperado. La rentabilidad absorbe las pérdidas esperadas."],
+ ["¿Cuál NO es un bloque del molde “Casa” (LM8 / LM10)?",["Rol de JD y AG","Comparación con pares","Suficiencia","Gestión de Riesgos y Auditoría Interna"],1,"Comparación con pares pertenece al molde “Carro” (LM9 y LM12)."],
+ ["Una calificación con tendencia a 12 meses INCIERTA corresponde a:",["Fuerte","Aceptable","Necesita mejorar","Débil"],2,"Semáforo del clima: nublado = incierta = Necesita mejorar."],
+ ["LM9 vigila especialmente las ganancias provenientes de:",["Cartera de vivienda","Fuentes no recurrentes","Depósitos a plazo","Comisiones"],1,"Depender de lo no recurrente o de interpretaciones contables es una alerta en rentabilidad."],
+ ["La reserva de liquidez de LM10 debe estar compuesta por recursos:",["Comprometidos en garantía","De alta calidad y no comprometidos","Invertidos a largo plazo","En préstamos a partes relacionadas"],1,"Reserva de recursos líquidos de alta calidad, no comprometidos, capaces de soportar estrés."],
+ ["La solvencia previsional (LM11) supone un fondo:",["Abierto, con nuevos participantes","Cerrado, sin nuevos participantes","Financiado por el Estado","Con rendimientos garantizados"],1,"Alcancía sellada: fondo cerrado hasta su liquidación."],
+ ["En LM12, ¿cuántos años debe garantizar el escenario base para una nota “Aceptable”?",["10","20","50","Perpetuidad"],1,"Regla 50-20-10: Aceptable ≥ 20 años."],
+ ["La mora patronal y los aportes con bonos del Estado se evalúan en:",["LM11 Solvencia","LM12 Desempeño continuo","LM13 Financiamiento","LM10 Liquidez"],2,"Tubería: disponibilidad de recursos en LM13."],
+ ["Un gran deudor comercial debe al sistema al menos:",["6% del capital mínimo de los bancos","L720,000","10% de su patrimonio","6% de su deuda total"],0,"6% del capital mínimo vigente de los bancos, incluido su grupo económico."],
+ ["En gran deudor, el factor PRINCIPAL de clasificación es:",["Garantías","Entorno económico","Capacidad de pago","Días de mora"],2,"Primero la capacidad de pago, después el comportamiento, las garantías y el entorno."],
+ ["Un microcrédito NO puede otorgarse a:",["Comerciantes informales","Grupos de prestatarios","Asalariados como fuente principal de ingreso","Personas jurídicas"],2,"La fuente de pago del microcrédito son las ventas de su actividad, no un salario."],
+ ["Crédito de consumo (cuotas mensuales) con 75 días de mora. ¿Categoría y %?",["II · 5%","III · 25%","IV · 60%","III · 20%"],1,"Consumo de 30 en 30: 61–90 = III = 25%."],
+ ["Tarjeta de crédito con 150 días de mora:",["IV-A · 60%","IV-B · 80%","V · 100%","IV · 60%"],1,"La tarjeta parte la IV: 121–180 = IV-B = 80%."],
+ ["Vivienda (solo hipoteca) con 200 días de mora:",["III · 20%","IV · 50%","III · 25%","II · 3%"],0,"Vivienda 121–210 = III = 20%. La casa es lenta y suave."],
+ ["La estimación máxima de un crédito de vivienda es:",["100%","80%","70%","60%"],2,"Categoría V de vivienda = 70%."],
+ ["Gran deudor con garantía hipotecaria y 120 días de mora:",["III · 25%","IV · 60%","II · 4%","III · 15%"],0,"Con hipoteca los cortes son 90/180/360: 91–180 = III = 25% (sobre saldo − garantía neta, con piso de 15%)."],
+ ["Los pisos mínimos de estimación para III, IV y V con garantía son:",["10-30-50","15-40-60","20-50-70","25-60-100"],1,"15-40-60 sobre el saldo adeudado."],
+ ["La categoría única se aplica si la peor categoría representa al menos:",["10%","15%","20%","25%"],1,"15 en casa (misma institución), 20 en la calle (alineamiento)."],
+ ["El alineamiento entre instituciones aplica cuando la peor categoría es al menos ___ del endeudamiento total:",["15%","20%","25%","50%"],1,"20% → se reclasifica a una categoría de diferencia."],
+ ["Un deudor refinanciado 3 veces se estima en categoría:",["II","III","IV","V"],2,"Tabla 8: 2→III, 3→IV, 4+→V."],
+ ["Un crédito se modifica SIN que haya problemas de capacidad de pago. Es un crédito:",["Refinanciado","Readecuado","Castigado","Reestructurado judicial"],1,"Readecuado = solo me acomodo. No cambia la categoría."],
+ ["La cobertura mínima de estimaciones sobre los créditos en mora es:",["100%","110%","120%","125%"],1,"13.2: cobertura mínima de 110%."],
+ ["Un crédito comercial se estima al 100% para su castigo al cumplir:",["180 días de mora","1 año de mora","2 años de mora","360 días con hipoteca"],2,"2 años para comerciales, agro con hipoteca y vivienda; 1 año para microcrédito y consumo con hipoteca."],
+ ["Las garantías bancarias y los avales se estiman sobre:",["El 100% de su valor","El 50% de su valor","El 25% de su valor","No se estiman"],1,"Los contingentes se estiman sobre el 50% de su valor contabilizado."],
+ ["Si la clasificación de la institución difiere ≥25% de la requerida, la CNBS puede:",["Multar sin más","Rechazarla completa y pedir reclasificación en ≤30 días","Castigar la cartera","Cerrar la institución"],1,"Reclasificación total: 25% de diferencia y 30 días para reclasificar."]
+];
+let qOrder=[], qi=0, qScore=0;
+function qStart(){qOrder=Q.map((_,i)=>i).sort(()=>Math.random()-.5);qi=0;qScore=0;qRender()}
+function qRender(){
+  const box=document.getElementById('qzBox');
+  if(qi>=qOrder.length){
+    const pct=Math.round(100*qScore/Q.length);
+    box.innerHTML=`<div class="card" style="text-align:center"><div class="big">${qScore}/${Q.length}</div><p>${pct>=85?'🔥 Dominado. Repite el examen en 2 días para fijarlo.':pct>=65?'👍 Vas bien. Repasa en 🃏 Tarjetas los temas donde fallaste.':'📚 Vuelve a las fichas y al entrenador de tablas, y repite el examen mañana.'}</p><button class="btn" id="qAgain">Repetir examen</button></div>`;
+    document.getElementById('qAgain').onclick=qStart; return;
+  }
+  const q=Q[qOrder[qi]];
+  box.innerHTML=`<div class="small muted">Pregunta ${qi+1} de ${Q.length} · Aciertos ${qScore}</div><div class="bar"><i style="width:${100*qi/Q.length}%"></i></div>
+   <div class="card"><b>${q[0]}</b>${q[1].map((o,j)=>`<button class="opt" data-j="${j}">${o}</button>`).join('')}<div id="qExp"></div></div>`;
+  box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+    const j=+b.dataset.j; box.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(+x.dataset.j===q[2]) x.classList.add('right')});
+    if(j===q[2]) qScore++; else b.classList.add('wrong');
+    document.getElementById('qExp').innerHTML=`<p class="small" style="margin-bottom:8px">${j===q[2]?'✓ ':'✗ '}${q[3]}</p><button class="btn" style="width:100%" id="qNext">Siguiente →</button>`;
+    document.getElementById('qNext').onclick=()=>{qi++;qRender()};
+  });
+}
+qStart();
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}</script>
+</body>
+</html>
